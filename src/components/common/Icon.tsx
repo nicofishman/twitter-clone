@@ -7,6 +7,8 @@ interface IconProps extends React.SVGAttributes<SVGElement> {
 }
 
 const Icon: FC<IconProps> = ({ name, ...props }) => {
+    // twitter icons: https://pbs.twimg.com/media/FfnyauLXEAAobig?format=jpg&name=4096x4096
+
     const MyIcon: React.FunctionComponent<React.SVGAttributes<SVGElement>> = Icons[name];
     
     return (
