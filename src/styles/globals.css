@@ -1,3 +1,27 @@
+@font-face {
+  font-family: "TwitterChirp";
+  src: url("/fonts/chirp-bold-web.woff") format("woff");
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "TwitterChirp";
+  src: url("/fonts/chirp-heavy-web.woff") format("woff");
+  font-weight: 800;
+}
+
+@font-face {
+  font-family: "TwitterChirp";
+  src: url("/fonts/chirp-light-web.woff") format("woff");
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: "TwitterChirp";
+  src: url("/fonts/chirp-regular-web.woff") format("woff");
+  font-weight: 500;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
