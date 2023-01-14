@@ -4,7 +4,11 @@ module.exports = {
     theme: {
         extend: {
             colors: {
-                lightGray: "#E7EAE9"
+                lightGray: "#E7EAE9",
+                textGray: "rgb(113, 118, 123)",
+                borderGray: "rgb(47, 51, 54)",
+                twitterBlue: "rgb(29, 155, 240)",
+                twitterBlueHover: "rgb(23, 140, 216)",
             },
             fontFamily: {
                 twitter: 'TwitterChirp, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif'
