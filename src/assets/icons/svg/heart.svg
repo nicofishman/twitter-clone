@@ -1,5 +1,19 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="80px" height="71px" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g><path style="opacity:1" fill="currentColor" d="M 15.5,-0.5 C 19.5,-0.5 23.5,-0.5 27.5,-0.5C 31.7326,1.28821 35.7326,3.62154 39.5,6.5C 43.2674,3.62154 47.2674,1.28821 51.5,-0.5C 55.5,-0.5 59.5,-0.5 63.5,-0.5C 71.5663,2.56708 76.8997,8.23374 79.5,16.5C 79.5,20.5 79.5,24.5 79.5,28.5C 75.4907,39.7066 68.824,49.2066 59.5,57C 53.0999,61.5219 46.7665,66.0219 40.5,70.5C 39.8333,70.5 39.1667,70.5 38.5,70.5C 27.6955,63.879 17.8622,55.879 9,46.5C 5.00997,40.8497 1.8433,34.8497 -0.5,28.5C -0.5,24.5 -0.5,20.5 -0.5,16.5C 2.07366,8.25902 7.407,2.59236 15.5,-0.5 Z M 18.5,7.5 C 27.8318,8.00221 34.8318,12.3355 39.5,20.5C 43.2735,13.0567 49.2735,8.72337 57.5,7.5C 67.8928,9.06149 72.3928,15.0615 71,25.5C 69.814,31.0687 67.4806,36.0687 64,40.5C 57.1394,48.8697 48.9727,55.5364 39.5,60.5C 27.2398,53.7402 17.4064,44.4069 10,32.5C 4.83614,21.1515 7.66948,12.8181 18.5,7.5 Z"/></g>
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
+ "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+ width="80.000000pt" height="71.000000pt" viewBox="0 0 80.000000 71.000000"
+ preserveAspectRatio="xMidYMid meet">
+<metadata>
+Created by potrace 1.16, written by Peter Selinger 2001-2019
+</metadata>
+<g transform="translate(0.000000,71.000000) scale(0.100000,-0.100000)"
+fill="currentColor" stroke="none">
+<path d="M135 691 c-90 -41 -130 -106 -130 -211 0 -104 41 -186 145 -290 75
+-76 220 -180 250 -180 28 0 184 112 256 185 99 100 139 182 139 285 0 82 -13
+115 -62 164 -82 83 -224 85 -310 4 l-23 -21 -22 21 c-63 58 -169 77 -243 43z
+m154 -81 c21 -10 55 -39 75 -62 l36 -43 36 43 c67 79 150 102 215 59 107 -71
+84 -221 -57 -361 -54 -55 -176 -146 -194 -146 -19 0 -138 89 -193 145 -142
+142 -166 290 -58 362 42 28 90 29 140 3z"/>
+</g>
 </svg>

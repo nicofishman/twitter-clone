@@ -1,6 +1,19 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="64px" height="80px" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g><path style="opacity:1" fill="currentColor" d="M 25.5,-0.5 C 29.5,-0.5 33.5,-0.5 37.5,-0.5C 51.3365,4.00408 60.0031,13.3374 63.5,27.5C 63.5,32.8333 63.5,38.1667 63.5,43.5C 60.1783,57.1628 51.845,66.4961 38.5,71.5C 40.1933,74.1841 41.86,76.8508 43.5,79.5C 35.5,79.5 27.5,79.5 19.5,79.5C 21.14,76.8508 22.8067,74.1841 24.5,71.5C 11.1642,66.5044 2.83086,57.171 -0.5,43.5C -0.5,38.5 -0.5,33.5 -0.5,28.5C 2.54628,13.7874 11.2129,4.12073 25.5,-0.5 Z M 28.5,7.5 C 45.7984,8.96828 54.7984,18.4683 55.5,36C 54.7046,51.6199 46.7046,60.7865 31.5,63.5C 16.0348,60.6936 8.0348,51.3603 7.5,35.5C 7.82559,20.8763 14.8256,11.543 28.5,7.5 Z"/></g>
-<g><path style="opacity:1" fill="currentColor" d="M 26.5,15.5 C 28.1667,15.5 29.8333,15.5 31.5,15.5C 32.4833,20.3548 30.8167,23.6881 26.5,25.5C 25.2485,27.0009 24.2485,28.6675 23.5,30.5C 20.9135,31.48 18.2469,31.8134 15.5,31.5C 16.0163,23.9863 19.6829,18.653 26.5,15.5 Z"/></g>
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
+ "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+ width="64.000000pt" height="80.000000pt" viewBox="0 0 64.000000 80.000000"
+ preserveAspectRatio="xMidYMid meet">
+<metadata>
+Created by potrace 1.16, written by Peter Selinger 2001-2019
+</metadata>
+<g transform="translate(0.000000,80.000000) scale(0.100000,-0.100000)"
+fill="currentColor" stroke="none">
+<path d="M233 786 c-85 -28 -155 -95 -201 -193 -23 -50 -27 -71 -27 -153 0
+-86 3 -101 32 -162 38 -80 105 -150 168 -174 25 -9 45 -20 45 -23 0 -4 -11
+-23 -25 -44 l-26 -37 121 0 121 0 -26 37 c-14 21 -25 41 -25 45 0 3 16 12 35
+18 68 22 131 83 172 167 36 73 38 82 38 172 0 87 -3 102 -32 163 -35 75 -93
+137 -159 169 -56 27 -154 34 -211 15z m174 -87 c162 -79 204 -315 79 -456 -98
+-111 -235 -111 -334 2 -99 112 -96 286 7 397 72 77 163 98 248 57z"/>
+</g>
 </svg>
