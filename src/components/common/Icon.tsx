@@ -10,7 +10,7 @@ const Icon: FC<IconProps> = ({ name, ...props }) => {
     const MyIcon: React.FunctionComponent<React.SVGAttributes<SVGElement>> = Icons[name];
     
     return (
-        <MyIcon {...props} />
+        <MyIcon color={props.color ?? '#fff'} {...props} />
     );
 };
 
