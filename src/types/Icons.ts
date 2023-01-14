@@ -30,6 +30,7 @@ import settings from '../assets/icons/svg/settings.svg';
 import spark from '../assets/icons/svg/spark.svg';
 import speaker from '../assets/icons/svg/speaker.svg';
 import sync from '../assets/icons/svg/sync.svg';
+import threeDots from '../assets/icons/svg/threedots.svg';
 import trash from '../assets/icons/svg/trash.svg';
 import video from '../assets/icons/svg/video.svg';
 
@@ -66,6 +67,7 @@ export const Icons = {
     spark: spark,
     speaker: speaker,
     sync: sync,
+    threeDots: threeDots,
     trash: trash,
     video: video,
 } as const;
