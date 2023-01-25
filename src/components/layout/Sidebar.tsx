@@ -69,11 +69,12 @@ const Sidebar: FC<SidebarProps> = () => {
                         <span className={clsx('text-xl', router.pathname === '/profile' && 'font-bold')}>Profile</span>
                     </NavButton>
                 </Link>
-
-                <NavButton>
-                    <Icon name='threeDotsCircle' />
-                    <span className='text-xl'>More</span>
-                </NavButton>
+                <Link className='group' href="/">
+                    <NavButton>
+                        <Icon name='threeDotsCircle' />
+                        <span className='text-xl'>More</span>
+                    </NavButton>
+                </Link>
 
                 {/* Tweet Button */}
                 <NavButton className='bg-twitterBlue hover:bg-twitterBlueHover text-lightGray !w-full xl:aspect-auto aspect-square justify-center'>
@@ -91,7 +92,7 @@ const Sidebar: FC<SidebarProps> = () => {
                             <span className='text-sm font-normal text-textGray'>@username</span>
                         </div>
                     </div>
-                        <Icon className='xl:block hidden translate-y-1/4' name='threeDots' />
+                    <Icon className='xl:block hidden translate-y-1/4' name='threeDots' />
                 </NavButton>
             </div>
         </div>
@@ -103,6 +104,6 @@ export default Sidebar;
 const NavButton = tw.div`
 flex items-center p-3 rounded-full w-fit my-1.5
 xl:items-start
-group-hover:bg-lightGray/10 hover:bg-lightGray/10 transition-colors duraiton-200 cursor-pointer
+group-hover:bg-lightGray/10 transition-colors duraiton-200 cursor-pointer
 [&>span]:px-5 [&>span]:xl:block [&>span]:hidden
 `;
