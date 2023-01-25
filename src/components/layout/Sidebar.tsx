@@ -37,7 +37,7 @@ const Sidebar: FC<SidebarProps> = () => {
 
                 <Link className='group w-full justify-center xl:justify-start flex' href={'/notifications'}>
                     <NavButton>
-                        <Icon name={router.pathname === '/explore' ? 'notificationFill' : 'notification'} />
+                        <Icon name={router.pathname === '/notifications' ? 'notificationFill' : 'notification'} />
                         <span className={clsx('text-xl', router.pathname === '/notifications' && 'font-bold')}>Notifications</span>
                     </NavButton>
                 </Link>
