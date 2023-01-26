@@ -3,7 +3,7 @@ import Head from "next/head";
 
 import Layout from "../components/layout/Layout";
 
-const Profile: NextPage = () => {
+const Profile: NextPage = (asd) => {
     // const hello = api.example.hello.useQuery({ text: "from tRPC" });
 
     return (

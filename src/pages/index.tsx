@@ -14,7 +14,9 @@ const Home: NextPage = () => {
                 <link href="/favicon.ico" rel="icon" />
             </Head>
             <Layout>
-                <p className="font-extrabold">nashe</p>
+                <div className="px-4 flex items-center w-full h-14 border border-t-0 border-x-0 border-b-borderGray">
+                    <p className="font-extrabold">Home</p>
+                </div>
             </Layout>
         </>
     );
