@@ -14,7 +14,7 @@ const config = {
         defaultLocale: "en",
     },
     images: {
-        domains: ["via.placeholder.com"],
+        domains: ["via.placeholder.com", "lh3.googleusercontent.com"],
     },
     webpack: (config) => {
         config.module.rules.push({
