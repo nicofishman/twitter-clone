@@ -35,6 +35,7 @@ import roll from '../assets/icons/svg/roll.svg';
 import saved from '../assets/icons/svg/saved.svg';
 import savedFill from '../assets/icons/svg/saved_fill.svg';
 import search from '../assets/icons/svg/search.svg';
+import searchFill from '../assets/icons/svg/search_fill.svg';
 import settings from '../assets/icons/svg/settings.svg';
 import spark from '../assets/icons/svg/spark.svg';
 import speaker from '../assets/icons/svg/speaker.svg';
@@ -83,6 +84,7 @@ export const Icons = {
     saved: saved,
     savedFill: savedFill,
     search: search,
+    searchFill: searchFill,
     settings: settings,
     spark: spark,
     speaker: speaker,
