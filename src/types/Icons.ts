@@ -6,10 +6,12 @@ import comment from '../assets/icons/svg/comment.svg';
 import directMessage from '../assets/icons/svg/direct_message.svg';
 import directMessageFill from '../assets/icons/svg/direct_message_fill.svg';
 import draw from '../assets/icons/svg/draw.svg';
+import emoji from '../assets/icons/svg/emoji.svg';
 import erase from '../assets/icons/svg/erase.svg';
 import featherAdd from '../assets/icons/svg/feather_add.svg';
 import fire from '../assets/icons/svg/fire.svg';
 import gallery from '../assets/icons/svg/gallery.svg';
+import gif from '../assets/icons/svg/gif.svg';
 import globe from '../assets/icons/svg/globe.svg';
 import hashtag from '../assets/icons/svg/hashtag.svg';
 import hashtagFill from '../assets/icons/svg/hashtag_fill.svg';
@@ -28,12 +30,14 @@ import person from '../assets/icons/svg/person.svg';
 import personFill from '../assets/icons/svg/person_fill.svg';
 import picture from '../assets/icons/svg/picture.svg';
 import pin from '../assets/icons/svg/pin.svg';
+import poll from '../assets/icons/svg/poll.svg';
 import profileHex from '../assets/icons/svg/profile_hex.svg';
 import retweet from '../assets/icons/svg/retweet.svg';
 import rocket from '../assets/icons/svg/rocket.svg';
 import roll from '../assets/icons/svg/roll.svg';
 import saved from '../assets/icons/svg/saved.svg';
 import savedFill from '../assets/icons/svg/saved_fill.svg';
+import schedule from '../assets/icons/svg/schedule.svg';
 import search from '../assets/icons/svg/search.svg';
 import searchFill from '../assets/icons/svg/search_fill.svg';
 import settings from '../assets/icons/svg/settings.svg';
@@ -55,10 +59,12 @@ export const Icons = {
     directMessage: directMessage,
     directMessageFill: directMessageFill,
     draw: draw,
+    emoji: emoji,
     erase: erase,
     featherAdd: featherAdd,
     fire: fire,
     gallery: gallery,
+    gif: gif,
     globe: globe,
     hashtag: hashtag,
     hashtagFill: hashtagFill,
@@ -77,12 +83,14 @@ export const Icons = {
     personFill: personFill,
     picture: picture,
     pin: pin,
+    poll: poll,
     profileHex: profileHex,
     retweet: retweet,
     rocket: rocket,
     roll: roll,
     saved: saved,
     savedFill: savedFill,
+    schedule: schedule,
     search: search,
     searchFill: searchFill,
     settings: settings,
