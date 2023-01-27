@@ -20,8 +20,8 @@ const Sidebar: FC<SidebarProps> = () => {
         data: session,
     } = useSession();
 
-    const { data: doesUserExist } = api.user.getByEmail.useQuery({
-        email: session?.user?.email ?? '',
+    const { data: doesUserExist } = api.user.getByEmail.useQuery({ email: session?.user?.email }, {
+        refetchOnWindowFocus: false,
     });
     const createUserMutation = api.user.create.useMutation();
 
@@ -49,10 +49,11 @@ const Sidebar: FC<SidebarProps> = () => {
                 if (session?.user?.email) {
                     createUser();
                 }
-            } else {
-                globalUser.setAll(doesUserExist);
             }
         } 
+        if (doesUserExist) {
+            globalUser.setAll(doesUserExist);
+        }
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [doesUserExist, router, router.query.signedIn]);
 
