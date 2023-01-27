@@ -67,6 +67,19 @@ model TwitterUser {
     image     String
 
     tuits Tuit[]
+    likes Like[]
+}
+
+model Like {
+    id        String   @id @default(cuid())
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    tuitId String
+    tuit   Tuit   @relation(fields: [tuitId], references: [id])
+
+    authorId String
+    author   TwitterUser @relation(fields: [authorId], references: [id])
 }
 
 model Tuit {
@@ -77,4 +90,5 @@ model Tuit {
 
     authorId String
     author   TwitterUser @relation(fields: [authorId], references: [id])
+    likes    Like[]
 }
