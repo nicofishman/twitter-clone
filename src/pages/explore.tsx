@@ -2,6 +2,7 @@ import { type NextPage } from "next";
 import Head from "next/head";
 
 import Layout from "../components/layout/Layout";
+import BottomSidebar from "../components/layout/BottomSidebar";
 
 const Explore: NextPage = () => {
     // const hello = api.example.hello.useQuery({ text: "from tRPC" });
@@ -15,6 +16,11 @@ const Explore: NextPage = () => {
             </Head>
             <Layout>
                 <p className="font-extrabold">explore</p>
+
+
+                
+
+                <BottomSidebar />
             </Layout>
         </>
     );

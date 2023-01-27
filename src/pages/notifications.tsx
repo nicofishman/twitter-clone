@@ -3,6 +3,8 @@ import Head from "next/head";
 
 import Layout from "../components/layout/Layout";
 
+import BottomSidebar from './../components/layout/BottomSidebar';
+
 const Notifications: NextPage = () => {
     // const hello = api.example.hello.useQuery({ text: "from tRPC" });
 
@@ -15,6 +17,10 @@ const Notifications: NextPage = () => {
             </Head>
             <Layout>
                 <p className="font-extrabold">notifications</p>
+
+                
+
+                <BottomSidebar />
             </Layout>
         </>
     );

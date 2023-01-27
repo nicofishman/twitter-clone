@@ -58,7 +58,7 @@ const Sidebar: FC<SidebarProps> = () => {
     }, [doesUserExist, router, router.query.signedIn]);
 
     return (
-        <div className='h-full flex flex-col justify-between items-start xl:w-[275px] w-[88px] px-3'>
+        <nav className='h-full flex flex-col justify-between items-start xl:w-[275px] w-[88px] px-3'>
 
             {
                 session ? (
@@ -147,7 +147,7 @@ const Sidebar: FC<SidebarProps> = () => {
 
                 )
             }
-        </div>
+        </nav>
     );
 };
 
