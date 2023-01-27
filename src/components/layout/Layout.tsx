@@ -9,7 +9,7 @@ interface LayoutProps {
 const Layout: FC<LayoutProps> = ({ children }) => {
     return (
         <div className="min-h-screen h-screen w-full flex bg-black text-lightGray font-twitter overflow-auto">
-            <div className="flex flex-1 h-full min-w-[68px] justify-end">
+            <div className="flex-1 h-full min-w-[68px] justify-end [@media(min-width:500px)]:flex hidden">
                 <Sidebar />
             </div>
             <div className="flex flex-col w-full max-w-[600px] mx-auto h-full border-l border-r border-borderGray">
