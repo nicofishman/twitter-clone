@@ -23,7 +23,7 @@ export const userRouter = createTRPCRouter({
             return user;
         }),
     getByEmail: publicProcedure
-        .input(z.object({ email: z.string() }))
+        .input(z.object({ email: z.string().nullish() }))
         .query(async ({ input, ctx }) => {
             if (!input.email || input.email === "") {
                 return null;
