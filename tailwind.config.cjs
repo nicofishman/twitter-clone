@@ -9,6 +9,8 @@ module.exports = {
                 borderGray: "rgb(47, 51, 54)",
                 twitterBlue: "rgb(29, 155, 240)",
                 twitterBlueHover: "#178cd8",
+                redLike: "rgb(249,24,128)",
+                greenRetweet: "rgb(0,186,124)"
             },
             fontFamily: {
                 twitter: 'TwitterChirp, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif'
