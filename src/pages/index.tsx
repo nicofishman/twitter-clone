@@ -43,13 +43,9 @@ const Home: NextPage = () => {
                     )
                 }
                 {
-                    tuitsData && tuitsData.map((tuit) => {
-                        const isLiked = tuit.likes.find((like) => like.authorId === user.id);
-
-                        return (
-                            <Tuit key={tuit.id} isLiked={!!isLiked} userId={user.id} {...tuit}/>
-                        );
-                    })
+                    tuitsData && tuitsData.map((tuit) => (
+                        <Tuit key={tuit.id} {...tuit} />
+                    ))
                 }
                 <BottomSidebar />
             </Layout>
