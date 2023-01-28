@@ -2,9 +2,10 @@ import Link from 'next/link';
 import React, { FC } from 'react';
 import { useRouter } from 'next/router';
 
-import Icon from '../common/Icon';
-
 import { NavButton } from './Sidebar';
+
+import Icon from '@/components/common/Icon';
+
 
 interface BottomSidebarProps {
 

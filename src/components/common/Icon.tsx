@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 
-import { Icons } from '../../types/Icons';
+import { Icons } from '@/types/Icons';
 
 interface IconProps extends React.SVGAttributes<SVGElement> {
     name: keyof typeof Icons

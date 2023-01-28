@@ -4,11 +4,11 @@ import { useRouter } from 'next/router';
 import clsx from 'clsx';
 import { signIn, useSession } from 'next-auth/react';
 
-import Icon from '../common/Icon';
-import { tw } from '../../utils/tw';
-import ProfileButton from '../sidebar/ProfileButton';
-import { api } from '../../utils/api';
-import { globalUser } from '../../utils/globalState';
+import Icon from '@/components/common/Icon';
+import { tw } from '@/utils/tw';
+import ProfileButton from '@/components/sidebar/ProfileButton';
+import { api } from '@/utils/api';
+import { globalUser } from '@/utils/globalState';
 
 interface SidebarProps {
 

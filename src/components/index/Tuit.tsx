@@ -1,13 +1,13 @@
-import type { TuitRouter } from './../../server/api/routers/tuit';
+import type { TuitRouter } from '@/server/api/routers/tuit';
 
 import { inferRouterOutputs } from '@trpc/server';
 import clsx from 'clsx';
 import { formatDistanceToNow } from 'date-fns';
 
-import { api } from '../../utils/api';
-import { tw } from '../../utils/tw';
-import Avatar from '../common/Avatar';
-import Icon from '../common/Icon';
+import Avatar from '@/components/common/Avatar';
+import Icon from '@/components/common/Icon';
+import { api } from '@/utils/api';
+import { tw } from '@/utils/tw';
 
 
 type RouterOutput = inferRouterOutputs<TuitRouter>;

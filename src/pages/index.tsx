@@ -2,14 +2,14 @@ import { type NextPage } from "next";
 import Head from "next/head";
 import { useSession } from "next-auth/react";
 
-import Layout from "../components/layout/Layout";
-import Avatar from "../components/common/Avatar";
-import { useUser } from "../utils/globalState";
-import Icon from "../components/common/Icon";
-import BottomSidebar from "../components/layout/BottomSidebar";
-import { api } from "../utils/api";
-import WriteTuitBox from '../components/index/WriteTuitBox';
-import Tuit from "../components/index/Tuit";
+import Layout from "@/components/layout/Layout";
+import Avatar from "@/components/common/Avatar";
+import { useUser } from "@/utils/globalState";
+import Icon from "@/components/common/Icon";
+import BottomSidebar from "@/components/layout/BottomSidebar";
+import { api } from "@/utils/api";
+import WriteTuitBox from '@/components/index/WriteTuitBox';
+import Tuit from "@/components/index/Tuit";
 
 const Home: NextPage = () => {
     const user = useUser();

@@ -1,7 +1,7 @@
 import { type NextPage } from "next";
 import Head from "next/head";
 
-import Layout from "../components/layout/Layout";
+import Layout from "@/components/layout/Layout";
 
 const Bookmarks: NextPage = () => {
     // const hello = api.example.hello.useQuery({ text: "from tRPC" });

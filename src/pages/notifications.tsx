@@ -1,9 +1,8 @@
 import { type NextPage } from "next";
 import Head from "next/head";
 
-import Layout from "../components/layout/Layout";
-
-import BottomSidebar from './../components/layout/BottomSidebar';
+import Layout from "@/components/layout/Layout";
+import BottomSidebar from '@/components/layout/BottomSidebar';
 
 const Notifications: NextPage = () => {
     // const hello = api.example.hello.useQuery({ text: "from tRPC" });
