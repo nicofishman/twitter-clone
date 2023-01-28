@@ -10,6 +10,7 @@ import BottomSidebar from "@/components/layout/BottomSidebar";
 import { api } from "@/utils/api";
 import WriteTuitBox from '@/components/index/WriteTuitBox';
 import Tuit from "@/components/index/Tuit";
+import { slideNavbarOpenStore } from "@/utils/states/slideNavbarOpen";
 
 const Home: NextPage = () => {
     const user = useUser();
@@ -25,9 +26,9 @@ const Home: NextPage = () => {
             </Head>
             <Layout>
                 <div className="[@media(min-width:500px)]:hidden flex items-center justify-center min-h-[56px]">
-                    <div className="absolute top-3 left-4">
+                    <button className="absolute top-3 left-4" onClick={() => slideNavbarOpenStore.set('isOpen', true)}>
                         <Avatar alt={`${user.username}'s profile picture`} src={user.image} width={32} />
-                    </div>
+                    </button>
                     <Icon className="text-twitterBlue" name="twitter" />
                 </div>
                 <div className="px-4 py-2 flex items-center w-full h-14 border border-t-0 border-x border-borderGray">
