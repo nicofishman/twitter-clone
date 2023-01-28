@@ -15,7 +15,7 @@ const ProfileButton: FC<ProfileButtonProps> = () => {
 
     return (
         <div className='mb-3 w-full'>
-            <NavButton className='!w-full justify-between'>
+            <NavButton className='!w-full !p-0 !flex-wrap !justify-center md:justify-between'>
                 <Avatar alt={`${user.username}'s profile picture`} src={user.image}/>
                 <div className='xl:flex flex-col ml-3 hidden overflow-x-hidden'>
                     <span className='text-base font-bold truncate pr-2'>{user.full_name}</span>

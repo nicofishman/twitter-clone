@@ -1,5 +1,5 @@
 import { SetStateAction, useCallback } from 'react';
-import create from "zustand";
+import { create } from "zustand";
 
 export type EqualityFn<T> = (left: T | null | undefined, right: T | null | undefined) => boolean;
 
