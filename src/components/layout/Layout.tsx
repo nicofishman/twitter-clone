@@ -22,7 +22,7 @@ const Layout: FC<LayoutProps> = ({ children }) => {
             <SlideNavbar open={isSlideNavbarOpen} setOpen={openSlideNavbar}>
                 <MobileSlideSidebar />
             </SlideNavbar>
-            <div className="flex flex-col w-full max-w-[600px] mx-auto min-h-screen">
+            <div className="flex flex-col w-full max-w-[600px] mx-auto min-h-screen h-fit border-x border-borderGray">
                 {children}
             </div>
             <div className="flex-1 h-full sticky left-0 top-0 min-w-0 overflow-hidden">SIDEBAR</div>
