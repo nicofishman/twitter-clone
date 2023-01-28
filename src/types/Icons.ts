@@ -16,6 +16,7 @@ import globe from '../assets/icons/svg/globe.svg';
 import hashtag from '../assets/icons/svg/hashtag.svg';
 import hashtagFill from '../assets/icons/svg/hashtag_fill.svg';
 import heart from '../assets/icons/svg/heart.svg';
+import heartFill from '../assets/icons/svg/heart_fill.svg';
 import home from '../assets/icons/svg/home.svg';
 import homeFill from '../assets/icons/svg/home_fill.svg';
 import lightning from '../assets/icons/svg/lightning.svg';
@@ -69,6 +70,7 @@ export const Icons = {
     hashtag: hashtag,
     hashtagFill: hashtagFill,
     heart: heart,
+    heartFill: heartFill,
     home: home,
     homeFill: homeFill,
     lightning: lightning,
