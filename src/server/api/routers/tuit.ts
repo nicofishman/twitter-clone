@@ -42,10 +42,29 @@ export const tuitRouter = createTRPCRouter({
                 }
             });
 
-            console.log('length', tuits.length);
-
-
             return tuits;
+        }),
+    getById: publicProcedure
+        .input(z.object({
+            id: z.string(),
+        }))
+        .query(async ({ ctx, input }) => {
+            const tuit = await ctx.prisma.tuit.findUnique({
+                where: {
+                    id: input.id,
+                },
+                include: {
+                    author: true,
+                    likes: true,
+                    _count: {
+                        select: {
+                            likes: true,
+                        }
+                    }
+                },
+            });
+
+            return tuit;
         }),
     toggleLike: protectedProcedure
         .input(z.object({ tuitId: z.string(), userId: z.string(), action: z.enum(["like", "dislike"]) }))
