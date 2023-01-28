@@ -1,5 +1,6 @@
 import { type NextPage } from "next";
 import Head from "next/head";
+import { useSession } from "next-auth/react";
 
 import Layout from "../components/layout/Layout";
 import Avatar from "../components/common/Avatar";
@@ -12,6 +13,7 @@ import Tuit from "../components/index/Tuit";
 
 const Home: NextPage = () => {
     const user = useUser();
+    const { data: session } = useSession();
     const { data: tuitsData } = api.tuit.get.useQuery();    
 
     return (
@@ -31,9 +33,14 @@ const Home: NextPage = () => {
                 <div className="px-4 py-2 flex items-center w-full h-14 border border-t-0 border-x border-borderGray">
                     <p className="font-extrabold">Home</p>
                 </div>
-                <div className="[@media(min-width:500px)]:block hidden">
-                    <WriteTuitBox />
-                </div>
+                {
+                    session && (
+                        <div className="[@media(min-width:500px)]:block hidden">
+                            <WriteTuitBox />
+                        </div>
+
+                    )
+                }
                 {
                     tuitsData && tuitsData.map((tuit) => {
                         const isLiked = tuit.likes.find((like) => like.authorId === user.id);
