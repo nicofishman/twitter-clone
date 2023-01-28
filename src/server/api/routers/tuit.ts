@@ -20,20 +20,30 @@ export const tuitRouter = createTRPCRouter({
             return tuit;
         }),
     get: publicProcedure
-        .input(z.object({ id: z.string() }).optional())
+        .input(
+            z.string().nullish()
+        )
         .query(async ({ ctx, input }) => {
             const tuits = await ctx.prisma.tuit.findMany({
                 where: {
-                    id: input?.id,
+                    id: input ?? undefined,
                 },
                 include: {
                     author: true,
                     likes: true,
+                    _count: {
+                        select: {
+                            likes: true,
+                        }
+                    }
                 },
                 orderBy: {
                     createdAt: "desc",
                 }
             });
+
+            console.log('length', tuits.length);
+
 
             return tuits;
         }),
@@ -74,3 +84,5 @@ export const tuitRouter = createTRPCRouter({
             return tuit;
         }),
 });
+
+export type TuitRouter = typeof tuitRouter;

@@ -1,31 +1,29 @@
-import { Prisma } from '@prisma/client';
-import React, { FC } from 'react';
-import { formatDistanceToNow } from 'date-fns';
-import clsx from 'clsx';
+import type { TuitRouter } from './../../server/api/routers/tuit';
 
+import { inferRouterOutputs } from '@trpc/server';
+import clsx from 'clsx';
+import { formatDistanceToNow } from 'date-fns';
+
+import { api } from '../../utils/api';
+import { tw } from '../../utils/tw';
 import Avatar from '../common/Avatar';
 import Icon from '../common/Icon';
-import { tw } from '../../utils/tw';
-import { api } from '../../utils/api';
 
-interface TuitProps extends Prisma.TuitGetPayload<{
-    include: {
-        author: true;
-        likes: true;
-    }
-}> {
+
+type RouterOutput = inferRouterOutputs<TuitRouter>;
+
+type TuitProps = RouterOutput['get'][number] & {
     userId: string;
     isLiked: boolean;
 }
 
-const Tuit: FC<TuitProps> = ({ body, author, createdAt, id, userId, isLiked }) => {
+const Tuit = ({ body, author, createdAt, id, userId, isLiked, _count }: TuitProps) => {
     const utils = api.useContext();
     const likeMutation = api.tuit.toggleLike.useMutation({
         onSuccess: () => {
             utils.tuit.get.invalidate();
         }
     });
-
 
     const doLike = async () => {
         await likeMutation.mutateAsync({ tuitId: id, userId: userId, action: isLiked ? 'dislike' : 'like' });
@@ -47,24 +45,28 @@ const Tuit: FC<TuitProps> = ({ body, author, createdAt, id, userId, isLiked }) =
                     <Icon className='text-textGray' name='threeDots' width={18}/>
                 </div>
                 <p className='whitespace-pre'>{body}</p>
-                <div className='flex w-full max-w-[300px] justify-between [&>button>svg]:duration-200 [&>button>svg]:transition-colors [&>button>svg]:w-5'>
+                <div className='flex w-full max-w-[300px] justify-between'>
                     <TuitButton>
-                        <Icon className='group-hover:text-twitterBlue text-textGray' name='comment' />
+                        <Icon className='group-hover:text-twitterBlue text-textGray duration-200 transition-colors w-5' name='comment' />
                     </TuitButton>
                     <TuitButton>
-                        <Icon className='group-hover:text-[rgb(0,186,124)] text-textGray' name='retweet' />
+                        <Icon className='group-hover:text-[rgb(0,186,124)] text-textGray duration-200 transition-colors w-5' name='retweet' />
                     </TuitButton>
-                    <TuitButton onClick={doLike}>
-                        <Icon 
-                            className={clsx(
-                                'group-hover:text-[rgb(249,24,128)]',
-                                isLiked ? 'text-[rgb(249,24,128)]' : 'text-textGray'
-                            )} 
-                            name={
-                                isLiked ? 'heartFill' : 'heart'
-                            }
-                        />
-                    </TuitButton>
+                    <div className='flex gap-x-px items-center'>
+                        <TuitButton onClick={doLike}>
+                            <Icon 
+                                className={clsx(
+                                    'group-hover:text-[rgb(249,24,128)] duration-200 transition-colors w-5',
+                                    isLiked ? 'text-[rgb(249,24,128)]' : 'text-textGray'
+                                )} 
+                                name={
+                                    isLiked ? 'heartFill' : 'heart'
+                                }
+                            />
+                        </TuitButton>
+                        <span className='text-textGray text-sm'>{_count.likes > 0 && _count.likes}</span>
+                    </div>
+
                 </div>
             </div>
         </article>
