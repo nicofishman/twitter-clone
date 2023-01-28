@@ -1,4 +1,4 @@
-import React, { FC, useRef, useState } from 'react';
+import React, { FC, useCallback, useEffect, useRef, useState } from 'react';
 import clsx from 'clsx';
 
 import { useUser } from '../../utils/globalState';
@@ -19,27 +19,47 @@ const WriteTuitBox: FC<WriteTuitBoxProps> = () => {
     const createTuitMutation = api.tuit.create.useMutation({
         onSuccess: () => {
             setTuitContent('');
-            utils.tuit.getAll.invalidate();
+            utils.tuit.get.invalidate();
         }
     });
 
-    useAutosizeTextArea(textAreaRef.current, tuitContent);
-
-
-
-    const doTuit = async () => {
+    const doTuit = useCallback(async () => {
+        console.log('doTuit', tuitContent, user.id);
         await createTuitMutation.mutateAsync({
             authorId: user.id,
             body: tuitContent
         });
-    };
+    }, [createTuitMutation, tuitContent, user.id]);
+
+    useAutosizeTextArea(textAreaRef.current, tuitContent);
+
+    const onKeyDown = useCallback((e: KeyboardEvent) => {
+        if (e.key === 'Enter' && e.ctrlKey) {
+            doTuit();
+        }
+    }, [doTuit]);
+
+    useEffect(() => {
+        const curr = textAreaRef.current;
+
+        if (curr) {
+            textAreaRef.current.addEventListener('keydown', onKeyDown);
+        }
+
+        return () => {
+            if (curr) {
+                curr.removeEventListener('keydown', onKeyDown);
+            }
+        };
+
+    }, [onKeyDown]);
 
     return (
-        <div className='w-full px-4 pt-1 flex gap-x-3 border-b border-b-borderGray'>
+        <div className='w-full px-4 pt-1 flex gap-x-3 border-b border-x border-borderGray'>
             <Avatar alt={`${user.username}'s profile picture`} src={user.image} width={48}/>
             <div className='flex-1 flex flex-col'>
                 <div className='py-3'>
-                    <textarea 
+                    <textarea
                         ref={textAreaRef} 
                         className={clsx('focus:outline-none w-full resize-none text-xl text-white placeholder:text-textGray overflow-y-hidden break-words bg-transparent min-h-[30px]')} 
                         placeholder="What's happening?"
