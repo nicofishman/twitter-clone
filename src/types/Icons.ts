@@ -3,6 +3,7 @@ import checkCircle from '../assets/icons/svg/check_circle.svg';
 import check from '../assets/icons/svg/check.svg';
 import comment2 from '../assets/icons/svg/comment_2.svg';
 import comment from '../assets/icons/svg/comment.svg';
+import cross from '../assets/icons/svg/cross.svg';
 import directMessage from '../assets/icons/svg/direct_message.svg';
 import directMessageFill from '../assets/icons/svg/direct_message_fill.svg';
 import draw from '../assets/icons/svg/draw.svg';
@@ -31,6 +32,7 @@ import person from '../assets/icons/svg/person.svg';
 import personFill from '../assets/icons/svg/person_fill.svg';
 import picture from '../assets/icons/svg/picture.svg';
 import pin from '../assets/icons/svg/pin.svg';
+import plus from '../assets/icons/svg/plus.svg';
 import poll from '../assets/icons/svg/poll.svg';
 import profileHex from '../assets/icons/svg/profile_hex.svg';
 import retweet from '../assets/icons/svg/retweet.svg';
@@ -57,6 +59,7 @@ export const Icons = {
     checkCircle: checkCircle,
     comment: comment,
     comment2: comment2,
+    cross: cross,
     directMessage: directMessage,
     directMessageFill: directMessageFill,
     draw: draw,
@@ -85,6 +88,7 @@ export const Icons = {
     personFill: personFill,
     picture: picture,
     pin: pin,
+    plus: plus,
     poll: poll,
     profileHex: profileHex,
     retweet: retweet,
