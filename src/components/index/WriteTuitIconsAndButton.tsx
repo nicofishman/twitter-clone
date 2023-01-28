@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import clsx from 'clsx';
 
 import Icon from '@/components/common/Icon';
+import { GroupTuitButton } from '@/components/index/Tuit';
 
 interface WriteTuitIconsAndButtonProps {
     tuitContent: string;
@@ -11,14 +12,26 @@ interface WriteTuitIconsAndButtonProps {
 const WriteTuitIconsAndButton: FC<WriteTuitIconsAndButtonProps> = ({ doTuit, tuitContent }) => {
     return (
         <div className='w-full flex justify-between items-center'>
-            <div className='flex gap-x-4 py-4 [&>div]:!p-0'>
+            <div className='flex gap-x-1 mb-2 [&>div]:!p-0 items-center'>
                 {/* icons */}
-                <Icon className='text-twitterBlue' height={20} name='gallery' width={20} />
-                <Icon className='text-twitterBlue' height={20} name='gif' width={20} />
-                <Icon className='text-twitterBlue' height={20} name='poll' width={20} />
-                <Icon className='text-twitterBlue' height={20} name='emoji' width={20} />
-                <Icon className='text-twitterBlue' height={20} name='schedule' width={20} />
-                <Icon className='text-twitterBlue' height={20} name='location' width={20} />
+                <GroupTuitButton>
+                    <Icon className='text-twitterBlue group-hover:text-twitterBlueHover transition-colors duration-200' height={20} name='gallery' width={20} />
+                </GroupTuitButton>
+                <GroupTuitButton>
+                    <Icon className='text-twitterBlue group-hover:text-twitterBlueHover transition-colors duration-200' height={20} name='gif' width={20} />
+                </GroupTuitButton>
+                <GroupTuitButton>
+                    <Icon className='text-twitterBlue group-hover:text-twitterBlueHover transition-colors duration-200' height={20} name='poll' width={20} />
+                </GroupTuitButton>
+                <GroupTuitButton>
+                    <Icon className='text-twitterBlue group-hover:text-twitterBlueHover transition-colors duration-200' height={20} name='emoji' width={20} />
+                </GroupTuitButton>
+                <GroupTuitButton>
+                    <Icon className='text-twitterBlue group-hover:text-twitterBlueHover transition-colors duration-200' height={20} name='schedule' width={20} />
+                </GroupTuitButton>
+                <GroupTuitButton>
+                    <Icon className='text-twitterBlue group-hover:text-twitterBlueHover transition-colors duration-200' height={20} name='location' width={20} />
+                </GroupTuitButton>
             </div>
             <div>
                 <button 
