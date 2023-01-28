@@ -12,7 +12,7 @@ import Tuit from "../components/index/Tuit";
 
 const Home: NextPage = () => {
     const user = useUser();
-    const { data: tuitsData } = api.tuit.getAll.useQuery();
+    const { data: tuitsData } = api.tuit.get.useQuery();    
 
     return (
         <>
@@ -28,16 +28,20 @@ const Home: NextPage = () => {
                     </div>
                     <Icon className="text-twitterBlue" name="twitter" />
                 </div>
-                <div className="px-4 flex items-center w-full h-14 border border-t-0 border-x-0 border-b-borderGray">
+                <div className="px-4 py-2 flex items-center w-full h-14 border border-t-0 border-x border-borderGray">
                     <p className="font-extrabold">Home</p>
                 </div>
                 <div className="[@media(min-width:500px)]:block hidden">
                     <WriteTuitBox />
                 </div>
                 {
-                    tuitsData && tuitsData.map((tuit) => (
-                        <Tuit key={tuit.id} {...tuit}/>
-                    ))
+                    tuitsData && tuitsData.map((tuit) => {
+                        const isLiked = tuit.likes.find((like) => like.authorId === user.id);
+
+                        return (
+                            <Tuit key={tuit.id} isLiked={!!isLiked} userId={user.id} {...tuit}/>
+                        );
+                    })
                 }
                 <BottomSidebar />
             </Layout>

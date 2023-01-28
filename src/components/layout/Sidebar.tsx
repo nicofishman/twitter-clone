@@ -51,7 +51,7 @@ const Sidebar: FC<SidebarProps> = () => {
                 }
             }
         } 
-        if (doesUserExist) {
+        if (doesUserExist) {            
             globalUser.setAll(doesUserExist);
         }
     // eslint-disable-next-line react-hooks/exhaustive-deps
