@@ -3,7 +3,7 @@ import { TwitterUser } from "@prisma/client";
 import { createGlobalStore } from "./createGlobalStore";
 
 const initialState = {
-    id: '0',
+    id: '',
     email: "",
     full_name: "",
     username: "",

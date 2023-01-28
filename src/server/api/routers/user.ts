@@ -32,6 +32,10 @@ export const userRouter = createTRPCRouter({
                 where: {
                     email: input.email,
                 },
+                include: {
+                    likes: true,
+                    tuits: true,
+                }
             });
 
             return user;
