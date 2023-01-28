@@ -24,6 +24,7 @@ import lightning from '../assets/icons/svg/lightning.svg';
 import location from '../assets/icons/svg/location.svg';
 import microphone from '../assets/icons/svg/microphone.svg';
 import news from '../assets/icons/svg/news.svg';
+import leftArrow from '../assets/icons/svg/left_arrow.svg';
 import list from '../assets/icons/svg/list.svg';
 import listFill from '../assets/icons/svg/list_fill.svg';
 import notification from '../assets/icons/svg/notification.svg';
@@ -76,6 +77,7 @@ export const Icons = {
     heartFill: heartFill,
     home: home,
     homeFill: homeFill,
+    leftArrow: leftArrow,
     lightning: lightning,
     list: list,
     listFill: listFill,
