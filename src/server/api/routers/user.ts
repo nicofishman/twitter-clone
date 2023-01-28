@@ -1,5 +1,7 @@
 import { z } from "zod";
 
+import { latinize } from "@/utils/latinize";
+
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
 export const userRouter = createTRPCRouter({
@@ -10,7 +12,7 @@ export const userRouter = createTRPCRouter({
             profilePicture: z.string(),
         }))
         .mutation(async ({ input, ctx }) => {
-            const username = input.name.replace(/\s/g, "").toLowerCase();
+            const username = latinize(input.name).replace(/\s/g, "").toLowerCase();
             const user = await ctx.prisma.twitterUser.create({
                 data: {
                     full_name: input.name,
