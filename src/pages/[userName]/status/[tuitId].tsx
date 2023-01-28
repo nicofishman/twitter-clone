@@ -1,33 +1,35 @@
-import React, { FC } from 'react';
+import { GetServerSideProps, GetServerSidePropsContext, InferGetServerSidePropsType, NextPage } from 'next';
 import { useRouter } from 'next/router';
 
-import Layout from '@/components/layout/Layout';
 import Icon from '@/components/common/Icon';
-import Tuit from '@/components/index/Tuit';
+import Layout from '@/components/layout/Layout';
+import TuitInPage from '@/components/singleTuit/TuitInPage';
 import { api } from '@/utils/api';
+import { mySSG } from '@/utils/ssg';
+import { TuitButton } from '@/components/index/Tuit';
 
-interface TuitPageProps {
+interface TuitPageProps extends InferGetServerSidePropsType<typeof getServerSideProps> {
 
 }
 
-const TuitPage: FC<TuitPageProps> = () => {
+const TuitPage: NextPage<TuitPageProps> = ({ tuitId }) => {
     const router = useRouter();
-    const tuitId = router.query.tuitId as string;
-
-    const { data: tuitData } = api.tuit.getById.useQuery({
-        id: tuitId,
+    const { data: tuitData } = api.tuit.getById.useQuery({ id: tuitId ?? null }, {
+        refetchOnWindowFocus: false
     });
     
 
     return (
         <Layout>
-            <header className='w-full flex gap-x-6 p-4 border-b border-borderGray'>
-                <Icon className='w-5' name='leftArrow' />
+            <header className='w-full flex gap-x-6 px-2 py-3 border-b border-borderGray'>
+                <TuitButton onClick={() => router.back()}>
+                    <Icon className='w-5' name='leftArrow' />
+                </TuitButton>
                 <h1 className='text-2xl font-bold'>Tweet</h1>
             </header>
             {
                 tuitData && (
-                    <Tuit isInView {...tuitData} />
+                    <TuitInPage {...tuitData} />
                 )
             }
         </Layout>
@@ -35,3 +37,21 @@ const TuitPage: FC<TuitPageProps> = () => {
 };
 
 export default TuitPage;
+
+
+export const getServerSideProps: GetServerSideProps<{tuitId: string}> = async (
+    context: GetServerSidePropsContext
+) => {
+    const ssg = await mySSG(context);
+
+    await ssg.tuit.getById.prefetch({
+        id: context.params?.tuitId as string,
+    });
+
+    return {
+        props: {
+            trpcState: ssg.dehydrate(),
+            tuitId: context.params?.tuitId as string,
+        }
+    };
+};

@@ -46,9 +46,12 @@ export const tuitRouter = createTRPCRouter({
         }),
     getById: publicProcedure
         .input(z.object({
-            id: z.string(),
+            id: z.string().nullish(),
         }))
         .query(async ({ ctx, input }) => {
+            if (!input.id) {
+                return undefined;
+            }
             const tuit = await ctx.prisma.tuit.findUnique({
                 where: {
                     id: input.id,
