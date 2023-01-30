@@ -5,13 +5,13 @@ import Image from 'next/image';
 import { TwitterUser } from '@prisma/client';
 
 interface AvatarProps extends Omit<ImageProps, 'alt' | 'src'> {
-    user: TwitterUser | null;
+    user: TwitterUser;
 }
 
 const Avatar: FC<AvatarProps> = ({ width, user, ...rest }) => {
-    const w = width ?? 40;
-    
-    if (!user) {
+    const w = width ?? 40;    
+
+    if (user.id === '') {
         return (
             <div className='rounded-full aspect-square h-fit bg-gray-300' style={{ width: w, height: w }} />
         );
