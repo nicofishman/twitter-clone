@@ -25,7 +25,7 @@ const Home: NextPage = () => {
                 <link href="/favicon.ico" rel="icon" />
             </Head>
             <Layout>
-                <div className="xxs:hidden flex items-center justify-center min-h-[56px]">
+                <div className="xxs:hidden sticky top-0 bg-black/60 backdrop-blur-md flex items-center justify-center min-h-[56px]">
                     <button className="absolute top-3 left-4" onClick={() => slideNavbarOpenStore.set('isOpen', true)}>
                         <Avatar user={user} width={32} />
                     </button>
