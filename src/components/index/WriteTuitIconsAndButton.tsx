@@ -11,8 +11,8 @@ interface WriteTuitIconsAndButtonProps {
 
 const WriteTuitIconsAndButton: FC<WriteTuitIconsAndButtonProps> = ({ doTuit, tuitContent }) => {
     return (
-        <div className='w-full flex justify-between items-center'>
-            <div className='flex gap-x-1 mb-2 [&>div]:!p-0 items-center'>
+        <div className='w-full flex justify-between items-center mb-2'>
+            <div className='flex gap-x-1 [&>div]:!p-0 items-center'>
                 {/* icons */}
                 <GroupTuitButton tooltip="media">
                     <Icon className='text-twitterBlue group-hover:text-twitterBlueHover transition-colors duration-200' height={20} name='gallery' width={20} />
@@ -20,13 +20,13 @@ const WriteTuitIconsAndButton: FC<WriteTuitIconsAndButtonProps> = ({ doTuit, tui
                 <GroupTuitButton tooltip='GIF'>
                     <Icon className='text-twitterBlue group-hover:text-twitterBlueHover transition-colors duration-200' height={20} name='gif' width={20} />
                 </GroupTuitButton>
-                <GroupTuitButton tooltip='poll'>
+                <GroupTuitButton className='xxs:block hidden' tooltip='poll'>
                     <Icon className='text-twitterBlue group-hover:text-twitterBlueHover transition-colors duration-200' height={20} name='poll' width={20} />
                 </GroupTuitButton>
                 <GroupTuitButton tooltip='emoji'>
                     <Icon className='text-twitterBlue group-hover:text-twitterBlueHover transition-colors duration-200' height={20} name='emoji' width={20} />
                 </GroupTuitButton>
-                <GroupTuitButton tooltip='schedule'>
+                <GroupTuitButton className='xxs:block hidden' tooltip='schedule'>
                     <Icon className='text-twitterBlue group-hover:text-twitterBlueHover transition-colors duration-200' height={20} name='schedule' width={20} />
                 </GroupTuitButton>
                 <GroupTuitButton tooltip='tag location'>

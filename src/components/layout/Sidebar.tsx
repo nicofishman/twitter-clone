@@ -4,11 +4,13 @@ import { useRouter } from 'next/router';
 import clsx from 'clsx';
 import { signIn, useSession } from 'next-auth/react';
 
-import Icon from '@/components/common/Icon';
+import Icon from '@/components/ui/Icon';
 import { tw } from '@/utils/tw';
 import ProfileButton from '@/components/sidebar/ProfileButton';
 import { api } from '@/utils/api';
 import { globalUser } from '@/utils/globalState';
+
+import { tuitModalStore } from './Layout';
 
 interface SidebarProps {
 
@@ -125,7 +127,7 @@ const Sidebar: FC<SidebarProps> = () => {
                             </Link>
 
                             {/* Tweet Button */}
-                            <NavButton className='bg-twitterBlue hover:bg-twitterBlueHover text-lightGray !w-full xl:aspect-auto aspect-square justify-center'>
+                            <NavButton className='bg-twitterBlue hover:bg-twitterBlueHover text-lightGray !w-full xl:aspect-auto aspect-square justify-center' onClick={() => tuitModalStore.set('isOpen', true)}>
                                 <span className='font-bold text-lg'>Tweet</span>
                                 <Icon className='xl:hidden block' name='featherAdd'/>
                             </NavButton>
