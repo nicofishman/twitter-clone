@@ -25,7 +25,7 @@ const Home: NextPage = () => {
                 <link href="/favicon.ico" rel="icon" />
             </Head>
             <Layout>
-                <div className="[@media(min-width:500px)]:hidden flex items-center justify-center min-h-[56px]">
+                <div className="xxs:hidden flex items-center justify-center min-h-[56px]">
                     <button className="absolute top-3 left-4" onClick={() => slideNavbarOpenStore.set('isOpen', true)}>
                         <Avatar alt={`${user.username}'s profile picture`} src={user.image} width={32} />
                     </button>
@@ -36,7 +36,7 @@ const Home: NextPage = () => {
                 </div>
                 {
                     session && (
-                        <div className="[@media(min-width:500px)]:block hidden">
+                        <div className="xxs:block hidden">
                             <WriteTuitBox />
                         </div>
 

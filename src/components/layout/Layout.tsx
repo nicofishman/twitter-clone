@@ -16,7 +16,7 @@ const Layout: FC<LayoutProps> = ({ children }) => {
 
     return (
         <div className="min-h-screen h-screen w-full flex bg-black text-lightGray font-twitter overflow-auto">
-            <div className="flex-1 h-screen sticky left-0 top-0 min-w-[68px] justify-end [@media(min-width:500px)]:flex hidden">
+            <div className="flex-1 h-screen sticky left-0 top-0 min-w-[68px] justify-end xxs:flex hidden">
                 <Sidebar />
             </div>
             <SlideNavbar open={isSlideNavbarOpen} setOpen={openSlideNavbar}>

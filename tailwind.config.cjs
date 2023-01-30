@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+const defaultTheme = require('tailwindcss/defaultTheme');
+
 module.exports = {
     content: ["./src/**/*.{js,ts,jsx,tsx}"],
     theme: {
@@ -16,6 +18,10 @@ module.exports = {
                 twitter: 'TwitterChirp, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif'
             }
         },
+        screens: {
+            xxs: '500px',
+            ...defaultTheme.screens
+        }
     },
     plugins: [],
 };
