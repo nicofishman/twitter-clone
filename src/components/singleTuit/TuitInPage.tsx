@@ -1,8 +1,10 @@
 
 import { RouterOutputs } from '@/utils/api';
+import { useUser } from '@/utils/globalState';
 
-import Avatar from '../ui/Avatar';
+import LikeCommentRetweet from '../Tuit/LikeCommentRetweet';
 import ThreeDotsButton from '../Tuit/ThreeDotsButton';
+import Avatar from '../ui/Avatar';
 
 import TuitDateTime from './TuitDateTime';
 
@@ -11,10 +13,16 @@ type TuitInPageProps = RouterOutputs['tuit']['getById'] & {
 };
 
 const TuitInPage = ({ author, ...tuit }: TuitInPageProps) => {
+    const wholeTuit: RouterOutputs['tuit']['getById'] = {
+        author,
+        ...tuit
+    };
+
+    const user = useUser();
+
     return (
         <article className='w-full px-4 pt-3 flex flex-col'>
             <div className='border-b border-borderGray'>
-
                 <header className='w-full flex justify-between'>
                     <div className='flex gap-x-3'>
                         <Avatar user={author} width={48}/>
@@ -31,6 +39,7 @@ const TuitInPage = ({ author, ...tuit }: TuitInPageProps) => {
                 <div className="w-full my-4">
                     <TuitDateTime date={tuit.createdAt} />
                 </div>
+                <LikeCommentRetweet className='justify-around' tuit={wholeTuit} userId={user.id} />
             </div>
 
         </article>
