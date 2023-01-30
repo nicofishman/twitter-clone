@@ -1,16 +1,17 @@
 
 import { formatDistanceToNow } from 'date-fns';
 import Link from 'next/link';
-import { ReactNode } from 'react';
+import { FC, ReactNode } from 'react';
+import clsx from 'clsx';
 
 import Avatar from '@/components/common/Avatar';
 import Icon from '@/components/common/Icon';
 import { RouterOutputs, api } from '@/utils/api';
 import { useUser } from '@/utils/globalState';
-import { tw } from '@/utils/tw';
 
 import LikeButton from '../Tuit/LikeButton';
 import ThreeDotsButton from '../Tuit/ThreeDotsButton';
+import { Tooltip, TooltipContent, TooltipTrigger } from '../ui/Tooltip';
 
 type TuitProps = RouterOutputs['tuit']['get'][number] & {
     isInView?: boolean;
@@ -72,17 +73,41 @@ const Tuit = ({ body, author, createdAt, id, likes, _count, isInView = false }: 
 
 export default Tuit;
 
-export const TuitButton = tw.button`
-flex items-center p-2 rounded-full w-fit
-xl:items-start
-hover:bg-lightGray/10
-transition-colors duration-200
-`;
+interface TuitButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
+    children: ReactNode, 
+    tooltip?: string
+}
 
-export const GroupTuitButton = ({ children }: {children: ReactNode}) => {
+export const TuitButton: FC<TuitButtonProps> = ({ children, tooltip, ...rest }) => {
+    return tooltip ? (
+        <Tooltip>
+            <TooltipTrigger asChild>
+                <button {...rest} 
+                    className={clsx('flex items-center p-2 rounded-full w-fit',
+                        'xl:items-start', 
+                        'hover:bg-lightGray/10 transition-colors duration-200'
+                    )}>
+                    {children}
+                </button>
+            </TooltipTrigger>
+            <TooltipContent side='bottom'>
+                {tooltip}
+            </TooltipContent>
+        </Tooltip>
+    ) : (
+        <button {...rest} 
+            className={clsx('flex items-center p-2 rounded-full w-fit',
+                'xl:items-start', 
+                'hover:bg-lightGray/10 transition-colors duration-200'
+            )}>
+            {children}
+        </button>
+    );
+};
+export const GroupTuitButton = ({ children, tooltip }: {children: ReactNode, tooltip?: string}) => {
     return (
         <div className="group">
-            <TuitButton className='group-hover:bg-lightGray/10'>
+            <TuitButton className='group-hover:bg-lightGray/10' tooltip={tooltip}>
                 {children}    
             </TuitButton>
         </div>
