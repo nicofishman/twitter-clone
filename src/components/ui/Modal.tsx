@@ -2,9 +2,6 @@ import React, { FC, Fragment, PropsWithChildren } from 'react';
 import { Transition, Dialog } from '@headlessui/react';
 import clsx from 'clsx';
 
-import Icon from './Icon';
-
-
 interface ModalProps extends PropsWithChildren<{}> {
     isOpen: boolean;
     closeModal: () => void;
@@ -31,7 +28,7 @@ const Modal: FC<ModalProps> = ({ closeModal, isOpen, children, className = '', p
                     leaveFrom="opacity-100"
                     leaveTo="opacity-0"
                 >
-                    <div className="fixed inset-0 bg-black bg-opacity-25" />
+                    <div className="fixed inset-0 bg-modalBackground" />
                 </Transition.Child>
 
                 <div className={clsx("fixed overflow-y-auto inset-x-0", position ? positionClasses[position] : positionClasses['center'])}>
@@ -45,12 +42,7 @@ const Modal: FC<ModalProps> = ({ closeModal, isOpen, children, className = '', p
                             leaveFrom="opacity-100 scale-100"
                             leaveTo="opacity-0 scale-95"
                         >
-                            <Dialog.Panel className={clsx(className, "w-full max-w-2xl transform overflow-hidden rounded-2xl bg-zinc-800 text-white p-6 text-left align-middle shadow-xl transition-all")}>
-                                <div className="absolute top-0 right-0 p-4">
-                                    <button onClick={closeModal}>
-                                        <Icon name='cross' />
-                                    </button>
-                                </div>
+                            <Dialog.Panel className={clsx(className, "w-full max-w-2xl transform overflow-hidden rounded-2xl bg-black text-white text-left align-middle shadow-xl transition-all")}>
                                 {children}
                             </Dialog.Panel>
                         </Transition.Child>
