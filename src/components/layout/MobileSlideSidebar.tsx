@@ -23,7 +23,7 @@ const MobileSlideSidebar = forwardRef<HTMLDivElement, MobileSlideSidebarProps>((
             </div>
             <div className="p-4 w-full flex flex-col">
                 <div className="w-full flex justify-between">
-                    <Avatar alt={`${user.full_name} profile picture`} src={user.image} width={40} />
+                    <Avatar user={user} width={40} />
                     <button className='border border-white rounded-full aspect-square p-2 h-fit'>
                         <Icon className='w-5' name='plus' />
                     </button>

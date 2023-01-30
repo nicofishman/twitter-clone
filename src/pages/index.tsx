@@ -27,7 +27,7 @@ const Home: NextPage = () => {
             <Layout>
                 <div className="xxs:hidden flex items-center justify-center min-h-[56px]">
                     <button className="absolute top-3 left-4" onClick={() => slideNavbarOpenStore.set('isOpen', true)}>
-                        <Avatar alt={`${user.username}'s profile picture`} src={user.image} width={32} />
+                        <Avatar user={user} width={32} />
                     </button>
                     <Icon className="text-twitterBlue" name="twitter" />
                 </div>

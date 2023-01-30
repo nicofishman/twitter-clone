@@ -20,7 +20,7 @@ const SlideNavbar: FC<SlideNavbarProps> = ({ children, open, setOpen }) => {
                     leaveFrom="opacity-100"
                     leaveTo="opacity-0"
                 >
-                    <div className="fixed inset-0 bg-[rgba(91,112,131,0.4)] transition-opacity" />
+                    <div className="fixed inset-0 bg-modalBackground transition-opacity" />
                 </Transition.Child>
 
                 <div className="fixed inset-0 overflow-hidden">

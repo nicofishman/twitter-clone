@@ -17,7 +17,7 @@ const TuitInPage = ({ author, ...tuit }: TuitInPageProps) => {
 
                 <header className='w-full flex justify-between'>
                     <div className='flex gap-x-3'>
-                        <Avatar alt={`${author.full_name}'s profile picture`} src={author.image} width={48}/>
+                        <Avatar user={author} width={48}/>
                         <div className='flex-col'>
                             <h1 className='text-base font-bold'>{author.full_name}</h1>
                             <h2 className='text-base text-gray-500'>@{author.username}</h2>

@@ -34,7 +34,7 @@ const Tuit = ({ body, author, createdAt, id, likes, _count, isInView = false }: 
     return (
         <Link className={isInView ? 'pointer-events-none' : ''} href={`${author.username}/status/${id}`} onClick={e => e.stopPropagation()}>
             <article className='w-full flex pl-4 pr-2 gap-x-3 pt-3 border-b border-borderGray cursor-pointer hover:bg-white/[0.03] transition-colors'>
-                <Avatar alt={`${author.username}'s profile picture`} src={author.image} width={48} />
+                <Avatar user={author} width={48} />
                 <div className='flex-1 flex flex-col'>
                     <div className='flex w-full justify-between items-center'>
                         <div className='flex-1 truncate flex gap-x-1'>
