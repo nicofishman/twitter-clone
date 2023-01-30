@@ -3,13 +3,13 @@ import React, { FC, useCallback, useEffect, useRef } from 'react';
 
 import useAutosizeTextArea from '@/hooks/useAutosizeTextarea';
 
-interface TuitTextareaProps {
+interface TuitTextareaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
     doTuit: () => void;
     content: string;
     setContent: (content: string) => void;
 }
 
-const TuitTextarea: FC<TuitTextareaProps> = ({ doTuit, content, setContent }) => {
+const TuitTextarea: FC<TuitTextareaProps> = ({ doTuit, content, setContent, className, ...rest }) => {
     const textAreaRef = useRef<HTMLTextAreaElement>(null);
 
     useAutosizeTextArea(textAreaRef.current, content);
@@ -38,10 +38,11 @@ const TuitTextarea: FC<TuitTextareaProps> = ({ doTuit, content, setContent }) =>
     return (
         <textarea
             ref={textAreaRef} 
-            className={clsx('focus:outline-none w-full resize-none text-xl text-white placeholder:text-textGray overflow-y-hidden break-words bg-transparent min-h-[30px]')} 
+            className={clsx(className, 'focus:outline-none w-full resize-none text-xl text-white placeholder:text-textGray overflow-y-hidden break-words bg-transparent min-h-[30px]')} 
             placeholder="What's happening?"
             value={content}
             onChange={e => setContent(e.target.value)}
+            {...rest}
         />
     );
 };
