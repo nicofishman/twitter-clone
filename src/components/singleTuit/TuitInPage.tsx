@@ -1,7 +1,7 @@
 
 import { RouterOutputs } from '@/utils/api';
 
-import Avatar from '../common/Avatar';
+import Avatar from '../ui/Avatar';
 import ThreeDotsButton from '../Tuit/ThreeDotsButton';
 
 import TuitDateTime from './TuitDateTime';

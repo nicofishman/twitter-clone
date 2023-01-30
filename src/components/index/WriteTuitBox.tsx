@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import { FC, useCallback, useEffect, useRef, useState } from 'react';
 
 
-import Avatar from '@/components/common/Avatar';
+import Avatar from '@/components/ui/Avatar';
 import useAutosizeTextArea from '@/hooks/useAutosizeTextarea';
 import { useUser } from '@/utils/globalState';
 import { api } from '@/utils/api';

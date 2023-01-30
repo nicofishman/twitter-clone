@@ -2,7 +2,7 @@ import Link from 'next/link';
 import React, { FC } from 'react';
 import { useRouter } from 'next/router';
 
-import Icon from '@/components/common/Icon';
+import Icon from '@/components/ui/Icon';
 
 import { NavButton } from './Sidebar';
 

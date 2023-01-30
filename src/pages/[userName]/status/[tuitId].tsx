@@ -1,7 +1,7 @@
 import { GetServerSideProps, GetServerSidePropsContext, InferGetServerSidePropsType, NextPage } from 'next';
 import { useRouter } from 'next/router';
 
-import Icon from '@/components/common/Icon';
+import Icon from '@/components/ui/Icon';
 import Layout from '@/components/layout/Layout';
 import TuitInPage from '@/components/singleTuit/TuitInPage';
 import { api } from '@/utils/api';

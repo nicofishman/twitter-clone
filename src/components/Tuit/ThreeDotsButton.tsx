@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 
 import { TuitButton } from '../index/Tuit';
-import Icon from '../common/Icon';
+import Icon from '../ui/Icon';
 
 interface ThreeDotsButtonProps {
     className?: string;

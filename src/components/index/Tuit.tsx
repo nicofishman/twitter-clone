@@ -4,8 +4,8 @@ import Link from 'next/link';
 import { FC, ReactNode } from 'react';
 import clsx from 'clsx';
 
-import Avatar from '@/components/common/Avatar';
-import Icon from '@/components/common/Icon';
+import Avatar from '@/components/ui/Avatar';
+import Icon from '@/components/ui/Icon';
 import { RouterOutputs, api } from '@/utils/api';
 import { useUser } from '@/utils/globalState';
 
@@ -50,19 +50,18 @@ const Tuit = ({ body, author, createdAt, id, likes, _count, isInView = false }: 
                     <p className='whitespace-pre'>{body}</p>
                     <div className='flex w-full max-w-[300px] justify-between my-1.5'>
                         <div className='flex gap-x-px items-center'>
-                            <GroupTuitButton>
+                            <GroupTuitButton tooltip='reply'>
                                 <Icon className='group-hover:text-twitterBlue text-textGray duration-200 transition-colors w-5' name='comment' />
                                 {/* //TODO: Add comment count */}
                             </GroupTuitButton>
                         </div>
                         <div className='flex gap-x-px items-center'>
-                            <GroupTuitButton>
+                            <GroupTuitButton tooltip='retweet'>
                                 <Icon className='group-hover:text-greenRetweet text-textGray duration-200 transition-colors w-5' name='retweet' />
                                 {/* //TODO: Add retweet count */}
                             </GroupTuitButton>
                         </div>
                         <LikeButton doLike={doLike} isLiked={!!isLiked} likes={_count.likes} />
-
                     </div>
                 </div>
             </article>

@@ -2,8 +2,8 @@ import React, { FC } from 'react';
 import { signOut } from 'next-auth/react';
 
 import { NavButton } from '@/components/layout/Sidebar';
-import Icon from '@/components/common/Icon';
-import Avatar from '@/components/common/Avatar';
+import Icon from '@/components/ui/Icon';
+import Avatar from '@/components/ui/Avatar';
 import { useUser } from '@/utils/globalState';
 
 interface ProfileButtonProps {

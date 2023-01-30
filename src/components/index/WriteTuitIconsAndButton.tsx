@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import clsx from 'clsx';
 
-import Icon from '@/components/common/Icon';
+import Icon from '@/components/ui/Icon';
 import { GroupTuitButton } from '@/components/index/Tuit';
 
 interface WriteTuitIconsAndButtonProps {

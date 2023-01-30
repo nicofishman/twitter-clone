@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import clsx from 'clsx';
 
-import Icon  from '@/components/common/Icon';
+import Icon  from '@/components/ui/Icon';
 
 import { TuitButton } from '../index/Tuit';
 
@@ -21,7 +21,7 @@ const LikeButton: FC<LikeButtonProps> = ({ doLike, isLiked, likes }) => {
 
     return (
         <div className='flex gap-x-px items-center group'>
-            <TuitButton onClick={(e) => handleLike(e)}>
+            <TuitButton tooltip='like' onClick={(e) => handleLike(e)}>
                 <Icon 
                     className={clsx(
                         'group-hover:text-redLike duration-200 transition-colors w-5',
