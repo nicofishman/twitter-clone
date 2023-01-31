@@ -1,4 +1,4 @@
-import { createGlobalStore } from "../createGlobalStore";
+import { createGlobalStore } from '../createGlobalStore';
 
 export const slideNavbarOpenStore = createGlobalStore({
     isOpen: false,

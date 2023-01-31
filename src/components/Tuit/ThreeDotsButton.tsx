@@ -9,9 +9,12 @@ interface ThreeDotsButtonProps {
 
 const ThreeDotsButton: FC<ThreeDotsButtonProps> = ({ className }) => {
     return (
-        <div className='group'>
+        <div className="group">
             <TuitButton className={className}>
-                <Icon className='w-5 text-textGray group-hover:text-twitterBlue' name='threeDots' />
+                <Icon
+                    className="w-5 text-textGray group-hover:text-twitterBlue"
+                    name="threeDots"
+                />
             </TuitButton>
         </div>
     );

@@ -6,35 +6,63 @@ import Icon from '@/components/ui/Icon';
 
 import { NavButton } from './Sidebar';
 
-
-
-interface BottomSidebarProps {
-
-}
+interface BottomSidebarProps {}
 
 const BottomSidebar: FC<BottomSidebarProps> = () => {
     const router = useRouter();
 
     return (
-        <nav className='flex xxs:hidden justify-around sticky bottom-0 bg-black w-full h-14 border-t border-t-borderGray'>
-            <Link className='group w-full justify-center xl:justify-start flex' href={'/'}>
+        <nav className="sticky bottom-0 flex h-14 w-full justify-around border-t border-t-borderGray bg-black xxs:hidden">
+            <Link
+                className="group flex w-full justify-center xl:justify-start"
+                href={'/'}
+            >
                 <NavButton>
-                    <Icon name={router.pathname === '/' ? 'homeFill' : 'home'} />
+                    <Icon
+                        name={router.pathname === '/' ? 'homeFill' : 'home'}
+                    />
                 </NavButton>
             </Link>
-            <Link className='group w-full justify-center xl:justify-start flex' href={'/explore'}>
+            <Link
+                className="group flex w-full justify-center xl:justify-start"
+                href={'/explore'}
+            >
                 <NavButton>
-                    <Icon name={router.pathname === '/explore' ? 'searchFill' : 'search'} />
+                    <Icon
+                        name={
+                            router.pathname === '/explore'
+                                ? 'searchFill'
+                                : 'search'
+                        }
+                    />
                 </NavButton>
             </Link>
-            <Link className='group w-full justify-center xl:justify-start flex' href={'/notifications'}>
+            <Link
+                className="group flex w-full justify-center xl:justify-start"
+                href={'/notifications'}
+            >
                 <NavButton>
-                    <Icon name={router.pathname === '/notifications' ? 'notificationFill' : 'notification'} />
+                    <Icon
+                        name={
+                            router.pathname === '/notifications'
+                                ? 'notificationFill'
+                                : 'notification'
+                        }
+                    />
                 </NavButton>
             </Link>
-            <Link className='group w-full justify-center xl:justify-start flex' href={'/messages'}>
+            <Link
+                className="group flex w-full justify-center xl:justify-start"
+                href={'/messages'}
+            >
                 <NavButton>
-                    <Icon name={router.pathname === '/messages' ? 'directMessageFill' : 'directMessage'} />
+                    <Icon
+                        name={
+                            router.pathname === '/messages'
+                                ? 'directMessageFill'
+                                : 'directMessage'
+                        }
+                    />
                 </NavButton>
             </Link>
         </nav>

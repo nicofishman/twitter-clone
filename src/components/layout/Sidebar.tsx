@@ -12,19 +12,18 @@ import { globalUser } from '@/utils/globalState';
 
 import { tuitModalStore } from './Layout';
 
-interface SidebarProps {
-
-}
+interface SidebarProps {}
 
 const Sidebar: FC<SidebarProps> = () => {
     const router = useRouter();
-    const {
-        data: session,
-    } = useSession();
+    const { data: session } = useSession();
 
-    const { data: doesUserExist } = api.user.getByEmail.useQuery({ email: session?.user?.email }, {
-        refetchOnWindowFocus: false,
-    });
+    const { data: doesUserExist } = api.user.getByEmail.useQuery(
+        { email: session?.user?.email },
+        {
+            refetchOnWindowFocus: false,
+        },
+    );
     const createUserMutation = api.user.create.useMutation();
 
     const handleSignIn = async () => {
@@ -42,7 +41,6 @@ const Sidebar: FC<SidebarProps> = () => {
         });
 
         globalUser.setAll(newUser);
-        
     };
 
     useEffect(() => {
@@ -52,103 +50,228 @@ const Sidebar: FC<SidebarProps> = () => {
                     createUser();
                 }
             }
-        } 
-        if (doesUserExist) {            
+        }
+        if (doesUserExist) {
             globalUser.setAll(doesUserExist);
         }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [doesUserExist, router, router.query.signedIn]);
 
     return (
-        <nav className='h-full flex flex-col justify-between items-start xl:w-[275px] w-[88px] px-3'>
-
-            {
-                session ? (
-                    <>
-                        <div className='flex flex-col xl:items-start items-center w-full'>
-                            <h1 className='py-0.5'>
-                                <Link href={'/'}>
-                                    <Icon className='m-2' name='twitter'  />
-                                </Link>
-                            </h1>
-                            <Link className='group w-full justify-center xl:justify-start flex' href={'/'}>
-                                <NavButton>
-                                    <Icon name={router.pathname === '/' ? 'homeFill' : 'home'} />
-                                    <span className={clsx('text-xl', router.pathname === '/' && 'font-bold')}>Home</span>
-                                </NavButton>
+        <nav className="flex h-full w-[88px] flex-col items-start justify-between px-3 xl:w-[275px]">
+            {session ? (
+                <>
+                    <div className="flex w-full flex-col items-center xl:items-start">
+                        <h1 className="py-0.5">
+                            <Link href={'/'}>
+                                <Icon className="m-2" name="twitter" />
                             </Link>
-
-                            <Link className='group w-full justify-center xl:justify-start flex' href={'/explore'}>
-                                <NavButton>
-                                    <Icon name={router.pathname === '/explore' ? 'hashtagFill' : 'hashtag'} />
-                                    <span className={clsx('text-xl', router.pathname === '/explore' && 'font-bold')}>Explore</span>
-                                </NavButton>
-                            </Link>
-
-                            <Link className='group w-full justify-center xl:justify-start flex' href={'/notifications'}>
-                                <NavButton>
-                                    <Icon name={router.pathname === '/notifications' ? 'notificationFill' : 'notification'} />
-                                    <span className={clsx('text-xl', router.pathname === '/notifications' && 'font-bold')}>Notifications</span>
-                                </NavButton>
-                            </Link>
-
-                            <Link className='group w-full justify-center xl:justify-start flex' href={'/messages'}>
-                                <NavButton>
-                                    <Icon name={router.pathname === '/messages' ? 'directMessageFill' : 'directMessage'} />
-                                    <span className={clsx('text-xl', router.pathname === '/messages' && 'font-bold')}>Messages</span>
-                                </NavButton>
-                            </Link>
-
-                            <Link className='group w-full justify-center xl:justify-start flex' href={'/bookmarks'}>
-                                <NavButton>
-                                    <Icon name={router.pathname === '/bookmarks' ? 'savedFill' : 'saved'} />
-                                    <span className={clsx('text-xl', router.pathname === '/bookmarks' && 'font-bold')}>Bookmarks</span>
-                                </NavButton>
-                            </Link>
-
-                            <Link className='group w-full justify-center xl:justify-start flex' href={'/lists'}>
-                                <NavButton>
-                                    <Icon name={router.pathname === '/lists' ? 'listFill' : 'list'} />
-                                    <span className={clsx('text-xl', router.pathname === '/lists' && 'font-bold')}>Lists</span>
-                                </NavButton>
-                            </Link>
-
-                            <Link className='group w-full justify-center xl:justify-start flex' href={`/${session.user?.id}`}>
-                                <NavButton>
-                                    <Icon name={router.pathname === '/[profileName]' ? 'personFill' : 'person'} />
-                                    <span className={clsx('text-xl', router.pathname === '/profile' && 'font-bold')}>Profile</span>
-                                </NavButton>
-                            </Link>
-                            <Link className='group' href="/">
-                                <NavButton>
-                                    <Icon name='threeDotsCircle' />
-                                    <span className='text-xl'>More</span>
-                                </NavButton>
-                            </Link>
-
-                            {/* Tweet Button */}
-                            <NavButton className='bg-twitterBlue hover:bg-twitterBlueHover text-lightGray !w-full xl:aspect-auto aspect-square justify-center' onClick={() => tuitModalStore.set('isOpen', true)}>
-                                <span className='font-bold text-lg'>Tweet</span>
-                                <Icon className='xl:hidden block' name='featherAdd'/>
+                        </h1>
+                        <Link
+                            className="group flex w-full justify-center xl:justify-start"
+                            href={'/'}
+                        >
+                            <NavButton>
+                                <Icon
+                                    name={
+                                        router.pathname === '/'
+                                            ? 'homeFill'
+                                            : 'home'
+                                    }
+                                />
+                                <span
+                                    className={clsx(
+                                        'text-xl',
+                                        router.pathname === '/' && 'font-bold',
+                                    )}
+                                >
+                                    Home
+                                </span>
                             </NavButton>
-                        </div>
-                        <ProfileButton />
-                    </>
-                ) : (
-                    <>
-                        <div className="flex-1" />
-                        <div className='flex flex-col xl:items-start items-center w-full self-end'>
-                            <button className='group w-full justify-center xl:justify-start flex' onClick={handleSignIn}>
-                                <NavButton>
-                                    <Icon name='person' />
-                                    <span className='text-xl'>Login with google</span>
-                                </NavButton>
-                            </button>
-                        </div>
-                    </>
+                        </Link>
 
-                )
-            }
+                        <Link
+                            className="group flex w-full justify-center xl:justify-start"
+                            href={'/explore'}
+                        >
+                            <NavButton>
+                                <Icon
+                                    name={
+                                        router.pathname === '/explore'
+                                            ? 'hashtagFill'
+                                            : 'hashtag'
+                                    }
+                                />
+                                <span
+                                    className={clsx(
+                                        'text-xl',
+                                        router.pathname === '/explore' &&
+                                            'font-bold',
+                                    )}
+                                >
+                                    Explore
+                                </span>
+                            </NavButton>
+                        </Link>
+
+                        <Link
+                            className="group flex w-full justify-center xl:justify-start"
+                            href={'/notifications'}
+                        >
+                            <NavButton>
+                                <Icon
+                                    name={
+                                        router.pathname === '/notifications'
+                                            ? 'notificationFill'
+                                            : 'notification'
+                                    }
+                                />
+                                <span
+                                    className={clsx(
+                                        'text-xl',
+                                        router.pathname === '/notifications' &&
+                                            'font-bold',
+                                    )}
+                                >
+                                    Notifications
+                                </span>
+                            </NavButton>
+                        </Link>
+
+                        <Link
+                            className="group flex w-full justify-center xl:justify-start"
+                            href={'/messages'}
+                        >
+                            <NavButton>
+                                <Icon
+                                    name={
+                                        router.pathname === '/messages'
+                                            ? 'directMessageFill'
+                                            : 'directMessage'
+                                    }
+                                />
+                                <span
+                                    className={clsx(
+                                        'text-xl',
+                                        router.pathname === '/messages' &&
+                                            'font-bold',
+                                    )}
+                                >
+                                    Messages
+                                </span>
+                            </NavButton>
+                        </Link>
+
+                        <Link
+                            className="group flex w-full justify-center xl:justify-start"
+                            href={'/bookmarks'}
+                        >
+                            <NavButton>
+                                <Icon
+                                    name={
+                                        router.pathname === '/bookmarks'
+                                            ? 'savedFill'
+                                            : 'saved'
+                                    }
+                                />
+                                <span
+                                    className={clsx(
+                                        'text-xl',
+                                        router.pathname === '/bookmarks' &&
+                                            'font-bold',
+                                    )}
+                                >
+                                    Bookmarks
+                                </span>
+                            </NavButton>
+                        </Link>
+
+                        <Link
+                            className="group flex w-full justify-center xl:justify-start"
+                            href={'/lists'}
+                        >
+                            <NavButton>
+                                <Icon
+                                    name={
+                                        router.pathname === '/lists'
+                                            ? 'listFill'
+                                            : 'list'
+                                    }
+                                />
+                                <span
+                                    className={clsx(
+                                        'text-xl',
+                                        router.pathname === '/lists' &&
+                                            'font-bold',
+                                    )}
+                                >
+                                    Lists
+                                </span>
+                            </NavButton>
+                        </Link>
+
+                        <Link
+                            className="group flex w-full justify-center xl:justify-start"
+                            href={`/${session.user?.id}`}
+                        >
+                            <NavButton>
+                                <Icon
+                                    name={
+                                        router.pathname === '/[profileName]'
+                                            ? 'personFill'
+                                            : 'person'
+                                    }
+                                />
+                                <span
+                                    className={clsx(
+                                        'text-xl',
+                                        router.pathname === '/profile' &&
+                                            'font-bold',
+                                    )}
+                                >
+                                    Profile
+                                </span>
+                            </NavButton>
+                        </Link>
+                        <Link className="group" href="/">
+                            <NavButton>
+                                <Icon name="threeDotsCircle" />
+                                <span className="text-xl">More</span>
+                            </NavButton>
+                        </Link>
+
+                        {/* Tweet Button */}
+                        <NavButton
+                            className="aspect-square !w-full justify-center bg-twitterBlue text-lightGray hover:bg-twitterBlueHover xl:aspect-auto"
+                            onClick={() => tuitModalStore.set('isOpen', true)}
+                        >
+                            <span className="text-lg font-bold">Tweet</span>
+                            <Icon
+                                className="block xl:hidden"
+                                name="featherAdd"
+                            />
+                        </NavButton>
+                    </div>
+                    <ProfileButton />
+                </>
+            ) : (
+                <>
+                    <div className="flex-1" />
+                    <div className="flex w-full flex-col items-center self-end xl:items-start">
+                        <button
+                            className="group flex w-full justify-center xl:justify-start"
+                            onClick={handleSignIn}
+                        >
+                            <NavButton>
+                                <Icon name="person" />
+                                <span className="text-xl">
+                                    Login with google
+                                </span>
+                            </NavButton>
+                        </button>
+                    </div>
+                </>
+            )}
         </nav>
     );
 };

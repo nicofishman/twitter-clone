@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import clsx from 'clsx';
 
-import Icon  from '@/components/ui/Icon';
+import Icon from '@/components/ui/Icon';
 
 import { TuitButton } from '../index/Tuit';
 
@@ -12,27 +12,26 @@ interface LikeButtonProps {
 }
 
 const LikeButton: FC<LikeButtonProps> = ({ doLike, isLiked, likes }) => {
-    const handleLike = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>
-    ) => {
+    const handleLike = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         e.stopPropagation();
-        e.preventDefault(); 
+        e.preventDefault();
         doLike();
     };
 
     return (
-        <div className='flex gap-x-px items-center group'>
-            <TuitButton tooltip='like' onClick={(e) => handleLike(e)}>
-                <Icon 
+        <div className="group flex items-center gap-x-px">
+            <TuitButton tooltip="like" onClick={(e) => handleLike(e)}>
+                <Icon
                     className={clsx(
-                        'group-hover:text-redLike duration-200 transition-colors w-5',
-                        isLiked ? 'text-redLike' : 'text-textGray'
-                    )} 
-                    name={
-                        isLiked ? 'heartFill' : 'heart'
-                    }
+                        'w-5 transition-colors duration-200 group-hover:text-redLike',
+                        isLiked ? 'text-redLike' : 'text-textGray',
+                    )}
+                    name={isLiked ? 'heartFill' : 'heart'}
                 />
             </TuitButton>
-            <span className='text-textGray text-sm group-hover:text-redLike'>{likes > 0 && likes}</span>
+            <span className="text-sm text-textGray group-hover:text-redLike">
+                {likes > 0 && likes}
+            </span>
         </div>
     );
 };

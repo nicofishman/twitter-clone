@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import clsx from 'clsx';
 
 import { slideNavbarOpenStore } from '@/utils/states/slideNavbarOpen';
-import { createGlobalStore } from "@/utils/createGlobalStore";
+import { createGlobalStore } from '@/utils/createGlobalStore';
 
 import SlideNavbar from '../ui/SlideNavbar';
 
@@ -15,26 +15,37 @@ export const tuitModalStore = createGlobalStore({
 });
 
 interface LayoutProps {
-    children?: React.ReactNode
+    children?: React.ReactNode;
 }
 
 const Layout: FC<LayoutProps> = ({ children }) => {
-    const [isSlideNavbarOpen, openSlideNavbar] = slideNavbarOpenStore.use('isOpen');
+    const [isSlideNavbarOpen, openSlideNavbar] =
+        slideNavbarOpenStore.use('isOpen');
     const [isTuitModalOpen] = tuitModalStore.use('isOpen');
-    
 
     return (
-        <div className={clsx("min-h-screen h-screen w-full flex bg-black text-lightGray font-twitter", isTuitModalOpen ? 'overflow-y-hidden' : 'overflow-y-auto')}>
-            <div className="flex-1 h-screen sticky left-0 top-0 min-w-[68px] justify-end xxs:flex hidden">
+        <div
+            className={clsx(
+                'flex h-screen min-h-screen w-full bg-black font-twitter text-lightGray',
+                isTuitModalOpen ? 'overflow-y-hidden' : 'overflow-y-auto',
+            )}
+        >
+            <div className="sticky left-0 top-0 hidden h-screen min-w-[68px] flex-1 justify-end xxs:flex">
                 <Sidebar />
             </div>
             <SlideNavbar open={isSlideNavbarOpen} setOpen={openSlideNavbar}>
                 <MobileSlideSidebar />
             </SlideNavbar>
-            <div className={clsx("flex flex-col w-full max-w-[600px] mx-auto min-h-screen h-fit border-x border-borderGray")}>
+            <div
+                className={clsx(
+                    'mx-auto flex h-fit min-h-screen w-full max-w-[600px] flex-col border-x border-borderGray',
+                )}
+            >
                 {children}
             </div>
-            <div className="flex-1 h-full sticky left-0 top-0 min-w-0 overflow-hidden">SIDEBAR</div>
+            <div className="sticky left-0 top-0 h-full min-w-0 flex-1 overflow-hidden">
+                SIDEBAR
+            </div>
 
             <TuitModal />
         </div>

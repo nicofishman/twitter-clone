@@ -1,14 +1,22 @@
 import { SetStateAction, useCallback } from 'react';
-import { create } from "zustand";
+import { create } from 'zustand';
 
-export type EqualityFn<T> = (left: T | null | undefined, right: T | null | undefined) => boolean;
+export type EqualityFn<T> = (
+    left: T | null | undefined,
+    right: T | null | undefined,
+) => boolean;
 
 // eslint-disable-next-line @typescript-eslint/ban-types
-const isFunction = (fn: unknown): fn is Function => (typeof fn === 'function');
+const isFunction = (fn: unknown): fn is Function => typeof fn === 'function';
 
 /** Given a type `T`, returns the keys that are Optional. */
-type OptionalKeys<T> =
-    string extends keyof T ? string : { [K in keyof T]-?: Record<string, unknown> extends Pick<T, K> ? K : never }[keyof T];
+type OptionalKeys<T> = string extends keyof T
+    ? string
+    : {
+          [K in keyof T]-?: Record<string, unknown> extends Pick<T, K>
+              ? K
+              : never;
+      }[keyof T];
 
 /**
  * Create a global state
@@ -30,12 +38,22 @@ type OptionalKeys<T> =
  *   ...
  * };
  */
-export const createGlobalStore = <State extends object>(initialState: State) => {
+export const createGlobalStore = <State extends object>(
+    initialState: State,
+) => {
     const store = create<State>(() => structuredClone(initialState));
 
-    const setter = <T extends keyof State>(key: T, value: SetStateAction<State[T]>) => {
+    const setter = <T extends keyof State>(
+        key: T,
+        value: SetStateAction<State[T]>,
+    ) => {
         if (isFunction(value)) {
-            store.setState(prevValue => ({ [key]: value(prevValue[key]) } as unknown as Partial<State>));
+            store.setState(
+                (prevValue) =>
+                    ({
+                        [key]: value(prevValue[key]),
+                    } as unknown as Partial<State>),
+            );
         } else {
             store.setState({ [key]: value } as unknown as Partial<State>);
         }
@@ -45,20 +63,24 @@ export const createGlobalStore = <State extends object>(initialState: State) => 
         use<K extends keyof State>(
             key: K,
             defaultValue?: State[K],
-            equalityFn?: EqualityFn<State[K]>): [State[K], (value: SetStateAction<State[K]>) => void] {
+            equalityFn?: EqualityFn<State[K]>,
+        ): [State[K], (value: SetStateAction<State[K]>) => void] {
             // If state isn't defined for a given defaultValue, set it.
             if (defaultValue !== undefined && !(key in store.getState())) {
                 setter(key, defaultValue);
             }
-            const result = store(state => state[key], equalityFn);
+            const result = store((state) => state[key], equalityFn);
             // eslint-disable-next-line react-hooks/rules-of-hooks
-            const keySetter = useCallback((value: SetStateAction<State[K]>) => setter(key, value), [key]);
+            const keySetter = useCallback(
+                (value: SetStateAction<State[K]>) => setter(key, value),
+                [key],
+            );
 
             return [result, keySetter];
         },
-        useAll: () => store(state => state),
+        useAll: () => store((state) => state),
         delete<K extends OptionalKeys<State>>(key: K) {
-            store.setState(prevState => {
+            store.setState((prevState) => {
                 // eslint-disable-next-line @typescript-eslint/no-unused-vars, no-unused-vars
                 const { [key]: _, ...rest } = prevState;
 

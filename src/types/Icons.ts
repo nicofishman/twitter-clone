@@ -109,5 +109,5 @@ export const Icons = {
     threeDotsCircle: threeDotsCircle,
     trash: trash,
     twitter: twitter,
-    video: video
+    video: video,
 } as const;

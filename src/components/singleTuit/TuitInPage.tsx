@@ -1,4 +1,3 @@
-
 import { RouterOutputs } from '@/utils/api';
 import { useUser } from '@/utils/globalState';
 
@@ -8,40 +7,46 @@ import Avatar from '../ui/Avatar';
 
 import TuitDateTime from './TuitDateTime';
 
-type TuitInPageProps = RouterOutputs['tuit']['getById'] & {
-
-};
+type TuitInPageProps = RouterOutputs['tuit']['getById'] & {};
 
 const TuitInPage = ({ author, ...tuit }: TuitInPageProps) => {
     const wholeTuit: RouterOutputs['tuit']['getById'] = {
         author,
-        ...tuit
+        ...tuit,
     };
 
     const user = useUser();
 
     return (
-        <article className='w-full px-4 pt-3 flex flex-col'>
-            <div className='border-b border-borderGray'>
-                <header className='w-full flex justify-between'>
-                    <div className='flex gap-x-3'>
-                        <Avatar user={author} width={48}/>
-                        <div className='flex-col'>
-                            <h1 className='text-base font-bold'>{author.full_name}</h1>
-                            <h2 className='text-base text-gray-500'>@{author.username}</h2>
+        <article className="flex w-full flex-col px-4 pt-3">
+            <div className="border-b border-borderGray">
+                <header className="flex w-full justify-between">
+                    <div className="flex gap-x-3">
+                        <Avatar user={author} width={48} />
+                        <div className="flex-col">
+                            <h1 className="text-base font-bold">
+                                {author.full_name}
+                            </h1>
+                            <h2 className="text-base text-gray-500">
+                                @{author.username}
+                            </h2>
                         </div>
                     </div>
                     <ThreeDotsButton />
                 </header>
-                <div className='w-full mt-3'>
-                    <p className='text-2xl font-normal'>{tuit.body}</p>
+                <div className="mt-3 w-full">
+                    <p className="text-2xl font-normal">{tuit.body}</p>
                 </div>
-                <div className="w-full my-4">
+                <div className="my-4 w-full">
                     <TuitDateTime date={tuit.createdAt} />
                 </div>
-                <LikeCommentRetweet singleTuit className='max-w-[400px]' tuit={wholeTuit} userId={user.id} />
+                <LikeCommentRetweet
+                    singleTuit
+                    className="max-w-[400px]"
+                    tuit={wholeTuit}
+                    userId={user.id}
+                />
             </div>
-
         </article>
     );
 };

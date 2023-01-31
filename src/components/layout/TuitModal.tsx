@@ -11,28 +11,26 @@ import WriteTuitIconsAndButton from '../index/WriteTuitIconsAndButton';
 
 import { tuitModalStore } from './Layout';
 
-interface TuitModalProps {
-
-}
+interface TuitModalProps {}
 
 const TuitModal: FC<TuitModalProps> = () => {
     const [isOpen] = tuitModalStore.use('isOpen');
     const user = useUser();
     const utils = api.useContext();
     const [tuitContent, setTuitContent] = useState('');
-    
+
     const createTuitMutation = api.tuit.create.useMutation({
         onSuccess: () => {
             setTuitContent('');
             utils.tuit.get.invalidate();
-        }
+        },
     });
 
     const doTuit = useCallback(async () => {
         if (tuitContent === '') return;
         await createTuitMutation.mutateAsync({
             authorId: user.id,
-            body: tuitContent
+            body: tuitContent,
         });
 
         tuitModalStore.set('isOpen', false);
@@ -40,19 +38,31 @@ const TuitModal: FC<TuitModalProps> = () => {
     }, [createTuitMutation, tuitContent, user.id]);
 
     return (
-        <Modal closeModal={() => tuitModalStore.set('isOpen', false)} isOpen={isOpen} position='top'>
-            <div className='flex flex-col min-h-[314px] h-full'>
+        <Modal
+            closeModal={() => tuitModalStore.set('isOpen', false)}
+            isOpen={isOpen}
+            position="top"
+        >
+            <div className="flex h-full min-h-[314px] flex-col">
                 <button onClick={() => tuitModalStore.set('isOpen', false)}>
-                    <Icon className='w-6 m-4 text-white' name='cross'/>
+                    <Icon className="m-4 w-6 text-white" name="cross" />
                 </button>
-                <div className="flex w-full px-4 gap-x-3">
+                <div className="flex w-full gap-x-3 px-4">
                     <Avatar user={user} width={48} />
-                    <div className="flex flex-col w-full">
-                        <div className="flex flex-col mt-9 w-full gap-y-4 mb-16">
-                            <TuitTextarea className='w-full min-h-[120px] border-b border-borderGray pb-4' content={tuitContent} doTuit={doTuit} setContent={setTuitContent} />
+                    <div className="flex w-full flex-col">
+                        <div className="mt-9 mb-16 flex w-full flex-col gap-y-4">
+                            <TuitTextarea
+                                className="min-h-[120px] w-full border-b border-borderGray pb-4"
+                                content={tuitContent}
+                                doTuit={doTuit}
+                                setContent={setTuitContent}
+                            />
                         </div>
                         <div className="absolute bottom-2 right-4 left-[70px] mt-4">
-                            <WriteTuitIconsAndButton doTuit={doTuit} tuitContent={tuitContent} />
+                            <WriteTuitIconsAndButton
+                                doTuit={doTuit}
+                                tuitContent={tuitContent}
+                            />
                         </div>
                     </div>
                 </div>

@@ -9,11 +9,17 @@ interface ModalProps extends PropsWithChildren<{}> {
     position?: 'top' | 'bottom' | 'center';
 }
 
-const Modal: FC<ModalProps> = ({ closeModal, isOpen, children, className = '', position }) => {
+const Modal: FC<ModalProps> = ({
+    closeModal,
+    isOpen,
+    children,
+    className = '',
+    position,
+}) => {
     const positionClasses: Record<NonNullable<typeof position>, string> = {
         top: 'top-[5%]',
         bottom: 'bottom-[5%]',
-        center: 'inset-y-0'
+        center: 'inset-y-0',
     };
 
     return (
@@ -31,7 +37,14 @@ const Modal: FC<ModalProps> = ({ closeModal, isOpen, children, className = '', p
                     <div className="fixed inset-0 bg-modalBackground" />
                 </Transition.Child>
 
-                <div className={clsx("fixed overflow-y-auto inset-x-0", position ? positionClasses[position] : positionClasses['center'])}>
+                <div
+                    className={clsx(
+                        'fixed inset-x-0 overflow-y-auto',
+                        position
+                            ? positionClasses[position]
+                            : positionClasses['center'],
+                    )}
+                >
                     <div className="flex min-h-full items-center justify-center p-4 text-center">
                         <Transition.Child
                             as={Fragment}
@@ -42,7 +55,12 @@ const Modal: FC<ModalProps> = ({ closeModal, isOpen, children, className = '', p
                             leaveFrom="opacity-100 scale-100"
                             leaveTo="opacity-0 scale-95"
                         >
-                            <Dialog.Panel className={clsx(className, "w-full max-w-2xl transform overflow-hidden rounded-2xl bg-black text-white text-left align-middle shadow-xl transition-all")}>
+                            <Dialog.Panel
+                                className={clsx(
+                                    className,
+                                    'w-full max-w-2xl transform overflow-hidden rounded-2xl bg-black text-left align-middle text-white shadow-xl transition-all',
+                                )}
+                            >
                                 {children}
                             </Dialog.Panel>
                         </Transition.Child>
