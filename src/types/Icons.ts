@@ -1,12 +1,16 @@
+import addToList from '../assets/icons/svg/add_to_list.svg';
+import analytics from '../assets/icons/svg/analytics.svg';
 import balloon from '../assets/icons/svg/balloon.svg';
-import checkCircle from '../assets/icons/svg/check_circle.svg';
+import block from '../assets/icons/svg/block.svg';
 import check from '../assets/icons/svg/check.svg';
-import comment2 from '../assets/icons/svg/comment_2.svg';
+import checkCircle from '../assets/icons/svg/check_circle.svg';
 import comment from '../assets/icons/svg/comment.svg';
+import comment2 from '../assets/icons/svg/comment_2.svg';
 import cross from '../assets/icons/svg/cross.svg';
 import directMessage from '../assets/icons/svg/direct_message.svg';
 import directMessageFill from '../assets/icons/svg/direct_message_fill.svg';
 import draw from '../assets/icons/svg/draw.svg';
+import embed from '../assets/icons/svg/embed.svg';
 import emoji from '../assets/icons/svg/emoji.svg';
 import erase from '../assets/icons/svg/erase.svg';
 import featherAdd from '../assets/icons/svg/feather_add.svg';
@@ -20,15 +24,17 @@ import heart from '../assets/icons/svg/heart.svg';
 import heartFill from '../assets/icons/svg/heart_fill.svg';
 import home from '../assets/icons/svg/home.svg';
 import homeFill from '../assets/icons/svg/home_fill.svg';
-import lightning from '../assets/icons/svg/lightning.svg';
-import location from '../assets/icons/svg/location.svg';
-import microphone from '../assets/icons/svg/microphone.svg';
-import news from '../assets/icons/svg/news.svg';
 import leftArrow from '../assets/icons/svg/left_arrow.svg';
+import lightning from '../assets/icons/svg/lightning.svg';
 import list from '../assets/icons/svg/list.svg';
 import listFill from '../assets/icons/svg/list_fill.svg';
+import location from '../assets/icons/svg/location.svg';
+import microphone from '../assets/icons/svg/microphone.svg';
+import mute from '../assets/icons/svg/mute.svg';
+import news from '../assets/icons/svg/news.svg';
 import notification from '../assets/icons/svg/notification.svg';
 import notificationFill from '../assets/icons/svg/notification_fill.svg';
+import notInterested from '../assets/icons/svg/not_interested.svg';
 import person from '../assets/icons/svg/person.svg';
 import personFill from '../assets/icons/svg/person_fill.svg';
 import picture from '../assets/icons/svg/picture.svg';
@@ -36,6 +42,7 @@ import pin from '../assets/icons/svg/pin.svg';
 import plus from '../assets/icons/svg/plus.svg';
 import poll from '../assets/icons/svg/poll.svg';
 import profileHex from '../assets/icons/svg/profile_hex.svg';
+import report from '../assets/icons/svg/report.svg';
 import retweet from '../assets/icons/svg/retweet.svg';
 import rocket from '../assets/icons/svg/rocket.svg';
 import roll from '../assets/icons/svg/roll.svg';
@@ -50,12 +57,16 @@ import speaker from '../assets/icons/svg/speaker.svg';
 import sync from '../assets/icons/svg/sync.svg';
 import threeDots from '../assets/icons/svg/threedots.svg';
 import threeDotsCircle from '../assets/icons/svg/threedots_circle.svg';
-import twitter from '../assets/icons/svg/twitter.svg';
 import trash from '../assets/icons/svg/trash.svg';
+import twitter from '../assets/icons/svg/twitter.svg';
+import unfollow from '../assets/icons/svg/unfollow.svg';
 import video from '../assets/icons/svg/video.svg';
 
 export const Icons = {
+    addToList: addToList,
+    analytics: analytics,
     ballon: balloon,
+    block: block,
     check: check,
     checkCircle: checkCircle,
     comment: comment,
@@ -64,6 +75,7 @@ export const Icons = {
     directMessage: directMessage,
     directMessageFill: directMessageFill,
     draw: draw,
+    embed: embed,
     emoji: emoji,
     erase: erase,
     featherAdd: featherAdd,
@@ -83,9 +95,11 @@ export const Icons = {
     listFill: listFill,
     location: location,
     microphone: microphone,
+    mute: mute,
     news: news,
     notification: notification,
     notificationFill: notificationFill,
+    notInterested: notInterested,
     person: person,
     personFill: personFill,
     picture: picture,
@@ -93,6 +107,7 @@ export const Icons = {
     plus: plus,
     poll: poll,
     profileHex: profileHex,
+    report: report,
     retweet: retweet,
     rocket: rocket,
     roll: roll,
@@ -109,5 +124,6 @@ export const Icons = {
     threeDotsCircle: threeDotsCircle,
     trash: trash,
     twitter: twitter,
-    video: video,
+    unfollow: unfollow,
+    video: video
 } as const;
