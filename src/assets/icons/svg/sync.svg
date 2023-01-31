@@ -1,23 +1,36 @@
 <?xml version="1.0" standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
- "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
-<svg version="1.0" xmlns="http://www.w3.org/2000/svg"
- width="72.000000pt" height="74.000000pt" viewBox="0 0 72.000000 74.000000"
- preserveAspectRatio="xMidYMid meet">
-<metadata>
-Created by potrace 1.16, written by Peter Selinger 2001-2019
-</metadata>
-<g transform="translate(0.000000,74.000000) scale(0.100000,-0.100000)"
-fill="currentColor" stroke="none">
-<path d="M245 720 c-33 -11 -84 -38 -112 -60 l-53 -40 0 35 c0 34 -1 35 -40
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<svg
+    version="1.0"
+    xmlns="http://www.w3.org/2000/svg"
+    width="72.000000pt"
+    height="74.000000pt"
+    viewBox="0 0 72.000000 74.000000"
+    preserveAspectRatio="xMidYMid meet"
+>
+    <metadata>
+        Created by potrace 1.16, written by Peter Selinger 2001-2019
+    </metadata>
+    <g
+        transform="translate(0.000000,74.000000) scale(0.100000,-0.100000)"
+        fill="currentColor"
+        stroke="none"
+    >
+        <path
+            d="M245 720 c-33 -11 -84 -38 -112 -60 l-53 -40 0 35 c0 34 -1 35 -40
 35 l-40 0 0 -120 0 -120 120 0 120 0 0 40 0 40 -62 0 -63 1 53 49 c81 76 184
 99 286 64 63 -22 150 -102 172 -160 13 -35 21 -43 35 -39 63 17 59 12 44 56
--36 100 -129 187 -236 220 -76 24 -147 23 -224 -1z"/>
-<path d="M305 425 c-50 -49 -15 -135 55 -135 19 0 40 9 55 25 16 15 25 36 25
-55 0 19 -9 40 -25 55 -15 16 -36 25 -55 25 -19 0 -40 -9 -55 -25z"/>
-<path d="M33 289 l-32 -9 14 -40 c53 -151 212 -251 376 -237 79 7 134 29 202
+-36 100 -129 187 -236 220 -76 24 -147 23 -224 -1z"
+        />
+        <path
+            d="M305 425 c-50 -49 -15 -135 55 -135 19 0 40 9 55 25 16 15 25 36 25
+55 0 19 -9 40 -25 55 -15 16 -36 25 -55 25 -19 0 -40 -9 -55 -25z"
+        />
+        <path
+            d="M33 289 l-32 -9 14 -40 c53 -151 212 -251 376 -237 79 7 134 29 202
 80 l47 37 0 -35 c0 -34 1 -35 40 -35 l40 0 0 120 0 120 -120 0 -120 0 0 -40 0
 -39 62 -3 62 -3 -38 -39 c-80 -79 -204 -106 -308 -66 -70 26 -139 92 -164 155
--9 25 -19 45 -23 44 -3 0 -20 -5 -38 -10z"/>
-</g>
+-9 25 -19 45 -23 44 -3 0 -20 -5 -38 -10z"
+        />
+    </g>
 </svg>

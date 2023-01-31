@@ -1,15 +1,23 @@
 <?xml version="1.0" standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
- "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
-<svg version="1.0" xmlns="http://www.w3.org/2000/svg"
- width="82.000000pt" height="82.000000pt" viewBox="0 0 82.000000 82.000000"
- preserveAspectRatio="xMidYMid meet">
-<metadata>
-Created by potrace 1.16, written by Peter Selinger 2001-2019
-</metadata>
-<g transform="translate(0.000000,82.000000) scale(0.100000,-0.100000)"
-fill="currentColor" stroke="none">
-<path d="M320 770 c-35 -54 -46 -58 -114 -39 -38 11 -40 10 -83 -34 -44 -43
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<svg
+    version="1.0"
+    xmlns="http://www.w3.org/2000/svg"
+    width="82.000000pt"
+    height="82.000000pt"
+    viewBox="0 0 82.000000 82.000000"
+    preserveAspectRatio="xMidYMid meet"
+>
+    <metadata>
+        Created by potrace 1.16, written by Peter Selinger 2001-2019
+    </metadata>
+    <g
+        transform="translate(0.000000,82.000000) scale(0.100000,-0.100000)"
+        fill="currentColor"
+        stroke="none"
+    >
+        <path
+            d="M320 770 c-35 -54 -46 -58 -114 -39 -38 11 -40 10 -83 -34 -44 -43
 -45 -45 -34 -83 19 -68 15 -79 -39 -114 l-50 -32 0 -59 0 -59 50 -32 c53 -35
 57 -46 39 -112 -11 -38 -10 -40 34 -83 43 -44 45 -45 83 -34 68 19 79 15 114
 -39 l32 -50 59 0 59 0 32 50 c35 53 46 57 112 39 38 -11 40 -10 83 34 44 43
@@ -19,8 +27,11 @@ fill="currentColor" stroke="none">
 -98 62 -132 46 -28 46 -52 0 -80 -54 -34 -66 -59 -62 -132 l3 -63 -63 3 c-73
 4 -98 -8 -132 -62 -12 -20 -30 -36 -40 -36 -10 0 -28 16 -40 36 -34 54 -59 66
 -132 62 l-63 -3 3 63 c4 73 -8 98 -62 132 -46 28 -46 52 0 80 54 34 66 59 62
-132 l-3 63 66 -3 c58 -3 69 -1 95 21 16 14 36 37 43 51 20 36 45 32 71 -10z"/>
-<path d="M342 530 c-94 -57 -94 -183 0 -240 64 -39 146 -16 188 52 71 117 -71
-259 -188 188z"/>
-</g>
+132 l-3 63 66 -3 c58 -3 69 -1 95 21 16 14 36 37 43 51 20 36 45 32 71 -10z"
+        />
+        <path
+            d="M342 530 c-94 -57 -94 -183 0 -240 64 -39 146 -16 188 52 71 117 -71
+259 -188 188z"
+        />
+    </g>
 </svg>

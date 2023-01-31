@@ -1,23 +1,32 @@
 <?xml version="1.0" standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
- "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
-<svg version="1.0" xmlns="http://www.w3.org/2000/svg"
- width="72.000000pt" height="80.000000pt" viewBox="0 0 72.000000 80.000000"
- preserveAspectRatio="xMidYMid meet">
-<metadata>
-Created by potrace 1.16, written by Peter Selinger 2001-2019
-</metadata>
-<g transform="translate(0.000000,80.000000) scale(0.100000,-0.100000)"
-fill="currentColor" stroke="none">
-<path d="M254 789 c-31 -15 -54 -62 -54 -108 l0 -41 -100 0 -100 0 0 -40 c0
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<svg
+    version="1.0"
+    xmlns="http://www.w3.org/2000/svg"
+    width="72.000000pt"
+    height="80.000000pt"
+    viewBox="0 0 72.000000 80.000000"
+    preserveAspectRatio="xMidYMid meet"
+>
+    <metadata>
+        Created by potrace 1.16, written by Peter Selinger 2001-2019
+    </metadata>
+    <g
+        transform="translate(0.000000,80.000000) scale(0.100000,-0.100000)"
+        fill="currentColor"
+        stroke="none"
+    >
+        <path
+            d="M254 789 c-31 -15 -54 -62 -54 -108 l0 -41 -100 0 -100 0 0 -40 c0
 -33 3 -40 20 -40 11 0 20 -1 21 -2 0 -2 9 -109 18 -238 10 -130 23 -246 30
 -258 7 -13 27 -32 44 -42 29 -18 52 -20 227 -20 175 0 198 2 227 20 17 10 37
 29 43 41 7 12 19 119 27 238 17 258 18 261 43 261 17 0 20 7 20 40 l0 40 -100
 0 -100 0 0 40 c0 91 -40 120 -162 119 -45 0 -92 -5 -104 -10z m342 -266 c-3
 -21 -11 -121 -17 -223 -6 -102 -16 -193 -21 -203 -8 -15 -28 -17 -198 -17
 -170 0 -190 2 -198 18 -5 9 -15 105 -21 212 -7 107 -14 207 -17 223 l-6 27
-242 0 242 0 -6 -37z"/>
-<path d="M240 320 l0 -120 40 0 40 0 0 120 0 120 -40 0 -40 0 0 -120z"/>
-<path d="M400 320 l0 -120 40 0 40 0 0 120 0 120 -40 0 -40 0 0 -120z"/>
-</g>
+242 0 242 0 -6 -37z"
+        />
+        <path d="M240 320 l0 -120 40 0 40 0 0 120 0 120 -40 0 -40 0 0 -120z" />
+        <path d="M400 320 l0 -120 40 0 40 0 0 120 0 120 -40 0 -40 0 0 -120z" />
+    </g>
 </svg>
