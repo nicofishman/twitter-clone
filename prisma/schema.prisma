@@ -76,7 +76,7 @@ model Like {
     updatedAt DateTime @updatedAt
 
     tuitId String
-    tuit   Tuit   @relation(fields: [tuitId], references: [id])
+    tuit   Tuit   @relation(fields: [tuitId], references: [id], onDelete: Cascade)
 
     authorId String
     author   TwitterUser @relation(fields: [authorId], references: [id])
