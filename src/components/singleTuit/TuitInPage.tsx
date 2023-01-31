@@ -39,7 +39,7 @@ const TuitInPage = ({ author, ...tuit }: TuitInPageProps) => {
                 <div className="w-full my-4">
                     <TuitDateTime date={tuit.createdAt} />
                 </div>
-                <LikeCommentRetweet className='justify-around' tuit={wholeTuit} userId={user.id} />
+                <LikeCommentRetweet className='max-w-[400px]' tuit={wholeTuit} userId={user.id} />
             </div>
 
         </article>

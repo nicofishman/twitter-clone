@@ -11,11 +11,12 @@ import { api } from "@/utils/api";
 import WriteTuitBox from '@/components/index/WriteTuitBox';
 import Tuit from "@/components/index/Tuit";
 import { slideNavbarOpenStore } from "@/utils/states/slideNavbarOpen";
+import Loader from "@/components/ui/Loader";
 
 const Home: NextPage = () => {
     const user = useUser();
     const { data: session } = useSession();
-    const { data: tuitsData } = api.tuit.get.useQuery();    
+    const { data: tuitsData, isLoading } = api.tuit.get.useQuery();    
 
     return (
         <>
@@ -40,6 +41,13 @@ const Home: NextPage = () => {
                             <WriteTuitBox />
                         </div>
 
+                    )
+                }
+                {
+                    isLoading && (
+                        <div className="w-full flex justify-center my-5">
+                            <Loader />
+                        </div>
                     )
                 }
                 {

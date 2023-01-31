@@ -17,6 +17,9 @@ module.exports = {
             },
             fontFamily: {
                 twitter: 'TwitterChirp, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif'
+            },
+            animation: {
+                "spin-fast": "spin 0.7s linear infinite"
             }
         },
         screens: {
