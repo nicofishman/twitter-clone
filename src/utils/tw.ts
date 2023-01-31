@@ -19,16 +19,18 @@ type TailwindFactory = {
 };
 
 // eslint-disable-next-line no-undef
-export const tw = new Proxy((() => {}) as unknown as TailwindFactory, {
+// prettier-ignore
+export const tw = new Proxy((() => { }) as unknown as TailwindFactory, {
     get: (_, property: string) => twFactory(property),
     apply: (_, __, [el]: [React.ReactElement]) => twFactory(el),
 });
 
+// prettier-ignore
 export const restyle = <
     T extends
-        | string
-        | React.FunctionComponent<{ className: string }>
-        | React.ComponentClass<{ className: string }>,
+    | string
+    | React.FunctionComponent<{ className: string }>
+    | React.ComponentClass<{ className: string }>,
 >(
     element: T,
 ) => {
