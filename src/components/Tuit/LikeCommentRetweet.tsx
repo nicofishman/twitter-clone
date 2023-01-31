@@ -11,20 +11,70 @@ import LikeButton from './LikeButton';
 interface LikeCommentRetweetProps extends React.HTMLAttributes<HTMLDivElement> {
     userId: string;
     tuit: RouterOutputs['tuit']['get'][number];
+    singleTuit?: boolean
 }
 
-const LikeCommentRetweet: FC<LikeCommentRetweetProps> = ({ className, tuit, userId }) => {
+const LikeCommentRetweet: FC<LikeCommentRetweetProps> = ({ className, tuit, userId, singleTuit = false }) => {
     const isLiked = useMemo(() => (tuit.likes.some(like => like.authorId === userId)), [tuit.likes, userId]);
     const cli = api.useContext();
-    const toggleLike = api.tuit.toggleLike.useMutation({
-        onSuccess: () => {
+    const toggleLikeMutation = api.tuit.toggleLike.useMutation({
+        onMutate: async ({ tuitId, userId, action }) => {
+            let prevTuit: RouterOutputs['tuit']['getById'] | undefined;
+            let prevTuits: RouterOutputs['tuit']['get'] | undefined;
+
+            if (singleTuit) {
+                await cli.tuit.getById.cancel({ id: tuitId });            
+                prevTuit = cli.tuit.getById.getData({ id: tuitId });
+            } else {
+                await cli.tuit.get.cancel();
+                prevTuits = cli.tuit.get.getData();
+                prevTuit = prevTuits?.find(t => t.id === tuitId);
+            }
+            
+            if (!prevTuit || (!singleTuit && !prevTuits)) {
+                return;
+            }
+
+            const newTuit = {
+                ...prevTuit,
+                likes: action === 'like' ? [...prevTuit.likes, {
+                    authorId: userId,
+                    createdAt: new Date(),
+                    id: 'temp',
+                    tuitId,
+                    updatedAt: new Date()
+                }] : prevTuit.likes.filter(like => like.authorId !== userId),
+                _count: {
+                    ...prevTuit._count,
+                    likes: action === 'like' ? prevTuit._count.likes + 1 : prevTuit._count.likes - 1
+                }
+            };
+
+            if (singleTuit) {
+                cli.tuit.getById.setData({ id: tuitId }, newTuit);
+                
+                return { prevTuit };
+            } else {
+                if (!prevTuits) {
+                    return;
+                }
+                cli.tuit.get.setData(undefined, 
+                    [...prevTuits.filter(t => t.id !== tuitId), newTuit]
+                        .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
+                );
+
+                return { prevTuits };
+
+            }
+        },
+        onSettled: () => {
             cli.tuit.get.invalidate();
             cli.tuit.getById.invalidate({ id: tuit.id });
         }
     });
 
     const handleLike = async () => {
-        await toggleLike.mutateAsync({ tuitId: tuit.id, userId, action: isLiked ? 'dislike' : 'like' });
+        toggleLikeMutation.mutate({ tuitId: tuit.id, userId, action: isLiked ? 'dislike' : 'like' });
     };
 
     return (
