@@ -1,80 +1,84 @@
 {
-  "extends": ["next", "next/core-web-vitals", "eslint:recommended"],
-  "globals": {
-    "React": "readonly",
-    "JSX": "readonly"
-  },
-  "parser": "@typescript-eslint/parser",
-  "parserOptions": {
-    "project": "./tsconfig.json"
-  },
-  "plugins": ["react", "@typescript-eslint", "import"],
-  "rules": {
-    "react/prop-types": "off",
-    "react/jsx-uses-react": "off",
-    "react/react-in-jsx-scope": "off",
-    "semi": ["error", "always"],
-    "@typescript-eslint/indent": ["error", 4],
-    "object-curly-spacing": ["error", "always"],
-    "@typescript-eslint/no-unused-vars": [
-      "warn",
-      {
-        "args": "after-used",
-        "ignoreRestSiblings": false,
-        "argsIgnorePattern": "^_"
-      }
+    "extends": [
+        "next",
+        "next/core-web-vitals",
+        "plugin:tailwindcss/recommended",
+        "prettier"
     ],
-    "import/order": [
-      "warn",
-      {
-        "groups": [
-          "type",
-          "builtin",
-          "object",
-          "external",
-          "internal",
-          "parent",
-          "sibling",
-          "index"
+    "globals": {
+        "React": "readonly",
+        "JSX": "readonly"
+    },
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "project": "./tsconfig.json"
+    },
+    "plugins": ["react", "@typescript-eslint", "import"],
+    "rules": {
+        "tailwindcss/classnames-order": "off",
+        "tailwindcss/no-custom-classname": "off",
+        "react/prop-types": "off",
+        "react/jsx-uses-react": "off",
+        "react/react-in-jsx-scope": "off",
+        "@typescript-eslint/no-unused-vars": [
+            "warn",
+            {
+                "args": "after-used",
+                "ignoreRestSiblings": false,
+                "argsIgnorePattern": "^_"
+            }
         ],
-        "pathGroups": [
-          {
-            "pattern": "~/**",
-            "group": "external",
-            "position": "after"
-          }
+        "import/order": [
+            "warn",
+            {
+                "groups": [
+                    "type",
+                    "builtin",
+                    "object",
+                    "external",
+                    "internal",
+                    "parent",
+                    "sibling",
+                    "index"
+                ],
+                "pathGroups": [
+                    {
+                        "pattern": "~/**",
+                        "group": "external",
+                        "position": "after"
+                    }
+                ],
+                "newlines-between": "always"
+            }
         ],
-        "newlines-between": "always"
-      }
-    ],
-    "react/self-closing-comp": "warn",
-    "react/jsx-sort-props": [
-      "warn",
-      {
-        "callbacksLast": true,
-        "shorthandFirst": true,
-        "noSortAlphabetically": false,
-        "reservedFirst": true
-      }
-    ],
-    "padding-line-between-statements": [
-      "warn",
-      { "blankLine": "always", "prev": "*", "next": "return" },
-      {
-        "blankLine": "always",
-        "prev": ["const", "let", "var"],
-        "next": "*"
-      },
-      {
-        "blankLine": "any",
-        "prev": ["const", "let", "var"],
-        "next": ["const", "let", "var"]
-      }
-    ]
-  },
-  "settings": {
-    "react": {
-      "version": "detect"
+        "react/self-closing-comp": "warn",
+        "react/jsx-sort-props": [
+            "warn",
+            {
+                "callbacksLast": true,
+                "shorthandFirst": true,
+                "noSortAlphabetically": false,
+                "reservedFirst": true
+            }
+        ],
+        "padding-line-between-statements": [
+            "warn",
+            { "blankLine": "always", "prev": "*", "next": "return" },
+            {
+                "blankLine": "always",
+                "prev": ["const", "let", "var"],
+                "next": "*"
+            },
+            {
+                "blankLine": "any",
+                "prev": ["const", "let", "var"],
+                "next": ["const", "let", "var"]
+            }
+        ]
+    },
+    "settings": {
+        "react": {
+            "version": "detect"
+        }
     }
-  }
 }
