@@ -2,10 +2,10 @@ import { RouterOutputs } from '@/utils/api';
 import { useUser } from '@/utils/globalState';
 
 import LikeCommentRetweet from '../Tuit/LikeCommentRetweet';
-import ThreeDotsButton from '../Tuit/ThreeDotsButton';
 import Avatar from '../ui/Avatar';
 
 import TuitDateTime from './TuitDateTime';
+import DropdownThreeDots from './../Tuit/DropdownThreeDots';
 
 type TuitInPageProps = RouterOutputs['tuit']['getById'] & {};
 
@@ -32,7 +32,11 @@ const TuitInPage = ({ author, ...tuit }: TuitInPageProps) => {
                             </h2>
                         </div>
                     </div>
-                    <ThreeDotsButton />
+                    <DropdownThreeDots
+                        isSelfUser={tuit.authorId === user.id}
+                        tuitId={tuit.id}
+                        tuitUser={author}
+                    />
                 </header>
                 <div className="mt-3 w-full">
                     <p className="text-2xl font-normal">{tuit.body}</p>

@@ -19,6 +19,26 @@ export const tuitRouter = createTRPCRouter({
 
             return tuit;
         }),
+    delete: protectedProcedure
+        .input(z.object({ id: z.string(), userId: z.string() }))
+        .mutation(async ({ ctx, input }) => {
+            const tuitCheck = await ctx.prisma.tuit.findUnique({
+                where: {
+                    id: input.id,
+                },
+            });
+
+            if (!tuitCheck || tuitCheck.authorId !== input.userId) {
+                return undefined;
+            }
+            const tuit = await ctx.prisma.tuit.delete({
+                where: {
+                    id: input.id,
+                },
+            });
+
+            return tuit;
+        }),
     get: publicProcedure
         .input(z.string().nullish())
         .query(async ({ ctx, input }) => {
@@ -87,25 +107,25 @@ export const tuitRouter = createTRPCRouter({
                     likes:
                         input.action === 'like'
                             ? {
-                                  connectOrCreate: {
-                                      create: {
-                                          id: `${input.tuitId}-${input.userId}`,
-                                          author: {
-                                              connect: {
-                                                  id: input.userId,
-                                              },
-                                          },
-                                      },
-                                      where: {
-                                          id: `${input.tuitId}-${input.userId}`,
-                                      },
-                                  },
-                              }
+                                connectOrCreate: {
+                                    create: {
+                                        id: `${input.tuitId}-${input.userId}`,
+                                        author: {
+                                            connect: {
+                                                id: input.userId,
+                                            },
+                                        },
+                                    },
+                                    where: {
+                                        id: `${input.tuitId}-${input.userId}`,
+                                    },
+                                },
+                            }
                             : {
-                                  delete: {
-                                      id: `${input.tuitId}-${input.userId}`,
-                                  },
-                              },
+                                delete: {
+                                    id: `${input.tuitId}-${input.userId}`,
+                                },
+                            },
                 },
                 include: {
                     likes: true,

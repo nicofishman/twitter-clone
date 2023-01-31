@@ -10,7 +10,7 @@ const Loader: FC<LoaderProps> = () => {
                 cy="16"
                 fill="none"
                 r="14"
-                stroke-width="4"
+                strokeWidth="4"
                 style={{ stroke: 'rgb(29, 161, 242)', opacity: 0.2 }}
             />
             <circle
@@ -18,7 +18,7 @@ const Loader: FC<LoaderProps> = () => {
                 cy="16"
                 fill="none"
                 r="14"
-                stroke-width="4"
+                strokeWidth="4"
                 style={{
                     stroke: 'rgb(29, 161, 242)',
                     strokeDasharray: 80,
