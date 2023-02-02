@@ -1,7 +1,7 @@
-import clsx from 'clsx';
 import React, { FC, useCallback, useEffect, useRef } from 'react';
 
 import useAutosizeTextArea from '@/hooks/useAutosizeTextarea';
+import { cn } from '@/utils/cn';
 
 interface TuitTextareaProps
     extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
@@ -47,9 +47,9 @@ const TuitTextarea: FC<TuitTextareaProps> = ({
     return (
         <textarea
             ref={textAreaRef}
-            className={clsx(
-                className,
+            className={cn(
                 'min-h-[30px] w-full resize-none overflow-y-hidden break-words bg-transparent text-xl text-white placeholder:text-textGray focus:outline-none',
+                className,
             )}
             placeholder="What's happening?"
             value={content}
