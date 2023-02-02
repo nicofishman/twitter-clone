@@ -52,6 +52,7 @@ export const tuitRouter = createTRPCRouter({
                     _count: {
                         select: {
                             likes: true,
+                            comments: true,
                         },
                     },
                 },
@@ -61,6 +62,41 @@ export const tuitRouter = createTRPCRouter({
             });
 
             return tuits;
+        }),
+    getComments: publicProcedure
+        .input(z.object({ tuitId: z.string() }))
+        .query(async ({ ctx, input }) => {
+            const comments = await ctx.prisma.tuit.findUnique({
+                where: {
+                    id: input.tuitId,
+                },
+                select: {
+                    _count: {
+                        select: {
+                            comments: true,
+                        }
+                    },
+                    comments: {
+                        include: {
+                            _count: {
+                                select: {
+                                    likes: true,
+                                    comments: true,
+                                }
+                            },
+                            author: true,
+                            likes: true,
+                        }
+                    }
+                }
+            })
+
+            return comments ?? {
+                _count: {
+                    comments: 0,
+                },
+                comments: [],
+            };
         }),
     getById: publicProcedure
         .input(
@@ -82,6 +118,35 @@ export const tuitRouter = createTRPCRouter({
                     _count: {
                         select: {
                             likes: true,
+                            comments: true,
+                        },
+                    },
+                },
+            });
+
+            return tuit;
+        }),
+    makeComment: protectedProcedure
+        .input(
+            z.object({
+                body: z.string(),
+                authorId: z.string(),
+                replyId: z.string(),
+            }),
+        )
+        .mutation(async ({ ctx, input }) => {
+            const tuit = await ctx.prisma.tuit.create({
+                data: {
+                    body: input.body,
+                    author: {
+                        connect: {
+                            id: input.authorId,
+                        },
+                    },
+                    createdAt: new Date(),
+                    replyTo: {
+                        connect: {
+                            id: input.replyId,
                         },
                     },
                 },

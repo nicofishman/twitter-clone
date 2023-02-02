@@ -12,6 +12,7 @@ import TuitInPage from '@/components/singleTuit/TuitInPage';
 import { api } from '@/utils/api';
 import { mySSG } from '@/utils/ssg';
 import { TuitButton } from '@/components/index/Tuit';
+import CommentsList from '@/components/singleTuit/CommentsList';
 
 interface TuitPageProps
     extends InferGetServerSidePropsType<typeof getServerSideProps> {}
@@ -25,6 +26,13 @@ const TuitPage: NextPage<TuitPageProps> = ({ tuitId }) => {
         },
     );
 
+    const comments = api.tuit.getComments.useQuery(
+        { tuitId: tuitId ?? null },
+        {
+            refetchOnWindowFocus: false,
+        },
+    );
+
     return (
         <Layout>
             <header className="flex w-full gap-x-6 border-b border-borderGray px-2 py-3">
@@ -33,7 +41,12 @@ const TuitPage: NextPage<TuitPageProps> = ({ tuitId }) => {
                 </TuitButton>
                 <h1 className="text-2xl font-bold">Tweet</h1>
             </header>
-            {tuitData && <TuitInPage {...tuitData} />}
+            {tuitData && (
+                <>
+                    <TuitInPage {...tuitData} />
+                    <CommentsList comments={comments.data} />
+                </>
+            )}
         </Layout>
     );
 };

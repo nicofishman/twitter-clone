@@ -3,6 +3,7 @@ import clsx from 'clsx';
 
 import { useUser } from '@/utils/globalState';
 import useAutosizeTextArea from '@/hooks/useAutosizeTextarea';
+import { api } from '@/utils/api';
 
 import Avatar from '../ui/Avatar';
 import DoTuitButton from '../Tuit/DoTuitButton';
@@ -14,8 +15,17 @@ interface ReplyBoxProps {
     tuitId: string;
 }
 
-const ReplyBox = ({}: ReplyBoxProps) => {
+const ReplyBox = ({ tuitId }: ReplyBoxProps) => {
     const user = useUser();
+    const utils = api.useContext();
+    const makeCommentMutation = api.tuit.makeComment.useMutation({
+        onSuccess: () => {
+            utils.tuit.getComments.invalidate({
+                tuitId: tuitId,
+            });
+        },
+    });
+
     const textAreaRef = React.useRef<HTMLTextAreaElement>(null);
     const [replyContent, setReplyContent] = useState('');
     const [isTextareaFocused, setIsTextareaFocused] = useState(false);
@@ -25,6 +35,11 @@ const ReplyBox = ({}: ReplyBoxProps) => {
     const handleReply = () => {
         if (!replyContent || replyContent === '') return;
         console.log('Replying...');
+        makeCommentMutation.mutate({
+            replyId: tuitId,
+            body: replyContent,
+            authorId: user.id,
+        });
         setReplyContent('');
     };
 
