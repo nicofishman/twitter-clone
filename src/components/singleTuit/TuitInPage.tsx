@@ -36,8 +36,7 @@ const TuitInPage = ({ author, ...tuit }: TuitInPageProps) => {
                         </div>
                         <DropdownThreeDots
                             isSelfUser={tuit.authorId === user.id}
-                            tuitId={tuit.id}
-                            tuitUser={author}
+                            tuit={wholeTuit}
                         />
                     </header>
                     <div className="mt-3 w-full">
@@ -49,7 +48,7 @@ const TuitInPage = ({ author, ...tuit }: TuitInPageProps) => {
                 </div>
                 <div className="border-b border-borderGray">
                     <LikeCommentRetweet
-                        singleTuit
+                        isSingleTuit
                         className="max-w-[400px]"
                         tuit={wholeTuit}
                         userId={user.id}

@@ -35,7 +35,7 @@ const Home: NextPage = () => {
                     </button>
                     <Icon className="text-twitterBlue" name="twitter" />
                 </div>
-                <div className="flex h-14 w-full items-center border border-x border-t-0 border-borderGray px-4 py-2">
+                <div className="flex h-14 w-full items-center border border-t-0 border-borderGray px-4 py-2">
                     <p className="font-extrabold">Home</p>
                 </div>
                 {session && (

@@ -1,7 +1,8 @@
-import React, { FC, useMemo } from 'react';
 import clsx from 'clsx';
+import React, { FC, useMemo } from 'react';
 
 import { RouterOutputs, api } from '@/utils/api';
+import { TuitButton } from '@/components/index/Tuit';
 
 import { GroupTuitButton } from '../index/Tuit';
 import Icon from '../ui/Icon';
@@ -11,14 +12,15 @@ import LikeButton from './LikeButton';
 interface LikeCommentRetweetProps extends React.HTMLAttributes<HTMLDivElement> {
     userId: string;
     tuit: RouterOutputs['tuit']['get'][number];
-    singleTuit?: boolean;
+    isSingleTuit?: boolean;
+    isComment?: boolean;
 }
 
 const LikeCommentRetweet: FC<LikeCommentRetweetProps> = ({
     className,
     tuit,
     userId,
-    singleTuit = false,
+    isSingleTuit = false,
 }) => {
     const isLiked = useMemo(
         () => tuit.likes.some((like) => like.authorId === userId),
@@ -30,7 +32,7 @@ const LikeCommentRetweet: FC<LikeCommentRetweetProps> = ({
             let prevTuit: RouterOutputs['tuit']['getById'] | undefined;
             let prevTuits: RouterOutputs['tuit']['get'] | undefined;
 
-            if (singleTuit) {
+            if (isSingleTuit) {
                 await cli.tuit.getById.cancel({ id: tuitId });
                 prevTuit = cli.tuit.getById.getData({ id: tuitId });
             } else {
@@ -39,7 +41,7 @@ const LikeCommentRetweet: FC<LikeCommentRetweetProps> = ({
                 prevTuit = prevTuits?.find((t) => t.id === tuitId);
             }
 
-            if (!prevTuit || (!singleTuit && !prevTuits)) {
+            if (!prevTuit || (isSingleTuit && !prevTuits)) {
                 return;
             }
 
@@ -69,7 +71,7 @@ const LikeCommentRetweet: FC<LikeCommentRetweetProps> = ({
                 },
             };
 
-            if (singleTuit) {
+            if (isSingleTuit) {
                 cli.tuit.getById.setData({ id: tuitId }, newTuit);
 
                 return { prevTuit };
@@ -92,6 +94,7 @@ const LikeCommentRetweet: FC<LikeCommentRetweetProps> = ({
         onSettled: () => {
             cli.tuit.get.invalidate();
             cli.tuit.getById.invalidate({ id: tuit.id });
+            cli.tuit.getComments.invalidate({ tuitId: tuit.replyToId ?? '' });
         },
     });
 
@@ -105,14 +108,16 @@ const LikeCommentRetweet: FC<LikeCommentRetweetProps> = ({
 
     return (
         <div className={clsx(className, 'my-1.5 flex w-full justify-between')}>
-            <div className="flex items-center gap-x-px">
-                <GroupTuitButton tooltip="reply">
+            <div className="group flex items-center gap-x-px">
+                <TuitButton tooltip="reply">
                     <Icon
                         className="w-5 text-textGray transition-colors duration-200 group-hover:text-twitterBlue"
                         name="comment"
                     />
-                    {/* //TODO: Add comment count */}
-                </GroupTuitButton>
+                </TuitButton>
+                <span className="text-sm text-textGray group-hover:text-twitterBlue">
+                    {tuit._count.comments > 0 && tuit._count.comments}
+                </span>
             </div>
             <div className="flex items-center gap-x-px">
                 <GroupTuitButton tooltip="retweet">
@@ -120,7 +125,6 @@ const LikeCommentRetweet: FC<LikeCommentRetweetProps> = ({
                         className="w-5 text-textGray transition-colors duration-200 group-hover:text-greenRetweet"
                         name="retweet"
                     />
-                    {/* //TODO: Add retweet count */}
                 </GroupTuitButton>
             </div>
             <LikeButton

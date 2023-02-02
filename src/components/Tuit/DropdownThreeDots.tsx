@@ -1,8 +1,7 @@
 import React, { FC, ReactNode, memo } from 'react';
-import { TwitterUser } from '@prisma/client';
 import clsx from 'clsx';
 
-import { api } from '@/utils/api';
+import { RouterOutputs, api } from '@/utils/api';
 
 import {
     DropdownMenu,
@@ -16,8 +15,7 @@ import ThreeDotsButton from './ThreeDotsButton';
 
 interface DropdownThreeDotsProps {
     isSelfUser?: boolean;
-    tuitUser: TwitterUser;
-    tuitId: string;
+    tuit: NonNullable<RouterOutputs['tuit']['getById']>;
 }
 
 type DropdownItems = {
@@ -29,13 +27,15 @@ type DropdownItems = {
 
 const DropdownThreeDots: FC<DropdownThreeDotsProps> = ({
     isSelfUser = false,
-    tuitUser,
-    tuitId,
+    tuit,
 }) => {
     const utils = api.useContext();
     const deleteTuitMutation = api.tuit.delete.useMutation({
         onSuccess: () => {
             utils.tuit.get.invalidate();
+            utils.tuit.getComments.invalidate({
+                tuitId: tuit.replyToId || tuit.id,
+            });
         },
     });
 
@@ -44,14 +44,17 @@ const DropdownThreeDots: FC<DropdownThreeDotsProps> = ({
             id: 'delete',
             label: 'Delete Tweet',
             onClick: () =>
-                deleteTuitMutation.mutate({ userId: tuitUser.id, id: tuitId }),
+                deleteTuitMutation.mutate({
+                    userId: tuit?.authorId,
+                    id: tuit.id,
+                }),
             icon: <Icon className="w-5 text-red-500" name="trash" />,
         },
         {
             id: 'add_to_list',
-            label: `Add/Remove @${tuitUser.username} from Lists`,
+            label: `Add/Remove @${tuit.author.username} from Lists`,
             onClick: () =>
-                console.log(`Add/Remove @${tuitUser.username} from Lists`),
+                console.log(`Add/Remove @${tuit.author.username} from Lists`),
             icon: <Icon className="w-5 text-white" name="addToList" />,
         },
         {
@@ -82,27 +85,27 @@ const DropdownThreeDots: FC<DropdownThreeDotsProps> = ({
         },
         {
             id: 'unfollow',
-            label: `Unfollow @${tuitUser.username}`,
-            onClick: () => console.log(`Unfollow @${tuitUser.username}`),
+            label: `Unfollow @${tuit.author.username}`,
+            onClick: () => console.log(`Unfollow @${tuit.author.username}`),
             icon: <Icon className="w-5 text-white" name="unfollow" />,
         },
         {
             id: 'add_to_list',
-            label: `Add/Remove @${tuitUser.username} from Lists`,
+            label: `Add/Remove @${tuit.author.username} from Lists`,
             onClick: () =>
-                console.log(`Add/Remove @${tuitUser.username} from Lists`),
+                console.log(`Add/Remove @${tuit.author.username} from Lists`),
             icon: <Icon className="w-5 text-white" name="addToList" />,
         },
         {
             id: 'mute',
-            label: `Mute @${tuitUser.username}`,
-            onClick: () => console.log(`Mute @${tuitUser.username}`),
+            label: `Mute @${tuit.author.username}`,
+            onClick: () => console.log(`Mute @${tuit.author.username}`),
             icon: <Icon className="w-5 text-white" name="mute" />,
         },
         {
             id: 'block',
-            label: `Block @${tuitUser.username}`,
-            onClick: () => console.log(`Block @${tuitUser.username}`),
+            label: `Block @${tuit.author.username}`,
+            onClick: () => console.log(`Block @${tuit.author.username}`),
             icon: <Icon className="w-5 text-white" name="block" />,
         },
         {

@@ -13,52 +13,55 @@ import DropdownThreeDots from '../Tuit/DropdownThreeDots';
 
 type TuitProps = RouterOutputs['tuit']['get'][number] & {
     isInView?: boolean;
+    isComment?: boolean;
 };
 
-const Tuit = memo(({ isInView = false, ...tuit }: TuitProps) => {
-    const user = useUser();
+const Tuit = memo(
+    ({ isInView = false, isComment = false, ...tuit }: TuitProps) => {
+        const user = useUser();
 
-    return (
-        <Link
-            className={isInView ? 'pointer-events-none' : ''}
-            href={`${tuit.author.username}/status/${tuit.id}`}
-            onClick={(e) => e.stopPropagation()}
-        >
-            <article className="flex w-full cursor-pointer gap-x-3 border-b border-borderGray pl-4 pr-2 pt-3 transition-colors hover:bg-white/[0.03]">
-                <Avatar user={tuit.author} width={48} />
-                <div className="flex flex-1 flex-col">
-                    <div className="flex w-full items-center justify-between">
-                        <div className="flex flex-1 gap-x-1 whitespace-nowrap">
-                            <h3 className="font-bold">
-                                {tuit.author.full_name}
-                            </h3>
-                            <p className="w-10 flex-1 truncate text-textGray">
-                                <span>@{tuit.author.username}</span>
-                                <span className="hidden sm:inline">
-                                    {' · '}
-                                </span>
-                                <span className="hidden sm:inline">
-                                    {formatDistanceToNow(tuit.createdAt)}
-                                </span>
-                            </p>
+        return (
+            <Link
+                className={isInView ? 'pointer-events-none' : ''}
+                href={`${tuit.author.username}/status/${tuit.id}`}
+                onClick={(e) => e.stopPropagation()}
+            >
+                <article className="flex w-full cursor-pointer gap-x-3 border-b border-borderGray pl-4 pr-2 pt-3 transition-colors hover:bg-white/[0.03]">
+                    <Avatar user={tuit.author} width={48} />
+                    <div className="flex flex-1 flex-col">
+                        <div className="flex w-full items-center justify-between">
+                            <div className="flex flex-1 gap-x-1 whitespace-nowrap">
+                                <h3 className="font-bold">
+                                    {tuit.author.full_name}
+                                </h3>
+                                <p className="w-10 flex-1 truncate text-textGray">
+                                    <span>@{tuit.author.username}</span>
+                                    <span className="hidden sm:inline">
+                                        {' · '}
+                                    </span>
+                                    <span className="hidden sm:inline">
+                                        {formatDistanceToNow(tuit.createdAt)}
+                                    </span>
+                                </p>
+                            </div>
+                            <DropdownThreeDots
+                                isSelfUser={tuit.authorId === user.id}
+                                tuit={tuit}
+                            />
                         </div>
-                        <DropdownThreeDots
-                            isSelfUser={tuit.authorId === user.id}
-                            tuitId={tuit.id}
-                            tuitUser={tuit.author}
+                        <p className="whitespace-pre">{tuit.body}</p>
+                        <LikeCommentRetweet
+                            className="max-w-[300px]"
+                            isComment={isComment}
+                            tuit={tuit}
+                            userId={user.id}
                         />
                     </div>
-                    <p className="whitespace-pre">{tuit.body}</p>
-                    <LikeCommentRetweet
-                        className="max-w-[300px]"
-                        tuit={tuit}
-                        userId={user.id}
-                    />
-                </div>
-            </article>
-        </Link>
-    );
-});
+                </article>
+            </Link>
+        );
+    },
+);
 
 Tuit.displayName = 'Tuit';
 
