@@ -91,4 +91,9 @@ model Tuit {
     authorId String
     author   TwitterUser @relation(fields: [authorId], references: [id])
     likes    Like[]
+
+    replyToId String?
+    replyTo   Tuit?   @relation(fields: [replyToId], references: [id], name: "comment")
+
+    comments Tuit[] @relation("comment")
 }
