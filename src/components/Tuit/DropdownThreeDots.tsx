@@ -1,4 +1,4 @@
-import React, { FC, ReactNode } from 'react';
+import React, { FC, ReactNode, memo } from 'react';
 import { TwitterUser } from '@prisma/client';
 import clsx from 'clsx';
 
@@ -132,30 +132,7 @@ const DropdownThreeDots: FC<DropdownThreeDotsProps> = ({
                 <div className="flex flex-col">
                     {(isSelfUser ? selfDropdownItems : otherDropdownItems).map(
                         (item) => (
-                            <DropdownMenuItem
-                                key={item.id}
-                                className="py-3 px-4 transition-colors focus:bg-white/[0.06]"
-                                onClick={item.onClick}
-                            >
-                                <button
-                                    className={clsx(
-                                        'w-full text-left text-base font-bold text-white',
-                                        {
-                                            'flex items-center gap-x-3':
-                                                item.icon,
-                                        },
-                                        {
-                                            'text-red-500':
-                                                item.id === 'delete',
-                                        },
-                                    )}
-                                >
-                                    {item.icon}
-                                    <span className="break-words leading-5">
-                                        {item.label}
-                                    </span>
-                                </button>
-                            </DropdownMenuItem>
+                            <MyDropdownItem key={item.id} item={item} />
                         ),
                     )}
                 </div>
@@ -165,3 +142,29 @@ const DropdownThreeDots: FC<DropdownThreeDotsProps> = ({
 };
 
 export default DropdownThreeDots;
+
+const MyDropdownItem = memo(({ item }: { item: DropdownItems }) => {
+    return (
+        <DropdownMenuItem
+            className="py-3 px-4 transition-colors focus:bg-white/[0.06]"
+            onClick={item.onClick}
+        >
+            <button
+                className={clsx(
+                    'w-full text-left text-base font-bold text-white',
+                    {
+                        'flex items-center gap-x-3': item.icon,
+                    },
+                    {
+                        'text-red-500': item.id === 'delete',
+                    },
+                )}
+            >
+                {item.icon}
+                <span className="break-words leading-5">{item.label}</span>
+            </button>
+        </DropdownMenuItem>
+    );
+});
+
+MyDropdownItem.displayName = 'MyDropdownItem';

@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { formatDistanceToNow } from 'date-fns';
 import Link from 'next/link';
-import React, { FC, ReactNode } from 'react';
+import React, { FC, ReactNode, memo } from 'react';
 
 import Avatar from '@/components/ui/Avatar';
 import { RouterOutputs } from '@/utils/api';
@@ -15,7 +15,7 @@ type TuitProps = RouterOutputs['tuit']['get'][number] & {
     isInView?: boolean;
 };
 
-const Tuit = ({ isInView = false, ...tuit }: TuitProps) => {
+const Tuit = memo(({ isInView = false, ...tuit }: TuitProps) => {
     const user = useUser();
 
     return (
@@ -58,7 +58,9 @@ const Tuit = ({ isInView = false, ...tuit }: TuitProps) => {
             </article>
         </Link>
     );
-};
+});
+
+Tuit.displayName = 'Tuit';
 
 export default Tuit;
 
