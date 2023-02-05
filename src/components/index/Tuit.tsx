@@ -14,16 +14,22 @@ import DropdownThreeDots from '../Tuit/DropdownThreeDots';
 type TuitProps = RouterOutputs['tuit']['get'][number] & {
     isInView?: boolean;
     isComment?: boolean;
+    isFeed?: boolean;
 };
 
 const Tuit = memo(
-    ({ isInView = false, isComment = false, ...tuit }: TuitProps) => {
+    ({
+        isInView = false,
+        isComment = false,
+        isFeed = false,
+        ...tuit
+    }: TuitProps) => {
         const user = useUser();
 
         return (
             <Link
                 className={isInView ? 'pointer-events-none' : ''}
-                href={`${tuit.author.username}/status/${tuit.id}`}
+                href={`/${tuit.author.username}/status/${tuit.id}`}
                 onClick={(e) => e.stopPropagation()}
             >
                 <article className="flex w-full cursor-pointer gap-x-3 border-b border-borderGray pl-4 pr-2 pt-3 transition-colors hover:bg-white/[0.03]">
@@ -53,6 +59,7 @@ const Tuit = memo(
                         <LikeCommentRetweet
                             className="max-w-[300px]"
                             isComment={isComment}
+                            isFeed={isFeed}
                             tuit={tuit}
                             userId={user.id}
                         />

@@ -6,6 +6,7 @@ import { TuitButton } from '@/components/index/Tuit';
 
 import { GroupTuitButton } from '../index/Tuit';
 import Icon from '../ui/Icon';
+import { modalsStore } from '../layout/Layout';
 
 import LikeButton from './LikeButton';
 
@@ -13,6 +14,7 @@ interface LikeCommentRetweetProps extends React.HTMLAttributes<HTMLDivElement> {
     userId: string;
     tuit: RouterOutputs['tuit']['get'][number];
     isSingleTuit?: boolean;
+    isFeed?: boolean;
     isComment?: boolean;
 }
 
@@ -20,6 +22,7 @@ const LikeCommentRetweet: FC<LikeCommentRetweetProps> = ({
     className,
     tuit,
     userId,
+    isFeed = false,
     isSingleTuit = false,
 }) => {
     const isLiked = useMemo(
@@ -106,10 +109,22 @@ const LikeCommentRetweet: FC<LikeCommentRetweetProps> = ({
         });
     };
 
+    const handleOpenReplyModal = (
+        e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+    ) => {
+        if (!isFeed) return;
+        e.preventDefault();
+        e.stopPropagation();
+        modalsStore.set('reply', tuit);
+    };
+
     return (
         <div className={clsx(className, 'my-1.5 flex w-full justify-between')}>
             <div className="group flex items-center gap-x-px">
-                <TuitButton tooltip="reply">
+                <TuitButton
+                    tooltip="reply"
+                    onClick={(e) => handleOpenReplyModal(e)}
+                >
                     <Icon
                         className="w-5 text-textGray transition-colors duration-200 group-hover:text-twitterBlue"
                         name="comment"
