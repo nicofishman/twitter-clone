@@ -9,12 +9,12 @@ import TuitTextarea from '../Tuit/TuitTextarea';
 import Avatar from '../ui/Avatar';
 import WriteTuitIconsAndButton from '../index/WriteTuitIconsAndButton';
 
-import { tuitModalStore } from './Layout';
+import { modalsStore } from './Layout';
 
 interface TuitModalProps {}
 
 const TuitModal: FC<TuitModalProps> = () => {
-    const [isOpen] = tuitModalStore.use('isOpen');
+    const [isOpen] = modalsStore.use('writeTuit');
     const user = useUser();
     const utils = api.useContext();
     const [tuitContent, setTuitContent] = useState('');
@@ -33,18 +33,18 @@ const TuitModal: FC<TuitModalProps> = () => {
             body: tuitContent,
         });
 
-        tuitModalStore.set('isOpen', false);
+        modalsStore.set('writeTuit', false);
         setTuitContent('');
     }, [createTuitMutation, tuitContent, user.id]);
 
     return (
         <Modal
-            closeModal={() => tuitModalStore.set('isOpen', false)}
+            closeModal={() => modalsStore.set('writeTuit', false)}
             isOpen={isOpen}
             position="top"
         >
             <div className="flex h-full min-h-[314px] flex-col">
-                <button onClick={() => tuitModalStore.set('isOpen', false)}>
+                <button onClick={() => modalsStore.set('writeTuit', false)}>
                     <Icon className="m-4 w-6 text-white" name="cross" />
                 </button>
                 <div className="flex w-full gap-x-3 px-4">

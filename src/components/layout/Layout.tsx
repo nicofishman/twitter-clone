@@ -3,15 +3,18 @@ import clsx from 'clsx';
 
 import { slideNavbarOpenStore } from '@/utils/states/slideNavbarOpen';
 import { createGlobalStore } from '@/utils/createGlobalStore';
+import { RouterOutputs } from '@/utils/api';
 
 import SlideNavbar from '../ui/SlideNavbar';
 
 import Sidebar from './Sidebar';
 import MobileSlideSidebar from './MobileSlideSidebar';
 import TuitModal from './TuitModal';
+import ReplyModal from './ReplyModal';
 
-export const tuitModalStore = createGlobalStore({
-    isOpen: false,
+export const modalsStore = createGlobalStore({
+    writeTuit: false,
+    reply: null as null | RouterOutputs['tuit']['get'][number],
 });
 
 interface LayoutProps {
@@ -21,7 +24,7 @@ interface LayoutProps {
 const Layout: FC<LayoutProps> = ({ children }) => {
     const [isSlideNavbarOpen, openSlideNavbar] =
         slideNavbarOpenStore.use('isOpen');
-    const [isTuitModalOpen] = tuitModalStore.use('isOpen');
+    const [isTuitModalOpen] = modalsStore.use('writeTuit');
 
     return (
         <div
@@ -48,6 +51,7 @@ const Layout: FC<LayoutProps> = ({ children }) => {
             </div>
 
             <TuitModal />
+            <ReplyModal />
         </div>
     );
 };

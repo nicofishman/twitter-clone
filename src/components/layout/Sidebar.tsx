@@ -10,7 +10,7 @@ import ProfileButton from '@/components/sidebar/ProfileButton';
 import { api } from '@/utils/api';
 import { globalUser } from '@/utils/globalState';
 
-import { tuitModalStore } from './Layout';
+import { modalsStore } from './Layout';
 
 interface SidebarProps {}
 
@@ -243,7 +243,7 @@ const Sidebar: FC<SidebarProps> = () => {
                         {/* Tweet Button */}
                         <NavButton
                             className="aspect-square !w-full justify-center bg-twitterBlue text-lightGray hover:bg-twitterBlueHover xl:aspect-auto"
-                            onClick={() => tuitModalStore.set('isOpen', true)}
+                            onClick={() => modalsStore.set('writeTuit', true)}
                         >
                             <span className="text-lg font-bold">Tweet</span>
                             <Icon
