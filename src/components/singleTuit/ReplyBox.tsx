@@ -20,6 +20,9 @@ const ReplyBox = ({ tuitId }: ReplyBoxProps) => {
     const utils = api.useContext();
     const makeCommentMutation = api.tuit.makeComment.useMutation({
         onSuccess: () => {
+            utils.tuit.getById.invalidate({
+                id: tuitId,
+            });
             utils.tuit.getComments.invalidate({
                 tuitId: tuitId,
             });
@@ -97,7 +100,7 @@ const ReplyBox = ({ tuitId }: ReplyBoxProps) => {
                         </div>
                         <DoTuitButton
                             className="py-[7px] px-4"
-                            doTuit={() => {}}
+                            doTuit={handleReply}
                             tuitContent={replyContent}
                         >
                             Reply
