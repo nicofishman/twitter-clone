@@ -45,7 +45,10 @@ const ReplyModal = ({}: ReplyModalProps) => {
             position="top"
         >
             <div className="flex h-full min-h-[346px] flex-col">
-                <button onClick={() => modalsStore.set('reply', null)}>
+                <button
+                    className="w-fit"
+                    onClick={() => modalsStore.set('reply', null)}
+                >
                     <Icon className="m-4 w-6 text-white" name="cross" />
                 </button>
                 <div className="flex gap-x-3 px-4 pt-3">

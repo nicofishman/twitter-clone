@@ -44,8 +44,11 @@ const TuitModal: FC<TuitModalProps> = () => {
             position="top"
         >
             <div className="flex h-full min-h-[314px] flex-col">
-                <button onClick={() => modalsStore.set('writeTuit', false)}>
-                    <Icon className="m-4 w-6 text-white" name="cross" />
+                <button
+                    className="w-fit"
+                    onClick={() => modalsStore.set('writeTuit', false)}
+                >
+                    <Icon className="w-6 p-4 text-white" name="cross" />
                 </button>
                 <div className="flex w-full gap-x-3 px-4">
                     <Avatar user={user} width={48} />
