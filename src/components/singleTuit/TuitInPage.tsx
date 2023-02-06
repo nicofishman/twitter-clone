@@ -1,5 +1,6 @@
 import { RouterOutputs } from '@/utils/api';
 import { useUser } from '@/utils/globalState';
+import { TuitWithRecursiveComments } from '@/types/TuitTypes';
 
 import LikeCommentRetweet from '../Tuit/LikeCommentRetweet';
 import Avatar from '../ui/Avatar';
@@ -14,7 +15,7 @@ const TuitInPage = ({ author, ...tuit }: TuitInPageProps) => {
     const wholeTuit = {
         author,
         ...tuit,
-    };
+    } as TuitWithRecursiveComments;
 
     const user = useUser();
 
