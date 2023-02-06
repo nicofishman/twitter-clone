@@ -50,7 +50,7 @@ const Home: NextPage = () => {
                 )}
                 {tuitsData &&
                     tuitsData.map((tuit) => (
-                        <Tuit key={tuit.id} isFeed {...tuit} />
+                        <Tuit key={tuit.id} isFeed tuit={tuit} />
                     ))}
                 <BottomSidebar />
             </Layout>

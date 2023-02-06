@@ -11,7 +11,8 @@ import LikeCommentRetweet from '../Tuit/LikeCommentRetweet';
 import { Tooltip, TooltipContent, TooltipTrigger } from '../ui/Tooltip';
 import DropdownThreeDots from '../Tuit/DropdownThreeDots';
 
-type TuitProps = RouterOutputs['tuit']['get'][number] & {
+type TuitProps = {
+    tuit: RouterOutputs['tuit']['get'][number];
     isInView?: boolean;
     isComment?: boolean;
     isFeed?: boolean;
@@ -19,10 +20,10 @@ type TuitProps = RouterOutputs['tuit']['get'][number] & {
 
 const Tuit = memo(
     ({
+        tuit,
         isInView = false,
         isComment = false,
-        isFeed = false,
-        ...tuit
+        isFeed = false
     }: TuitProps) => {
         const user = useUser();
 
