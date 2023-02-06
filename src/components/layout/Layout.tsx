@@ -14,7 +14,10 @@ import ReplyModal from './ReplyModal';
 
 export const modalsStore = createGlobalStore({
     writeTuit: false,
-    reply: null as null | RouterOutputs['tuit']['get'][number],
+    reply: null as null | Omit<
+        RouterOutputs['tuit']['get'][number],
+        'comments'
+    >,
 });
 
 interface LayoutProps {

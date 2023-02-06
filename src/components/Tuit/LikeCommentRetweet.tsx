@@ -12,10 +12,9 @@ import LikeButton from './LikeButton';
 
 interface LikeCommentRetweetProps extends React.HTMLAttributes<HTMLDivElement> {
     userId: string;
-    tuit: RouterOutputs['tuit']['get'][number];
+    tuit: Omit<RouterOutputs['tuit']['get'][number], 'comments'>;
     isSingleTuit?: boolean;
     isFeed?: boolean;
-    isComment?: boolean;
 }
 
 const LikeCommentRetweet: FC<LikeCommentRetweetProps> = ({
@@ -50,6 +49,7 @@ const LikeCommentRetweet: FC<LikeCommentRetweetProps> = ({
 
             const newTuit = {
                 ...prevTuit,
+                comments: [],
                 likes:
                     action === 'like'
                         ? [

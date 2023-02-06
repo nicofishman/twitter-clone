@@ -49,6 +49,12 @@ export const tuitRouter = createTRPCRouter({
                 include: {
                     author: true,
                     likes: true,
+                    comments: {
+                        include: {
+                            _count: true,
+                            likes: true
+                        }
+                    },
                     _count: {
                         select: {
                             likes: true,
@@ -70,33 +76,25 @@ export const tuitRouter = createTRPCRouter({
                 where: {
                     id: input.tuitId,
                 },
-                select: {
-                    _count: {
-                        select: {
-                            comments: true,
-                        }
-                    },
+                include: {
+                    _count: true,
                     comments: {
                         include: {
-                            _count: {
-                                select: {
-                                    likes: true,
-                                    comments: true,
-                                }
+                            _count: true,
+                            comments: {
+                                include: {
+                                    _count: true,
+                                    author: true,
+                                },
                             },
                             author: true,
                             likes: true,
-                        }
+                        },
                     }
                 }
             })
 
-            return comments ?? {
-                _count: {
-                    comments: 0,
-                },
-                comments: [],
-            };
+            return comments ?? undefined;
         }),
     getById: publicProcedure
         .input(

@@ -12,7 +12,9 @@ import { Tooltip, TooltipContent, TooltipTrigger } from '../ui/Tooltip';
 import DropdownThreeDots from '../Tuit/DropdownThreeDots';
 
 type TuitProps = {
-    tuit: RouterOutputs['tuit']['get'][number];
+    tuit:
+        | RouterOutputs['tuit']['get'][number]
+        | NonNullable<RouterOutputs['tuit']['getById']>;
     isInView?: boolean;
     isComment?: boolean;
     isFeed?: boolean;
@@ -23,50 +25,84 @@ const Tuit = memo(
         tuit,
         isInView = false,
         isComment = false,
-        isFeed = false
+        isFeed = false,
     }: TuitProps) => {
         const user = useUser();
+        const commentsFromSameAuthor =
+            'comments' in tuit
+                ? tuit.comments.filter((t) => t.authorId === tuit.authorId)
+                : [];
+
+        const displaysComments =
+            !isComment && commentsFromSameAuthor.length > 0;
 
         return (
-            <Link
-                className={isInView ? 'pointer-events-none' : ''}
-                href={`/${tuit.author.username}/status/${tuit.id}`}
-                onClick={(e) => e.stopPropagation()}
-            >
-                <article className="flex w-full cursor-pointer gap-x-3 border-b border-borderGray pl-4 pr-2 pt-3 transition-colors hover:bg-white/[0.03]">
-                    <Avatar user={tuit.author} width={48} />
-                    <div className="flex flex-1 flex-col">
-                        <div className="flex w-full items-center justify-between">
-                            <div className="flex flex-1 gap-x-1 whitespace-nowrap">
-                                <h3 className="font-bold">
-                                    {tuit.author.full_name}
-                                </h3>
-                                <p className="w-10 flex-1 truncate text-textGray">
-                                    <span>@{tuit.author.username}</span>
-                                    <span className="hidden sm:inline">
-                                        {' · '}
-                                    </span>
-                                    <span className="hidden sm:inline">
-                                        {formatDistanceToNow(tuit.createdAt)}
-                                    </span>
-                                </p>
+            <>
+                <Link
+                    className={isInView ? 'pointer-events-none' : ''}
+                    href={`/${tuit.author.username}/status/${tuit.id}`}
+                    onClick={(e) => e.stopPropagation()}
+                >
+                    <article
+                        className={clsx(
+                            'flex w-full cursor-pointer gap-x-3 pl-4 pr-2 pt-3 transition-colors hover:bg-white/[0.03]',
+                            {
+                                'border-b border-borderGray': !displaysComments,
+                            },
+                        )}
+                    >
+                        <div className="relative flex flex-col items-center">
+                            {isComment && (
+                                <div className="-mt-4 h-4 w-0.5 bg-textGray" />
+                            )}
+                            <Avatar user={tuit.author} width={48} />
+                            {displaysComments && (
+                                <div className="mt-0.5 h-full w-0.5 flex-1 rounded-t-full bg-textGray" />
+                            )}
+                        </div>
+                        <div className="flex flex-1 flex-col">
+                            <div className="flex w-full items-center justify-between">
+                                <div className="flex flex-1 gap-x-1 whitespace-nowrap">
+                                    <h3 className="font-bold">
+                                        {tuit.author.full_name}
+                                    </h3>
+                                    <p className="w-10 flex-1 truncate text-textGray">
+                                        <span>@{tuit.author.username}</span>
+                                        <span className="hidden sm:inline">
+                                            {' · '}
+                                        </span>
+                                        <span className="hidden sm:inline">
+                                            {formatDistanceToNow(
+                                                tuit.createdAt,
+                                            )}
+                                        </span>
+                                    </p>
+                                </div>
+                                <DropdownThreeDots
+                                    isSelfUser={tuit.authorId === user.id}
+                                    tuit={tuit}
+                                />
                             </div>
-                            <DropdownThreeDots
-                                isSelfUser={tuit.authorId === user.id}
+                            <p className="whitespace-pre">{tuit.body}</p>
+                            <LikeCommentRetweet
+                                className="max-w-[300px]"
+                                isFeed={isFeed}
                                 tuit={tuit}
+                                userId={user.id}
                             />
                         </div>
-                        <p className="whitespace-pre">{tuit.body}</p>
-                        <LikeCommentRetweet
-                            className="max-w-[300px]"
-                            isComment={isComment}
-                            isFeed={isFeed}
-                            tuit={tuit}
-                            userId={user.id}
-                        />
-                    </div>
-                </article>
-            </Link>
+                    </article>
+                </Link>
+                {displaysComments && commentsFromSameAuthor[0] && (
+                    <Tuit
+                        isComment
+                        tuit={{
+                            ...commentsFromSameAuthor[0],
+                            author: tuit.author,
+                        }}
+                    />
+                )}
+            </>
         );
     },
 );
