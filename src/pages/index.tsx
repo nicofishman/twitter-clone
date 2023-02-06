@@ -49,9 +49,11 @@ const Home: NextPage = () => {
                     </div>
                 )}
                 {tuitsData &&
-                    tuitsData.map((tuit) => (
-                        <Tuit key={tuit.id} isFeed tuit={tuit} />
-                    ))}
+                    tuitsData
+                        .filter((t) => t.replyToId === null)
+                        .map((tuit) => (
+                            <Tuit key={tuit.id} isFeed tuit={tuit} />
+                        ))}
                 <BottomSidebar />
             </Layout>
         </>
