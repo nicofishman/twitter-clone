@@ -2,6 +2,8 @@ import React, { FC, Fragment, PropsWithChildren } from 'react';
 import { Transition, Dialog } from '@headlessui/react';
 import clsx from 'clsx';
 
+import { cn } from '@/utils/cn';
+
 interface ModalProps extends PropsWithChildren<{}> {
     isOpen: boolean;
     closeModal: () => void;
@@ -56,7 +58,7 @@ const Modal: FC<ModalProps> = ({
                             leaveTo='opacity-0 scale-95'
                         >
                             <Dialog.Panel
-                                className={clsx(
+                                className={cn(
                                     className,
                                     'w-full max-w-2xl overflow-hidden rounded-2xl bg-black text-left align-middle text-white shadow-xl transition-all',
                                 )}

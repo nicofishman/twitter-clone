@@ -1,10 +1,17 @@
 import { type NextPage } from 'next';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 
 import Layout from '@/components/layout/Layout';
+import Loader from '@/components/ui/Loader';
+import { api } from '@/utils/api';
+import ProfilePageLayout from '@/components/profile/ProfilePageLayout';
 
 const Profile: NextPage = () => {
-    // const hello = api.example.hello.useQuery({ text: "from tRPC" });
+    const { userName } = useRouter().query as { userName: string | undefined };
+    const { data: profile, isLoading } = api.user.getByUsername.useQuery({
+        username: userName ?? null,
+    });
 
     return (
         <>
@@ -14,7 +21,15 @@ const Profile: NextPage = () => {
                 <link href='/favicon.ico' rel='icon' />
             </Head>
             <Layout>
-                <p className='font-extrabold'>profile</p>
+                <div className='flex w-full justify-center'>
+                    {isLoading ? (
+                        <Loader />
+                    ) : profile ? (
+                        <ProfilePageLayout profile={profile} />
+                    ) : (
+                        <p>profile not found</p>
+                    )}
+                </div>
             </Layout>
         </>
     );

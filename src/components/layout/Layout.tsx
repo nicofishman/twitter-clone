@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import clsx from 'clsx';
+import { TwitterUser } from '@prisma/client';
 
 import { slideNavbarOpenStore } from '@/utils/states/slideNavbarOpen';
 import { createGlobalStore } from '@/utils/createGlobalStore';
@@ -11,6 +12,7 @@ import Sidebar from './Sidebar';
 import MobileSlideSidebar from './MobileSlideSidebar';
 import TuitModal from './TuitModal';
 import ReplyModal from './ReplyModal';
+import EditProfileModal from './EditProfileModal';
 
 export const modalsStore = createGlobalStore({
     writeTuit: false,
@@ -18,6 +20,7 @@ export const modalsStore = createGlobalStore({
         RouterOutputs['tuit']['get'][number],
         'comments'
     >,
+    editProfile: null as null | TwitterUser,
 });
 
 interface LayoutProps {
@@ -55,6 +58,7 @@ const Layout: FC<LayoutProps> = ({ children }) => {
 
             <TuitModal />
             <ReplyModal />
+            <EditProfileModal />
         </div>
     );
 };
