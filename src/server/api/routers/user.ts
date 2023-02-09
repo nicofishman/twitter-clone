@@ -46,4 +46,27 @@ export const userRouter = createTRPCRouter({
 
             return user;
         }),
+    getByUsername: publicProcedure
+        .input(z.object({ username: z.string().nullable() }))
+        .query(async ({ input, ctx }) => {
+            if (!input.username || input.username === '') {
+                return null;
+            }
+            const user = await ctx.prisma.twitterUser.findFirst({
+                where: {
+                    username: input.username,
+                },
+                include: {
+                    _count: {
+                        select: {
+                            tuits: true,
+                        },
+                    },
+                    likes: true,
+                    tuits: true,
+                },
+            });
+
+            return user;
+        }),
 });

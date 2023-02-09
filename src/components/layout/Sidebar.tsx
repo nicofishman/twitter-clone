@@ -7,7 +7,7 @@ import React, { FC, useEffect } from 'react';
 import Icon from '@/components/ui/Icon';
 import { api } from '@/utils/api';
 import { cn } from '@/utils/cn';
-import { globalUser } from '@/utils/globalState';
+import { globalUser, useUser } from '@/utils/globalState';
 
 import DropdownProfileButton from '../sidebar/DropdownProfileButton';
 
@@ -18,6 +18,7 @@ interface SidebarProps {}
 const Sidebar: FC<SidebarProps> = () => {
     const router = useRouter();
     const { data: session } = useSession();
+    const user = useUser();
 
     const { data: doesUserExist } = api.user.getByEmail.useQuery(
         { email: session?.user?.email },
@@ -210,10 +211,9 @@ const Sidebar: FC<SidebarProps> = () => {
                                 </span>
                             </NavButton>
                         </Link>
-
                         <Link
                             className='group flex w-full justify-center xl:justify-start'
-                            href={`/${session.user?.id}`}
+                            href={`/${user.username}`}
                         >
                             <NavButton>
                                 <Icon
