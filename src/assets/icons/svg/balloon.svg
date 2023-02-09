@@ -1,28 +1,7 @@
-<?xml version="1.0" standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
-<svg
-    version="1.0"
-    xmlns="http://www.w3.org/2000/svg"
-    width="64.000000pt"
-    height="80.000000pt"
-    viewBox="0 0 64.000000 80.000000"
-    preserveAspectRatio="xMidYMid meet"
->
-    <metadata>
-        Created by potrace 1.16, written by Peter Selinger 2001-2019
-    </metadata>
-    <g
-        transform="translate(0.000000,80.000000) scale(0.100000,-0.100000)"
-        fill="currentColor"
-        stroke="none"
-    >
+<svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
+    <g>
         <path
-            d="M233 786 c-85 -28 -155 -95 -201 -193 -23 -50 -27 -71 -27 -153 0
--86 3 -101 32 -162 38 -80 105 -150 168 -174 25 -9 45 -20 45 -23 0 -4 -11
--23 -25 -44 l-26 -37 121 0 121 0 -26 37 c-14 21 -25 41 -25 45 0 3 16 12 35
-18 68 22 131 83 172 167 36 73 38 82 38 172 0 87 -3 102 -32 163 -35 75 -93
-137 -159 169 -56 27 -154 34 -211 15z m174 -87 c162 -79 204 -315 79 -456 -98
--111 -235 -111 -334 2 -99 112 -96 286 7 397 72 77 163 98 248 57z"
-        />
+            d="M8 10c0-2.21 1.79-4 4-4v2c-1.1 0-2 .9-2 2H8zm12 1c0 4.27-2.69 8.01-6.44 8.83L15 22H9l1.45-2.17C6.7 19.01 4 15.27 4 11c0-4.84 3.46-9 8-9s8 4.16 8 9zm-8 7c3.19 0 6-3 6-7s-2.81-7-6-7-6 3-6 7 2.81 7 6 7z">
+        </path>
     </g>
 </svg>

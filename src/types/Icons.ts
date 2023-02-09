@@ -2,6 +2,7 @@ import addToList from '../assets/icons/svg/add_to_list.svg';
 import analytics from '../assets/icons/svg/analytics.svg';
 import balloon from '../assets/icons/svg/balloon.svg';
 import block from '../assets/icons/svg/block.svg';
+import calendar from '../assets/icons/svg/calendar.svg';
 import check from '../assets/icons/svg/check.svg';
 import checkCircle from '../assets/icons/svg/check_circle.svg';
 import comment from '../assets/icons/svg/comment.svg';
@@ -68,6 +69,7 @@ export const Icons = {
     analytics: analytics,
     ballon: balloon,
     block: block,
+    calendar: calendar,
     check: check,
     checkCircle: checkCircle,
     comment: comment,
