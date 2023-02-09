@@ -8,6 +8,7 @@ const initialState = {
     full_name: '',
     username: '',
     image: '',
+    description: '' as TwitterUser['description'],
 } satisfies TwitterUser;
 
 export const globalUser = createGlobalStore(initialState);
