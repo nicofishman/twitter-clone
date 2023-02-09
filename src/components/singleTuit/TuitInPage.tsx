@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 import { RouterOutputs } from '@/utils/api';
 import { useUser } from '@/utils/globalState';
 import { TuitWithRecursiveComments } from '@/types/TuitTypes';
@@ -25,7 +27,9 @@ const TuitInPage = ({ author, ...tuit }: TuitInPageProps) => {
                 <div className='border-b border-borderGray'>
                     <header className='flex w-full justify-between'>
                         <div className='flex gap-x-3'>
-                            <Avatar user={author} width={48} />
+                            <Link href={`/${author.username}`}>
+                                <Avatar user={author} width={48} />
+                            </Link>
                             <div className='flex-col'>
                                 <h1 className='text-base font-bold'>
                                     {author.full_name}
