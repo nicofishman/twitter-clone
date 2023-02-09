@@ -18,6 +18,7 @@ import fire from '../assets/icons/svg/fire.svg';
 import gallery from '../assets/icons/svg/gallery.svg';
 import gif from '../assets/icons/svg/gif.svg';
 import globe from '../assets/icons/svg/globe.svg';
+import google from '../assets/icons/svg/google.svg';
 import hashtag from '../assets/icons/svg/hashtag.svg';
 import hashtagFill from '../assets/icons/svg/hashtag_fill.svg';
 import heart from '../assets/icons/svg/heart.svg';
@@ -83,6 +84,7 @@ export const Icons = {
     gallery: gallery,
     gif: gif,
     globe: globe,
+    google: google,
     hashtag: hashtag,
     hashtagFill: hashtagFill,
     heart: heart,
@@ -125,5 +127,5 @@ export const Icons = {
     trash: trash,
     twitter: twitter,
     unfollow: unfollow,
-    video: video
+    video: video,
 } as const;

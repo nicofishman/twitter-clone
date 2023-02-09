@@ -263,7 +263,7 @@ const Sidebar: FC<SidebarProps> = () => {
                             onClick={handleSignIn}
                         >
                             <NavButton>
-                                <Icon name="person" />
+                                <Icon name="google" />
                                 <span className="text-xl">
                                     Login with google
                                 </span>
