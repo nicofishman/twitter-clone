@@ -55,7 +55,9 @@ const Tuit = memo(
                             {isComment && (
                                 <div className='-mt-4 h-4 w-0.5 bg-textGray' />
                             )}
-                            <Avatar user={tuit.author} width={48} />
+                            <Link href={`/${tuit.author.username}`}>
+                                <Avatar user={tuit.author} width={48} />
+                            </Link>
                             {displaysComments && (
                                 <div className='mt-0.5 h-full w-0.5 flex-1 rounded-t-full bg-textGray' />
                             )}
