@@ -51,32 +51,32 @@ const DropdownThreeDots: FC<DropdownThreeDotsProps> = ({
                     userId: tuit?.authorId,
                     id: tuit.id,
                 }),
-            icon: <Icon className="w-5 text-red-500" name="trash" />,
+            icon: <Icon className='w-5 text-red-500' name='trash' />,
         },
         {
             id: 'add_to_list',
             label: `Add/Remove @${tuit.author.username} from Lists`,
             onClick: () =>
                 console.log(`Add/Remove @${tuit.author.username} from Lists`),
-            icon: <Icon className="w-5 text-white" name="addToList" />,
+            icon: <Icon className='w-5 text-white' name='addToList' />,
         },
         {
             id: 'change_who_can_reply',
             label: 'Change who can reply',
             onClick: () => console.log('Change who can reply'),
-            icon: <Icon className="w-5 text-white" name="comment" />,
+            icon: <Icon className='w-5 text-white' name='comment' />,
         },
         {
             id: 'embed',
             label: 'Embed Tweet',
             onClick: () => console.log('Embed Tweet'),
-            icon: <Icon className="w-5 text-white" name="embed" />,
+            icon: <Icon className='w-5 text-white' name='embed' />,
         },
         {
             id: 'view_analytics',
             label: 'View Tweet analytics',
             onClick: () => console.log('View Tweet analytics'),
-            icon: <Icon className="w-5 text-white" name="analytics" />,
+            icon: <Icon className='w-5 text-white' name='analytics' />,
         },
     ];
     const otherDropdownItems: DropdownItems[] = [
@@ -84,44 +84,44 @@ const DropdownThreeDots: FC<DropdownThreeDotsProps> = ({
             id: 'notinterested',
             label: 'Not interested in this Tweet',
             onClick: () => console.log('Not interested in this Tweet'),
-            icon: <Icon className="w-5 text-white" name="notInterested" />,
+            icon: <Icon className='w-5 text-white' name='notInterested' />,
         },
         {
             id: 'unfollow',
             label: `Unfollow @${tuit.author.username}`,
             onClick: () => console.log(`Unfollow @${tuit.author.username}`),
-            icon: <Icon className="w-5 text-white" name="unfollow" />,
+            icon: <Icon className='w-5 text-white' name='unfollow' />,
         },
         {
             id: 'add_to_list',
             label: `Add/Remove @${tuit.author.username} from Lists`,
             onClick: () =>
                 console.log(`Add/Remove @${tuit.author.username} from Lists`),
-            icon: <Icon className="w-5 text-white" name="addToList" />,
+            icon: <Icon className='w-5 text-white' name='addToList' />,
         },
         {
             id: 'mute',
             label: `Mute @${tuit.author.username}`,
             onClick: () => console.log(`Mute @${tuit.author.username}`),
-            icon: <Icon className="w-5 text-white" name="mute" />,
+            icon: <Icon className='w-5 text-white' name='mute' />,
         },
         {
             id: 'block',
             label: `Block @${tuit.author.username}`,
             onClick: () => console.log(`Block @${tuit.author.username}`),
-            icon: <Icon className="w-5 text-white" name="block" />,
+            icon: <Icon className='w-5 text-white' name='block' />,
         },
         {
             id: 'embed',
             label: 'Embed Tweet',
             onClick: () => console.log('Embed Tweet'),
-            icon: <Icon className="w-5 text-white" name="embed" />,
+            icon: <Icon className='w-5 text-white' name='embed' />,
         },
         {
             id: 'report',
             label: 'Report Tweet',
             onClick: () => console.log('Report Tweet'),
-            icon: <Icon className="w-5 text-white" name="report" />,
+            icon: <Icon className='w-5 text-white' name='report' />,
         },
     ];
 
@@ -131,11 +131,11 @@ const DropdownThreeDots: FC<DropdownThreeDotsProps> = ({
                 <ThreeDotsButton hasDropdown />
             </DropdownMenuTrigger>
             <DropdownMenuContent
-                align="end"
-                className="mx-2 min-w-[350px] max-w-[calc(100%-8px)]"
+                align='end'
+                className='mx-2 min-w-[350px] max-w-[calc(100%-8px)]'
                 onClick={(e) => e.preventDefault()}
             >
-                <div className="flex flex-col">
+                <div className='flex flex-col'>
                     {(isSelfUser ? selfDropdownItems : otherDropdownItems).map(
                         (item) => (
                             <MyDropdownItem key={item.id} item={item} />
@@ -152,7 +152,7 @@ export default DropdownThreeDots;
 const MyDropdownItem = memo(({ item }: { item: DropdownItems }) => {
     return (
         <DropdownMenuItem
-            className="py-3 px-4 transition-colors focus:bg-white/[0.06]"
+            className='py-3 px-4 transition-colors focus:bg-white/[0.06]'
             onClick={item.onClick}
         >
             <button
@@ -167,7 +167,7 @@ const MyDropdownItem = memo(({ item }: { item: DropdownItems }) => {
                 )}
             >
                 {item.icon}
-                <span className="break-words leading-5">{item.label}</span>
+                <span className='break-words leading-5'>{item.label}</span>
             </button>
         </DropdownMenuItem>
     );

@@ -12,7 +12,7 @@ interface CommentsListProps {
 const CommentsList = ({ comments }: CommentsListProps) => {
     if (!comments) {
         return (
-            <div className="my-5 flex w-full justify-center">
+            <div className='my-5 flex w-full justify-center'>
                 <Loader />
             </div>
         );

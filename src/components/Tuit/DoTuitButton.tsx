@@ -26,7 +26,7 @@ const DoTuitButton = ({
             disabled={tuitContent.length === 0}
             onClick={doTuit}
         >
-            <span className="mx-3 text-base font-bold text-white">
+            <span className='mx-3 text-base font-bold text-white'>
                 {children}
             </span>
         </button>

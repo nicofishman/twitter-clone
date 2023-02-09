@@ -31,10 +31,10 @@ const WriteTuitBox: FC<WriteTuitBoxProps> = () => {
     }, [createTuitMutation, tuitContent, user.id]);
 
     return (
-        <div className="flex w-full gap-x-3 border-x border-b border-borderGray px-4 pt-1">
+        <div className='flex w-full gap-x-3 border-x border-b border-borderGray px-4 pt-1'>
             <Avatar user={user} width={48} />
-            <div className="flex flex-1 flex-col">
-                <div className="py-3">
+            <div className='flex flex-1 flex-col'>
+                <div className='py-3'>
                     <TuitTextarea
                         content={tuitContent}
                         doTuit={doTuit}

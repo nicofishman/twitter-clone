@@ -15,8 +15,8 @@ const ThreeDotsButton: FC<ThreeDotsButtonProps> = ({
     return (
         <GroupTuitButton className={className} hasDropdown={hasDropdown}>
             <Icon
-                className="w-5 text-textGray group-hover:text-twitterBlue"
-                name="threeDots"
+                className='w-5 text-textGray group-hover:text-twitterBlue'
+                name='threeDots'
             />
         </GroupTuitButton>
     );

@@ -12,9 +12,9 @@ const BottomSidebar: FC<BottomSidebarProps> = () => {
     const router = useRouter();
 
     return (
-        <nav className="sticky bottom-0 flex h-14 w-full justify-around border-t border-t-borderGray bg-black xxs:hidden">
+        <nav className='sticky bottom-0 flex h-14 w-full justify-around border-t border-t-borderGray bg-black xxs:hidden'>
             <Link
-                className="group flex w-full justify-center xl:justify-start"
+                className='group flex w-full justify-center xl:justify-start'
                 href={'/'}
             >
                 <NavButton>
@@ -24,7 +24,7 @@ const BottomSidebar: FC<BottomSidebarProps> = () => {
                 </NavButton>
             </Link>
             <Link
-                className="group flex w-full justify-center xl:justify-start"
+                className='group flex w-full justify-center xl:justify-start'
                 href={'/explore'}
             >
                 <NavButton>
@@ -38,7 +38,7 @@ const BottomSidebar: FC<BottomSidebarProps> = () => {
                 </NavButton>
             </Link>
             <Link
-                className="group flex w-full justify-center xl:justify-start"
+                className='group flex w-full justify-center xl:justify-start'
                 href={'/notifications'}
             >
                 <NavButton>
@@ -52,7 +52,7 @@ const BottomSidebar: FC<BottomSidebarProps> = () => {
                 </NavButton>
             </Link>
             <Link
-                className="group flex w-full justify-center xl:justify-start"
+                className='group flex w-full justify-center xl:justify-start'
                 href={'/messages'}
             >
                 <NavButton>

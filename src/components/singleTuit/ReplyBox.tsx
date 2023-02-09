@@ -47,59 +47,59 @@ const ReplyBox = ({ tuitId }: ReplyBoxProps) => {
     };
 
     return (
-        <div className="flex min-h-[84px] w-full border-b border-borderGray px-4 pt-3">
-            <div className="h-full">
+        <div className='flex min-h-[84px] w-full border-b border-borderGray px-4 pt-3'>
+            <div className='h-full'>
                 <Avatar user={user} width={48} />
             </div>
-            <div className="ml-3 grow">
+            <div className='ml-3 grow'>
                 <div
                     className={clsx('flex h-full', {
                         'mb-3 flex-col': isTextareaFocused,
                     })}
                 >
                     <TuitTextarea
-                        className="min-h-[52px] pt-3"
+                        className='min-h-[52px] pt-3'
                         content={replyContent}
                         doTuit={handleReply}
-                        placeholder="Tweet your reply"
+                        placeholder='Tweet your reply'
                         setContent={setReplyContent}
                         onBlur={() => setIsTextareaFocused(false)}
                         onFocus={() => setIsTextareaFocused(true)}
                     />
-                    <div className="flex items-center justify-between">
+                    <div className='flex items-center justify-between'>
                         <div
                             className={clsx('flex gap-x-2', {
                                 'mt-3 hidden w-full': !isTextareaFocused,
                                 'w-fit': isTextareaFocused,
                             })}
                         >
-                            <TuitButton tooltip="Media">
+                            <TuitButton tooltip='Media'>
                                 <Icon
-                                    className="w-5 text-twitterBlue"
-                                    name="gallery"
+                                    className='w-5 text-twitterBlue'
+                                    name='gallery'
                                 />
                             </TuitButton>
-                            <TuitButton tooltip="GIF">
+                            <TuitButton tooltip='GIF'>
                                 <Icon
-                                    className="w-5 text-twitterBlue"
-                                    name="gif"
+                                    className='w-5 text-twitterBlue'
+                                    name='gif'
                                 />
                             </TuitButton>
-                            <TuitButton tooltip="Emoji">
+                            <TuitButton tooltip='Emoji'>
                                 <Icon
-                                    className="w-5 text-twitterBlue"
-                                    name="emoji"
+                                    className='w-5 text-twitterBlue'
+                                    name='emoji'
                                 />
                             </TuitButton>
-                            <TuitButton tooltip="Tag Location">
+                            <TuitButton tooltip='Tag Location'>
                                 <Icon
-                                    className="w-5 text-twitterBlue"
-                                    name="location"
+                                    className='w-5 text-twitterBlue'
+                                    name='location'
                                 />
                             </TuitButton>
                         </div>
                         <DoTuitButton
-                            className="py-[7px] px-4"
+                            className='py-[7px] px-4'
                             doTuit={handleReply}
                             tuitContent={replyContent}
                         >

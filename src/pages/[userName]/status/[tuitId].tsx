@@ -35,11 +35,11 @@ const TuitPage: NextPage<TuitPageProps> = ({ tuitId }) => {
 
     return (
         <Layout>
-            <header className="flex w-full gap-x-6 border-b border-borderGray px-2 py-3">
+            <header className='flex w-full gap-x-6 border-b border-borderGray px-2 py-3'>
                 <TuitButton onClick={() => router.back()}>
-                    <Icon className="w-5" name="leftArrow" />
+                    <Icon className='w-5' name='leftArrow' />
                 </TuitButton>
-                <h1 className="text-2xl font-bold">Tweet</h1>
+                <h1 className='text-2xl font-bold'>Tweet</h1>
             </header>
             {tuitData && (
                 <>

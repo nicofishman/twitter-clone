@@ -58,17 +58,17 @@ const Sidebar: FC<SidebarProps> = () => {
     }, [doesUserExist, router, router.query.signedIn]);
 
     return (
-        <nav className="flex h-full w-[88px] flex-col items-start justify-between px-3 xl:w-[275px]">
+        <nav className='flex h-full w-[88px] flex-col items-start justify-between px-3 xl:w-[275px]'>
             {session ? (
                 <>
-                    <div className="flex w-full flex-col items-center xl:items-start">
-                        <h1 className="py-0.5">
+                    <div className='flex w-full flex-col items-center xl:items-start'>
+                        <h1 className='py-0.5'>
                             <Link href={'/'}>
-                                <Icon className="m-2" name="twitter" />
+                                <Icon className='m-2' name='twitter' />
                             </Link>
                         </h1>
                         <Link
-                            className="group flex w-full justify-center xl:justify-start"
+                            className='group flex w-full justify-center xl:justify-start'
                             href={'/'}
                         >
                             <NavButton>
@@ -91,7 +91,7 @@ const Sidebar: FC<SidebarProps> = () => {
                         </Link>
 
                         <Link
-                            className="group flex w-full justify-center xl:justify-start"
+                            className='group flex w-full justify-center xl:justify-start'
                             href={'/explore'}
                         >
                             <NavButton>
@@ -115,7 +115,7 @@ const Sidebar: FC<SidebarProps> = () => {
                         </Link>
 
                         <Link
-                            className="group flex w-full justify-center xl:justify-start"
+                            className='group flex w-full justify-center xl:justify-start'
                             href={'/notifications'}
                         >
                             <NavButton>
@@ -139,7 +139,7 @@ const Sidebar: FC<SidebarProps> = () => {
                         </Link>
 
                         <Link
-                            className="group flex w-full justify-center xl:justify-start"
+                            className='group flex w-full justify-center xl:justify-start'
                             href={'/messages'}
                         >
                             <NavButton>
@@ -163,7 +163,7 @@ const Sidebar: FC<SidebarProps> = () => {
                         </Link>
 
                         <Link
-                            className="group flex w-full justify-center xl:justify-start"
+                            className='group flex w-full justify-center xl:justify-start'
                             href={'/bookmarks'}
                         >
                             <NavButton>
@@ -187,7 +187,7 @@ const Sidebar: FC<SidebarProps> = () => {
                         </Link>
 
                         <Link
-                            className="group flex w-full justify-center xl:justify-start"
+                            className='group flex w-full justify-center xl:justify-start'
                             href={'/lists'}
                         >
                             <NavButton>
@@ -211,7 +211,7 @@ const Sidebar: FC<SidebarProps> = () => {
                         </Link>
 
                         <Link
-                            className="group flex w-full justify-center xl:justify-start"
+                            className='group flex w-full justify-center xl:justify-start'
                             href={`/${session.user?.id}`}
                         >
                             <NavButton>
@@ -233,22 +233,22 @@ const Sidebar: FC<SidebarProps> = () => {
                                 </span>
                             </NavButton>
                         </Link>
-                        <Link className="group" href="/">
+                        <Link className='group' href='/'>
                             <NavButton>
-                                <Icon name="threeDotsCircle" />
-                                <span className="text-xl">More</span>
+                                <Icon name='threeDotsCircle' />
+                                <span className='text-xl'>More</span>
                             </NavButton>
                         </Link>
 
                         {/* Tweet Button */}
                         <NavButton
-                            className="aspect-square !w-full justify-center bg-twitterBlue text-lightGray hover:bg-twitterBlueHover xl:aspect-auto"
+                            className='aspect-square !w-full justify-center bg-twitterBlue text-lightGray hover:bg-twitterBlueHover xl:aspect-auto'
                             onClick={() => modalsStore.set('writeTuit', true)}
                         >
-                            <span className="text-lg font-bold">Tweet</span>
+                            <span className='text-lg font-bold'>Tweet</span>
                             <Icon
-                                className="block xl:hidden"
-                                name="featherAdd"
+                                className='block xl:hidden'
+                                name='featherAdd'
                             />
                         </NavButton>
                     </div>
@@ -256,15 +256,15 @@ const Sidebar: FC<SidebarProps> = () => {
                 </>
             ) : (
                 <>
-                    <div className="flex-1" />
-                    <div className="flex w-full flex-col items-center self-end xl:items-start">
+                    <div className='flex-1' />
+                    <div className='flex w-full flex-col items-center self-end xl:items-start'>
                         <button
-                            className="group flex w-full justify-center xl:justify-start"
+                            className='group flex w-full justify-center xl:justify-start'
                             onClick={handleSignIn}
                         >
                             <NavButton>
-                                <Icon name="google" />
-                                <span className="text-xl">
+                                <Icon name='google' />
+                                <span className='text-xl'>
                                     Login with google
                                 </span>
                             </NavButton>
@@ -281,18 +281,23 @@ export default Sidebar;
 interface NavButtonProps extends React.HTMLAttributes<HTMLDivElement> {
     children: React.ReactNode;
 }
-export const NavButton = ({children, className, ...props}: NavButtonProps) => {
+export const NavButton = ({
+    children,
+    className,
+    ...props
+}: NavButtonProps) => {
     return (
-        <div 
-        {...props} 
-        className={
-            cn('flex items-center p-3 rounded-full w-fit my-1.5',
-            'xl:items-start',
-            'group-hover:bg-lightGray/10 transition-colors duraiton-200 cursor-pointer',
-            '[&>span]:px-5 [&>span]:xl:block [&>span]:hidden', className)
-        }
+        <div
+            {...props}
+            className={cn(
+                'my-1.5 flex w-fit items-center rounded-full p-3',
+                'xl:items-start',
+                'duraiton-200 cursor-pointer transition-colors group-hover:bg-lightGray/10',
+                '[&>span]:hidden [&>span]:px-5 [&>span]:xl:block',
+                className,
+            )}
         >
-    {children}
-    </div>
-        );
-}
+            {children}
+        </div>
+    );
+};

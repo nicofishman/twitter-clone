@@ -52,8 +52,8 @@ export const tuitRouter = createTRPCRouter({
                     comments: {
                         include: {
                             _count: true,
-                            likes: true
-                        }
+                            likes: true,
+                        },
                     },
                     _count: {
                         select: {
@@ -90,9 +90,9 @@ export const tuitRouter = createTRPCRouter({
                             author: true,
                             likes: true,
                         },
-                    }
-                }
-            })
+                    },
+                },
+            });
 
             return comments ?? undefined;
         }),
@@ -170,25 +170,25 @@ export const tuitRouter = createTRPCRouter({
                     likes:
                         input.action === 'like'
                             ? {
-                                connectOrCreate: {
-                                    create: {
-                                        id: `${input.tuitId}-${input.userId}`,
-                                        author: {
-                                            connect: {
-                                                id: input.userId,
-                                            },
-                                        },
-                                    },
-                                    where: {
-                                        id: `${input.tuitId}-${input.userId}`,
-                                    },
-                                },
-                            }
+                                  connectOrCreate: {
+                                      create: {
+                                          id: `${input.tuitId}-${input.userId}`,
+                                          author: {
+                                              connect: {
+                                                  id: input.userId,
+                                              },
+                                          },
+                                      },
+                                      where: {
+                                          id: `${input.tuitId}-${input.userId}`,
+                                      },
+                                  },
+                              }
                             : {
-                                delete: {
-                                    id: `${input.tuitId}-${input.userId}`,
-                                },
-                            },
+                                  delete: {
+                                      id: `${input.tuitId}-${input.userId}`,
+                                  },
+                              },
                 },
                 include: {
                     likes: true,

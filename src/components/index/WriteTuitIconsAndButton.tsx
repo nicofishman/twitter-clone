@@ -15,57 +15,57 @@ const WriteTuitIconsAndButton: FC<WriteTuitIconsAndButtonProps> = ({
     tuitContent,
 }) => {
     return (
-        <div className="mb-2 flex w-full items-center justify-between">
-            <div className="flex items-center gap-x-1 [&>div]:!p-0">
+        <div className='mb-2 flex w-full items-center justify-between'>
+            <div className='flex items-center gap-x-1 [&>div]:!p-0'>
                 {/* icons */}
-                <GroupTuitButton tooltip="media">
+                <GroupTuitButton tooltip='media'>
                     <Icon
-                        className="text-twitterBlue transition-colors duration-200 group-hover:text-twitterBlueHover"
+                        className='text-twitterBlue transition-colors duration-200 group-hover:text-twitterBlueHover'
                         height={20}
-                        name="gallery"
+                        name='gallery'
                         width={20}
                     />
                 </GroupTuitButton>
-                <GroupTuitButton tooltip="GIF">
+                <GroupTuitButton tooltip='GIF'>
                     <Icon
-                        className="text-twitterBlue transition-colors duration-200 group-hover:text-twitterBlueHover"
+                        className='text-twitterBlue transition-colors duration-200 group-hover:text-twitterBlueHover'
                         height={20}
-                        name="gif"
+                        name='gif'
                         width={20}
                     />
                 </GroupTuitButton>
-                <GroupTuitButton className="hidden xxs:block" tooltip="poll">
+                <GroupTuitButton className='hidden xxs:block' tooltip='poll'>
                     <Icon
-                        className="text-twitterBlue transition-colors duration-200 group-hover:text-twitterBlueHover"
+                        className='text-twitterBlue transition-colors duration-200 group-hover:text-twitterBlueHover'
                         height={20}
-                        name="poll"
+                        name='poll'
                         width={20}
                     />
                 </GroupTuitButton>
-                <GroupTuitButton tooltip="emoji">
+                <GroupTuitButton tooltip='emoji'>
                     <Icon
-                        className="text-twitterBlue transition-colors duration-200 group-hover:text-twitterBlueHover"
+                        className='text-twitterBlue transition-colors duration-200 group-hover:text-twitterBlueHover'
                         height={20}
-                        name="emoji"
+                        name='emoji'
                         width={20}
                     />
                 </GroupTuitButton>
                 <GroupTuitButton
-                    className="hidden xxs:block"
-                    tooltip="schedule"
+                    className='hidden xxs:block'
+                    tooltip='schedule'
                 >
                     <Icon
-                        className="text-twitterBlue transition-colors duration-200 group-hover:text-twitterBlueHover"
+                        className='text-twitterBlue transition-colors duration-200 group-hover:text-twitterBlueHover'
                         height={20}
-                        name="schedule"
+                        name='schedule'
                         width={20}
                     />
                 </GroupTuitButton>
-                <GroupTuitButton tooltip="tag location">
+                <GroupTuitButton tooltip='tag location'>
                     <Icon
-                        className="text-twitterBlue transition-colors duration-200 group-hover:text-twitterBlueHover"
+                        className='text-twitterBlue transition-colors duration-200 group-hover:text-twitterBlueHover'
                         height={20}
-                        name="location"
+                        name='location'
                         width={20}
                     />
                 </GroupTuitButton>

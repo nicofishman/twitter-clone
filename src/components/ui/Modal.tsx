@@ -24,17 +24,17 @@ const Modal: FC<ModalProps> = ({
 
     return (
         <Transition appear as={Fragment} show={isOpen}>
-            <Dialog as="div" className="relative z-10" onClose={closeModal}>
+            <Dialog as='div' className='relative z-10' onClose={closeModal}>
                 <Transition.Child
                     as={Fragment}
-                    enter="ease-out duration-300"
-                    enterFrom="opacity-0"
-                    enterTo="opacity-100"
-                    leave="ease-in duration-200"
-                    leaveFrom="opacity-100"
-                    leaveTo="opacity-0"
+                    enter='ease-out duration-300'
+                    enterFrom='opacity-0'
+                    enterTo='opacity-100'
+                    leave='ease-in duration-200'
+                    leaveFrom='opacity-100'
+                    leaveTo='opacity-0'
                 >
-                    <div className="fixed inset-0 bg-modalBackground" />
+                    <div className='fixed inset-0 bg-modalBackground' />
                 </Transition.Child>
 
                 <div
@@ -45,15 +45,15 @@ const Modal: FC<ModalProps> = ({
                             : positionClasses['center'],
                     )}
                 >
-                    <div className="flex min-h-full items-center justify-center p-4 text-center">
+                    <div className='flex min-h-full items-center justify-center p-4 text-center'>
                         <Transition.Child
                             as={Fragment}
-                            enter="ease-out duration-300"
-                            enterFrom="opacity-0 scale-95"
-                            enterTo="opacity-100 scale-100"
-                            leave="ease-in duration-200"
-                            leaveFrom="opacity-100 scale-100"
-                            leaveTo="opacity-0 scale-95"
+                            enter='ease-out duration-300'
+                            enterFrom='opacity-0 scale-95'
+                            enterTo='opacity-100 scale-100'
+                            leave='ease-in duration-200'
+                            leaveFrom='opacity-100 scale-100'
+                            leaveTo='opacity-0 scale-95'
                         >
                             <Dialog.Panel
                                 className={clsx(

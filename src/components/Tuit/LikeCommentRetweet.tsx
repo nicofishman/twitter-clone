@@ -120,25 +120,25 @@ const LikeCommentRetweet: FC<LikeCommentRetweetProps> = ({
 
     return (
         <div className={clsx(className, 'my-1.5 flex w-full justify-between')}>
-            <div className="group flex items-center gap-x-px">
+            <div className='group flex items-center gap-x-px'>
                 <TuitButton
-                    tooltip="reply"
+                    tooltip='reply'
                     onClick={(e) => handleOpenReplyModal(e)}
                 >
                     <Icon
-                        className="w-5 text-textGray transition-colors duration-200 group-hover:text-twitterBlue"
-                        name="comment"
+                        className='w-5 text-textGray transition-colors duration-200 group-hover:text-twitterBlue'
+                        name='comment'
                     />
                 </TuitButton>
-                <span className="text-sm text-textGray group-hover:text-twitterBlue">
+                <span className='text-sm text-textGray group-hover:text-twitterBlue'>
                     {tuit._count.comments > 0 && tuit._count.comments}
                 </span>
             </div>
-            <div className="flex items-center gap-x-px">
-                <GroupTuitButton tooltip="retweet">
+            <div className='flex items-center gap-x-px'>
+                <GroupTuitButton tooltip='retweet'>
                     <Icon
-                        className="w-5 text-textGray transition-colors duration-200 group-hover:text-greenRetweet"
-                        name="retweet"
+                        className='w-5 text-textGray transition-colors duration-200 group-hover:text-greenRetweet'
+                        name='retweet'
                     />
                 </GroupTuitButton>
             </div>

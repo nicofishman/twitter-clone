@@ -41,27 +41,27 @@ const TuitModal: FC<TuitModalProps> = () => {
         <Modal
             closeModal={() => modalsStore.set('writeTuit', false)}
             isOpen={isOpen}
-            position="top"
+            position='top'
         >
-            <div className="flex h-full min-h-[314px] flex-col">
+            <div className='flex h-full min-h-[314px] flex-col'>
                 <button
-                    className="w-fit"
+                    className='w-fit'
                     onClick={() => modalsStore.set('writeTuit', false)}
                 >
-                    <Icon className="w-6 p-4 text-white" name="cross" />
+                    <Icon className='w-6 p-4 text-white' name='cross' />
                 </button>
-                <div className="flex w-full gap-x-3 px-4">
+                <div className='flex w-full gap-x-3 px-4'>
                     <Avatar user={user} width={48} />
-                    <div className="flex w-full flex-col">
-                        <div className="mt-9 mb-16 flex w-full flex-col gap-y-4">
+                    <div className='flex w-full flex-col'>
+                        <div className='mt-9 mb-16 flex w-full flex-col gap-y-4'>
                             <TuitTextarea
-                                className="min-h-[120px] w-full border-b border-borderGray pb-4"
+                                className='min-h-[120px] w-full border-b border-borderGray pb-4'
                                 content={tuitContent}
                                 doTuit={doTuit}
                                 setContent={setTuitContent}
                             />
                         </div>
-                        <div className="absolute bottom-2 right-4 left-[70px] mt-4">
+                        <div className='absolute bottom-2 right-4 left-[70px] mt-4'>
                             <WriteTuitIconsAndButton
                                 doTuit={doTuit}
                                 tuitContent={tuitContent}

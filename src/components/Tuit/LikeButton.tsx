@@ -19,8 +19,8 @@ const LikeButton: FC<LikeButtonProps> = ({ doLike, isLiked, likes }) => {
     };
 
     return (
-        <div className="group flex items-center gap-x-px">
-            <TuitButton tooltip="like" onClick={(e) => handleLike(e)}>
+        <div className='group flex items-center gap-x-px'>
+            <TuitButton tooltip='like' onClick={(e) => handleLike(e)}>
                 <Icon
                     className={clsx(
                         'w-5 transition-colors duration-200 group-hover:text-redLike',
@@ -29,7 +29,7 @@ const LikeButton: FC<LikeButtonProps> = ({ doLike, isLiked, likes }) => {
                     name={isLiked ? 'heartFill' : 'heart'}
                 />
             </TuitButton>
-            <span className="text-sm text-textGray group-hover:text-redLike">
+            <span className='text-sm text-textGray group-hover:text-redLike'>
                 {likes > 0 && likes}
             </span>
         </div>

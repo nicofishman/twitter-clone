@@ -51,27 +51,27 @@ const Tuit = memo(
                             },
                         )}
                     >
-                        <div className="relative flex flex-col items-center">
+                        <div className='relative flex flex-col items-center'>
                             {isComment && (
-                                <div className="-mt-4 h-4 w-0.5 bg-textGray" />
+                                <div className='-mt-4 h-4 w-0.5 bg-textGray' />
                             )}
                             <Avatar user={tuit.author} width={48} />
                             {displaysComments && (
-                                <div className="mt-0.5 h-full w-0.5 flex-1 rounded-t-full bg-textGray" />
+                                <div className='mt-0.5 h-full w-0.5 flex-1 rounded-t-full bg-textGray' />
                             )}
                         </div>
-                        <div className="flex flex-1 flex-col">
-                            <div className="flex w-full items-center justify-between">
-                                <div className="flex flex-1 gap-x-1 whitespace-nowrap">
-                                    <h3 className="font-bold">
+                        <div className='flex flex-1 flex-col'>
+                            <div className='flex w-full items-center justify-between'>
+                                <div className='flex flex-1 gap-x-1 whitespace-nowrap'>
+                                    <h3 className='font-bold'>
                                         {tuit.author.full_name}
                                     </h3>
-                                    <p className="w-10 flex-1 truncate text-textGray">
+                                    <p className='w-10 flex-1 truncate text-textGray'>
                                         <span>@{tuit.author.username}</span>
-                                        <span className="hidden sm:inline">
+                                        <span className='hidden sm:inline'>
                                             {' · '}
                                         </span>
-                                        <span className="hidden sm:inline">
+                                        <span className='hidden sm:inline'>
                                             {formatDistanceToNow(
                                                 tuit.createdAt,
                                             )}
@@ -83,9 +83,9 @@ const Tuit = memo(
                                     tuit={tuit}
                                 />
                             </div>
-                            <p className="whitespace-pre">{tuit.body}</p>
+                            <p className='whitespace-pre'>{tuit.body}</p>
                             <LikeCommentRetweet
-                                className="max-w-[300px]"
+                                className='max-w-[300px]'
                                 isFeed={isFeed}
                                 tuit={tuit}
                                 userId={user.id}
@@ -141,7 +141,7 @@ export const TuitButton: FC<TuitButtonProps> = ({
                     {children}
                 </Container>
             </TooltipTrigger>
-            <TooltipContent side="bottom">{tooltip}</TooltipContent>
+            <TooltipContent side='bottom'>{tooltip}</TooltipContent>
         </Tooltip>
     ) : (
         // @ts-ignore
@@ -174,7 +174,7 @@ export const GroupTuitButton = ({
     return (
         <div className={clsx('group', className)}>
             <TuitButton
-                className="group-hover:bg-lightGray/10"
+                className='group-hover:bg-lightGray/10'
                 hasDropdown={hasDropdown}
                 tooltip={tooltip}
                 {...rest}

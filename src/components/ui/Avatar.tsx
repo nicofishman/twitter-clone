@@ -14,7 +14,7 @@ const Avatar: FC<AvatarProps> = ({ width, user, ...rest }) => {
     if (user.id === '') {
         return (
             <div
-                className="aspect-square h-fit rounded-full bg-gray-300"
+                className='aspect-square h-fit rounded-full bg-gray-300'
                 style={{ width: w, height: w }}
             />
         );
@@ -23,7 +23,7 @@ const Avatar: FC<AvatarProps> = ({ width, user, ...rest }) => {
     return (
         <Image
             alt={`${user.username}'s profile picture`}
-            className="aspect-square h-fit rounded-full"
+            className='aspect-square h-fit rounded-full'
             height={w}
             src={user.image ?? `https://via.placeholder.com/${w}`}
             width={w}

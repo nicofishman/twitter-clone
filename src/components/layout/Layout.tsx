@@ -36,7 +36,7 @@ const Layout: FC<LayoutProps> = ({ children }) => {
                 isTuitModalOpen ? 'overflow-y-hidden' : 'overflow-y-auto',
             )}
         >
-            <div className="sticky left-0 top-0 hidden h-screen min-w-[68px] flex-1 justify-end xxs:flex">
+            <div className='sticky left-0 top-0 hidden h-screen min-w-[68px] flex-1 justify-end xxs:flex'>
                 <Sidebar />
             </div>
             <SlideNavbar open={isSlideNavbarOpen} setOpen={openSlideNavbar}>
@@ -49,7 +49,7 @@ const Layout: FC<LayoutProps> = ({ children }) => {
             >
                 {children}
             </div>
-            <div className="sticky left-0 top-0 h-full min-w-0 flex-1 overflow-hidden">
+            <div className='sticky left-0 top-0 h-full min-w-0 flex-1 overflow-hidden'>
                 SIDEBAR
             </div>
 

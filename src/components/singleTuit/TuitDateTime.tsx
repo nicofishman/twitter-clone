@@ -10,7 +10,7 @@ const TuitDateTime: FC<TuitDateTimeProps> = ({ date }) => {
     const formattedTime = format(date, 'h:mm a');
 
     return (
-        <p className="text-textGray">
+        <p className='text-textGray'>
             <span>{formattedTime}</span>
             {' · '}
             <span>{formattedDate}</span>
