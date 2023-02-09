@@ -21,7 +21,7 @@ const CommentsList = ({ comments }: CommentsListProps) => {
     return (
         <div>
             {comments?.comments.map((comment) => (
-                <Tuit key={comment.id} isComment tuit={comment} />
+                <Tuit key={comment.id} tuit={comment} />
             ))}
         </div>
     );
