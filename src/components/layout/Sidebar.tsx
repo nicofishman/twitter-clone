@@ -5,10 +5,10 @@ import clsx from 'clsx';
 import { signIn, useSession } from 'next-auth/react';
 
 import Icon from '@/components/ui/Icon';
-import { tw } from '@/utils/tw';
 import ProfileButton from '@/components/sidebar/ProfileButton';
 import { api } from '@/utils/api';
 import { globalUser } from '@/utils/globalState';
+import { cn } from '@/utils/cn';
 
 import { modalsStore } from './Layout';
 
@@ -278,9 +278,21 @@ const Sidebar: FC<SidebarProps> = () => {
 
 export default Sidebar;
 
-export const NavButton = tw.div`
-flex items-center p-3 rounded-full w-fit my-1.5
-xl:items-start
-group-hover:bg-lightGray/10 transition-colors duraiton-200 cursor-pointer
-[&>span]:px-5 [&>span]:xl:block [&>span]:hidden
-`;
+interface NavButtonProps extends React.HTMLAttributes<HTMLDivElement> {
+    children: React.ReactNode;
+}
+export const NavButton = ({children, className, ...props}: NavButtonProps) => {
+    return (
+        <div 
+        {...props} 
+        className={
+            cn('flex items-center p-3 rounded-full w-fit my-1.5',
+            'xl:items-start',
+            'group-hover:bg-lightGray/10 transition-colors duraiton-200 cursor-pointer',
+            '[&>span]:px-5 [&>span]:xl:block [&>span]:hidden', className)
+        }
+        >
+    {children}
+    </div>
+        );
+}

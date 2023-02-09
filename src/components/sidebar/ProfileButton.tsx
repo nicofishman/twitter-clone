@@ -13,7 +13,7 @@ const ProfileButton: FC<ProfileButtonProps> = () => {
 
     return (
         <div className="mb-3 w-full">
-            <NavButton className="!w-full !flex-wrap !justify-center !p-0 md:justify-between">
+            <NavButton className="!w-full items-center !flex-wrap !justify-center !p-0 md:justify-between">
                 <Avatar user={user} />
                 <div className="ml-3 hidden flex-col overflow-x-hidden xl:flex">
                     <span className="truncate pr-2 text-base font-bold">
@@ -24,7 +24,7 @@ const ProfileButton: FC<ProfileButtonProps> = () => {
                     </span>
                 </div>
                 <Icon
-                    className="hidden translate-y-1/4 xl:block"
+                    className="hidden translate-y-1/4 xl:block w-5"
                     name="threeDots"
                     onClick={() => signOut()}
                 />
