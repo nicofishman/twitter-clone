@@ -60,12 +60,15 @@ model VerificationToken {
 }
 
 model TwitterUser {
-    id          String  @id @default(cuid())
-    email       String  @unique
-    username    String  @unique
+    id          String    @id @default(cuid())
+    email       String    @unique
+    username    String    @unique
     full_name   String
     image       String
     description String?
+    birthDate   DateTime? @db.Date
+
+    createdAt DateTime @default(now()) @db.Date
 
     tuits Tuit[]
     likes Like[]
