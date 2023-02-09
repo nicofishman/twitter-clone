@@ -1,14 +1,15 @@
-import Link from 'next/link';
-import React, { FC, useEffect } from 'react';
-import { useRouter } from 'next/router';
 import clsx from 'clsx';
 import { signIn, useSession } from 'next-auth/react';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import React, { FC, useEffect } from 'react';
 
 import Icon from '@/components/ui/Icon';
-import ProfileButton from '@/components/sidebar/ProfileButton';
 import { api } from '@/utils/api';
-import { globalUser } from '@/utils/globalState';
 import { cn } from '@/utils/cn';
+import { globalUser } from '@/utils/globalState';
+
+import DropdownProfileButton from '../sidebar/DropdownProfileButton';
 
 import { modalsStore } from './Layout';
 
@@ -252,7 +253,9 @@ const Sidebar: FC<SidebarProps> = () => {
                             />
                         </NavButton>
                     </div>
-                    <ProfileButton />
+                    <div className='w-full'>
+                        <DropdownProfileButton />
+                    </div>
                 </>
             ) : (
                 <>
@@ -290,11 +293,11 @@ export const NavButton = ({
         <div
             {...props}
             className={cn(
+                className,
                 'my-1.5 flex w-fit items-center rounded-full p-3',
                 'xl:items-start',
                 'duraiton-200 cursor-pointer transition-colors group-hover:bg-lightGray/10',
                 '[&>span]:hidden [&>span]:px-5 [&>span]:xl:block',
-                className,
             )}
         >
             {children}

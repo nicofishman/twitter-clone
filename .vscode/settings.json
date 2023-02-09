@@ -1,3 +1,6 @@
 {
     "prettier.documentSelectors": ["**/*.svg"]
+    "[typescriptreact]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    }
 }
