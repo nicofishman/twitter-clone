@@ -69,4 +69,29 @@ export const userRouter = createTRPCRouter({
 
             return user;
         }),
+    update: publicProcedure
+        .input(
+            z.object({
+                id: z.string(),
+                full_name: z.string(),
+                username: z.string(),
+                birthDate: z.date(),
+                description: z.string().nullable(),
+            }),
+        )
+        .mutation(async ({ input, ctx }) => {
+            const user = await ctx.prisma.twitterUser.update({
+                where: {
+                    id: input.id,
+                },
+                data: {
+                    full_name: input.full_name,
+                    username: input.username,
+                    birthDate: input.birthDate,
+                    description: input.description,
+                },
+            });
+
+            return user;
+        }),
 });
