@@ -49,6 +49,19 @@ export const tuitRouter = createTRPCRouter({
                 include: {
                     author: true,
                     likes: true,
+                    replyTo: {
+                        include: {
+                            _count: {
+                                select: {
+                                    likes: true,
+                                    comments: true,
+                                },
+                            },
+                            author: true,
+                            likes: true,
+                            replyTo: true,
+                        },
+                    },
                     comments: {
                         include: {
                             _count: true,
@@ -81,6 +94,14 @@ export const tuitRouter = createTRPCRouter({
                     comments: {
                         include: {
                             _count: true,
+                            replyTo: {
+                                include: {
+                                    _count: true,
+                                    author: true,
+                                    replyTo: true,
+                                    likes: true,
+                                },
+                            },
                             comments: {
                                 include: {
                                     _count: true,
@@ -113,6 +134,19 @@ export const tuitRouter = createTRPCRouter({
                 include: {
                     author: true,
                     likes: true,
+                    replyTo: {
+                        include: {
+                            _count: {
+                                select: {
+                                    likes: true,
+                                    comments: true,
+                                },
+                            },
+                            author: true,
+                            likes: true,
+                            replyTo: true,
+                        },
+                    },
                     _count: {
                         select: {
                             likes: true,
@@ -124,6 +158,100 @@ export const tuitRouter = createTRPCRouter({
 
             return tuit;
         }),
+    getFeedByUsername: publicProcedure
+        .input(
+            z.object({
+                username: z.string().nullish(),
+            }),
+        )
+        .query(async ({ ctx, input }) => {
+            if (!input.username) {
+                return [];
+            }
+            const tuits = await ctx.prisma.tuit.findMany({
+                where: {
+                    author: {
+                        username: input.username,
+                    },
+                    replyToId: null,
+                },
+                include: {
+                    author: true,
+                    likes: true,
+                    replyTo: {
+                        include: {
+                            _count: {
+                                select: {
+                                    likes: true,
+                                    comments: true,
+                                },
+                            },
+                            author: true,
+                            likes: true,
+                            replyTo: true,
+                        },
+                    },
+                    _count: {
+                        select: {
+                            likes: true,
+                            comments: true,
+                        },
+                    },
+                },
+                orderBy: {
+                    createdAt: 'desc',
+                },
+            });
+
+            return tuits;
+        }),
+    getWithRepliesByUsername: publicProcedure
+        .input(
+            z.object({
+                username: z.string().nullish(),
+            }),
+        )
+        .query(async ({ ctx, input }) => {
+            if (!input.username) {
+                return [];
+            }
+            const tuits = await ctx.prisma.tuit.findMany({
+                where: {
+                    author: {
+                        username: input.username,
+                    },
+                },
+                include: {
+                    author: true,
+                    likes: true,
+                    _count: {
+                        select: {
+                            likes: true,
+                            comments: true,
+                        },
+                    },
+                    replyTo: {
+                        include: {
+                            _count: {
+                                select: {
+                                    likes: true,
+                                    comments: true,
+                                },
+                            },
+                            author: true,
+                            likes: true,
+                            replyTo: true,
+                        },
+                    },
+                },
+                orderBy: {
+                    createdAt: 'desc',
+                },
+            });
+
+            return tuits;
+        }),
+
     makeComment: protectedProcedure
         .input(
             z.object({

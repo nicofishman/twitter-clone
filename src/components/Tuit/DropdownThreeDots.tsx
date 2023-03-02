@@ -33,6 +33,9 @@ const DropdownThreeDots: FC<DropdownThreeDotsProps> = ({
     const deleteTuitMutation = api.tuit.delete.useMutation({
         onSuccess: () => {
             utils.tuit.get.invalidate();
+            utils.tuit.getFeedByUsername.invalidate({
+                username: tuit.author.username,
+            });
             utils.tuit.getById.invalidate({
                 id: tuit.replyToId || tuit.id,
             });

@@ -2,6 +2,7 @@ import clsx from 'clsx';
 import { formatDistanceToNow } from 'date-fns';
 import Link from 'next/link';
 import React, { FC, ReactNode, memo } from 'react';
+import { useRouter } from 'next/router';
 
 import Avatar from '@/components/ui/Avatar';
 import { RouterOutputs } from '@/utils/api';
@@ -12,12 +13,17 @@ import { Tooltip, TooltipContent, TooltipTrigger } from '../ui/Tooltip';
 import DropdownThreeDots from '../Tuit/DropdownThreeDots';
 
 type TuitProps = {
-    tuit:
-        | RouterOutputs['tuit']['get'][number]
-        | NonNullable<RouterOutputs['tuit']['getById']>;
+    tuit: (
+        | Omit<RouterOutputs['tuit']['get'][number], 'replyTo'>
+        | Omit<NonNullable<RouterOutputs['tuit']['getById']>, 'replyTo'>
+    ) & {
+        replyTo: RouterOutputs['tuit']['get'][number]['replyTo'] | null;
+    };
     isInView?: boolean;
     isComment?: boolean;
     isFeed?: boolean;
+    showReplyTo?: boolean;
+    displayComment?: boolean;
 };
 
 const Tuit = memo(
@@ -26,18 +32,29 @@ const Tuit = memo(
         isInView = false,
         isComment = false,
         isFeed = false,
+        showReplyTo = false,
+        displayComment = false,
     }: TuitProps) => {
         const user = useUser();
+        const router = useRouter();
         const commentsFromSameAuthor =
             'comments' in tuit
                 ? tuit.comments.filter((t) => t.authorId === tuit.authorId)
                 : [];
 
-        const displaysComments =
-            !isComment && commentsFromSameAuthor.length > 0;
-
         return (
             <>
+                {showReplyTo && tuit.replyTo && (
+                    <Tuit
+                        displayComment
+                        isFeed
+                        tuit={{
+                            ...tuit.replyTo,
+                            replyTo: null,
+                            replyToId: null,
+                        }}
+                    />
+                )}
                 <Link
                     className={isInView ? 'pointer-events-none' : ''}
                     href={`/${tuit.author.username}/status/${tuit.id}`}
@@ -47,18 +64,28 @@ const Tuit = memo(
                         className={clsx(
                             'flex w-full cursor-pointer gap-x-3 pl-4 pr-2 pt-3 transition-colors hover:bg-white/[0.03]',
                             {
-                                'border-b border-borderGray': !displaysComments,
+                                'border-b border-borderGray': !(
+                                    (!isComment &&
+                                        commentsFromSameAuthor.length > 0) ||
+                                    displayComment
+                                ),
                             },
                         )}
                     >
                         <div className='relative flex flex-col items-center'>
-                            {isComment && (
+                            {(isComment || showReplyTo) && (
                                 <div className='-mt-4 h-4 w-0.5 bg-textGray' />
                             )}
-                            <Link href={`/${tuit.author.username}`}>
+                            <button
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    e.preventDefault();
+                                    router.push(`/${tuit.author.username}`);
+                                }}
+                            >
                                 <Avatar user={tuit.author} width={48} />
-                            </Link>
-                            {displaysComments && (
+                            </button>
+                            {displayComment && (
                                 <div className='mt-0.5 h-full w-0.5 flex-1 rounded-t-full bg-textGray' />
                             )}
                         </div>
@@ -95,12 +122,13 @@ const Tuit = memo(
                         </div>
                     </article>
                 </Link>
-                {displaysComments && commentsFromSameAuthor[0] && (
+                {displayComment && commentsFromSameAuthor[0] && (
                     <Tuit
                         isComment
                         tuit={{
                             ...commentsFromSameAuthor[0],
                             author: tuit.author,
+                            replyTo: tuit,
                         }}
                     />
                 )}

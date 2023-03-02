@@ -97,6 +97,9 @@ const LikeCommentRetweet: FC<LikeCommentRetweetProps> = ({
         onSettled: () => {
             cli.tuit.get.invalidate();
             cli.tuit.getById.invalidate({ id: tuit.id });
+            cli.tuit.getFeedByUsername.invalidate({
+                username: tuit.author.username,
+            });
             cli.tuit.getComments.invalidate({ tuitId: tuit.replyToId ?? '' });
         },
     });

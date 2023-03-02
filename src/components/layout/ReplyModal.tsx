@@ -23,6 +23,7 @@ const ReplyModal = ({}: ReplyModalProps) => {
     const makeCommentMutation = api.tuit.makeComment.useMutation({
         onSuccess: () => {
             utils.tuit.get.invalidate();
+            utils.tuit.getWithRepliesByUsername.invalidate();
         },
     });
 

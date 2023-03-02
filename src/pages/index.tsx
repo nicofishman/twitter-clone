@@ -26,7 +26,7 @@ const Home: NextPage = () => {
                 <link href='/favicon.ico' rel='icon' />
             </Head>
             <Layout>
-                <div className='sticky top-0 flex min-h-[56px] items-center justify-center bg-black/60 backdrop-blur-md xxs:hidden'>
+                <header className='sticky top-0 flex min-h-[56px] items-center justify-center bg-black/60 backdrop-blur-md xxs:hidden'>
                     <button
                         className='absolute top-3 left-4'
                         onClick={() => slideNavbarOpenStore.set('isOpen', true)}
@@ -34,7 +34,7 @@ const Home: NextPage = () => {
                         <Avatar user={user} width={32} />
                     </button>
                     <Icon className='text-twitterBlue' name='twitter' />
-                </div>
+                </header>
                 <div className='flex h-14 w-full items-center border border-t-0 border-borderGray px-4 py-2'>
                     <p className='font-extrabold'>Home</p>
                 </div>

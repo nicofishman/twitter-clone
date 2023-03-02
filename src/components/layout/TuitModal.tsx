@@ -22,6 +22,7 @@ const TuitModal: FC<TuitModalProps> = () => {
     const createTuitMutation = api.tuit.create.useMutation({
         onSuccess: () => {
             setTuitContent('');
+            utils.tuit.getFeedByUsername.invalidate();
             utils.tuit.get.invalidate();
         },
     });
