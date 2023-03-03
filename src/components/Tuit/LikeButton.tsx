@@ -2,8 +2,7 @@ import React, { FC } from 'react';
 import clsx from 'clsx';
 
 import Icon from '@/components/ui/Icon';
-
-import { TuitButton } from '../index/Tuit';
+import { TuitButton } from '@/components/index/Tuit';
 
 interface LikeButtonProps {
     doLike: () => void;

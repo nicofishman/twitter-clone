@@ -2,8 +2,7 @@ import { FC } from 'react';
 
 import { GroupTuitButton } from '@/components/index/Tuit';
 import Icon from '@/components/ui/Icon';
-
-import DoTuitButton from '../Tuit/DoTuitButton';
+import DoTuitButton from '@/components/Tuit/DoTuitButton';
 
 interface WriteTuitIconsAndButtonProps {
     tuitContent: string;

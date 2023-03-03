@@ -2,14 +2,13 @@ import React, { FC, ReactNode, memo } from 'react';
 import clsx from 'clsx';
 
 import { RouterOutputs, api } from '@/utils/api';
-
 import {
     DropdownMenu,
     DropdownMenuContent,
     DropdownMenuItem,
     DropdownMenuTrigger,
-} from '../ui/Dropdown';
-import Icon from '../ui/Icon';
+} from '@/components/ui/Dropdown';
+import Icon from '@/components/ui/Icon';
 
 import ThreeDotsButton from './ThreeDotsButton';
 

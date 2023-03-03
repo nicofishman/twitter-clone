@@ -2,13 +2,12 @@ import React from 'react';
 import { signOut } from 'next-auth/react';
 
 import { useUser } from '@/utils/globalState';
-
 import {
     DropdownMenu,
     DropdownMenuContent,
     DropdownMenuItem,
     DropdownMenuTrigger,
-} from '../ui/Dropdown';
+} from '@/components/ui/Dropdown';
 
 import ProfileButton from './ProfileButton';
 

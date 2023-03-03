@@ -4,10 +4,9 @@ import { TwitterUser } from '@prisma/client';
 import { add, format } from 'date-fns';
 
 import { api } from '@/utils/api';
-
-import Modal from '../ui/Modal';
-import Icon from '../ui/Icon';
-import Avatar from '../ui/Avatar';
+import Modal from '@/components/ui/Modal';
+import Icon from '@/components/ui/Icon';
+import Avatar from '@/components/ui/Avatar';
 
 import { modalsStore } from './Layout';
 import Input from './editProfileModal/Input';

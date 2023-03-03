@@ -7,10 +7,9 @@ import { useRouter } from 'next/router';
 import Avatar from '@/components/ui/Avatar';
 import { RouterOutputs } from '@/utils/api';
 import { useUser } from '@/utils/globalState';
-
-import LikeCommentRetweet from '../Tuit/LikeCommentRetweet';
-import { Tooltip, TooltipContent, TooltipTrigger } from '../ui/Tooltip';
-import DropdownThreeDots from '../Tuit/DropdownThreeDots';
+import LikeCommentRetweet from '@/components/Tuit/LikeCommentRetweet';
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/Tooltip';
+import DropdownThreeDots from '@/components/Tuit/DropdownThreeDots';
 
 type TuitProps = {
     tuit: (

@@ -2,9 +2,8 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 
 import { api } from '@/utils/api';
-
-import Layout from '../layout/Layout';
-import Loader from '../ui/Loader';
+import Layout from '@/components/layout/Layout';
+import Loader from '@/components/ui/Loader';
 
 import Profile from './Profile';
 import Tabs from './Tabs';

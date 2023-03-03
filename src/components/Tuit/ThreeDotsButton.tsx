@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 
-import { GroupTuitButton } from '../index/Tuit';
-import Icon from '../ui/Icon';
+import { GroupTuitButton } from '@/components/index/Tuit';
+import Icon from '@/components/ui/Icon';
 
 interface ThreeDotsButtonProps {
     className?: string;

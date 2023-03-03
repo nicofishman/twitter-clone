@@ -4,12 +4,11 @@ import clsx from 'clsx';
 import { useUser } from '@/utils/globalState';
 import useAutosizeTextArea from '@/hooks/useAutosizeTextarea';
 import { api } from '@/utils/api';
-
-import Avatar from '../ui/Avatar';
-import DoTuitButton from '../Tuit/DoTuitButton';
-import Icon from '../ui/Icon';
-import { TuitButton } from '../index/Tuit';
-import TuitTextarea from '../Tuit/TuitTextarea';
+import Avatar from '@/components/ui/Avatar';
+import DoTuitButton from '@/components/Tuit/DoTuitButton';
+import Icon from '@/components/ui/Icon';
+import { TuitButton } from '@/components/index/Tuit';
+import TuitTextarea from '@/components/Tuit/TuitTextarea';
 
 interface ReplyBoxProps {
     tuitId: string;

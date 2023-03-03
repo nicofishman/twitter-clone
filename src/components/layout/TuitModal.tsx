@@ -2,12 +2,11 @@ import React, { FC, useCallback, useState } from 'react';
 
 import { api } from '@/utils/api';
 import { useUser } from '@/utils/globalState';
-
-import Modal from '../ui/Modal';
-import Icon from '../ui/Icon';
-import TuitTextarea from '../Tuit/TuitTextarea';
-import Avatar from '../ui/Avatar';
-import WriteTuitIconsAndButton from '../index/WriteTuitIconsAndButton';
+import Modal from '@/components/ui/Modal';
+import Icon from '@/components/ui/Icon';
+import TuitTextarea from '@/components/Tuit/TuitTextarea';
+import Avatar from '@/components/ui/Avatar';
+import WriteTuitIconsAndButton from '@/components/index/WriteTuitIconsAndButton';
 
 import { modalsStore } from './Layout';
 

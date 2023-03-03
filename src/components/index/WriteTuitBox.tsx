@@ -3,8 +3,7 @@ import { FC, useCallback, useState } from 'react';
 import Avatar from '@/components/ui/Avatar';
 import { api } from '@/utils/api';
 import { useUser } from '@/utils/globalState';
-
-import TuitTextarea from '../Tuit/TuitTextarea';
+import TuitTextarea from '@/components/Tuit/TuitTextarea';
 
 import WriteTuitIconsAndButton from './WriteTuitIconsAndButton';
 

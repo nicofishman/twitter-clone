@@ -3,9 +3,8 @@ import Link from 'next/link';
 import { RouterOutputs } from '@/utils/api';
 import { useUser } from '@/utils/globalState';
 import { TuitWithRecursiveComments } from '@/types/TuitTypes';
-
-import LikeCommentRetweet from '../Tuit/LikeCommentRetweet';
-import Avatar from '../ui/Avatar';
+import LikeCommentRetweet from '@/components/Tuit/LikeCommentRetweet';
+import Avatar from '@/components/ui/Avatar';
 
 import TuitDateTime from './TuitDateTime';
 import DropdownThreeDots from './../Tuit/DropdownThreeDots';

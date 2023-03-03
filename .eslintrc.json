@@ -13,8 +13,17 @@
     "parserOptions": {
         "project": "./tsconfig.json"
     },
-    "plugins": ["react", "@typescript-eslint", "import"],
+    "plugins": [
+        "react",
+        "@typescript-eslint",
+        "import",
+        "no-relative-import-paths"
+    ],
     "rules": {
+        "no-relative-import-paths/no-relative-import-paths": [
+            "warn",
+            { "allowSameFolder": true, "rootDir": "src", "prefix": "@" }
+        ],
         "tailwindcss/classnames-order": "off",
         "tailwindcss/no-custom-classname": "off",
         "react/prop-types": "off",

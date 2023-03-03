@@ -1,8 +1,7 @@
 import { z } from 'zod';
 
 import { latinize } from '@/utils/latinize';
-
-import { createTRPCRouter, publicProcedure } from '../trpc';
+import { createTRPCRouter, publicProcedure } from '@/server/api/trpc';
 
 export const userRouter = createTRPCRouter({
     create: publicProcedure

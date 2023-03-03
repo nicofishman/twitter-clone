@@ -1,9 +1,8 @@
 import React from 'react';
 
 import { RouterOutputs } from '@/utils/api';
-
-import Loader from '../ui/Loader';
-import Tuit from '../index/Tuit';
+import Loader from '@/components/ui/Loader';
+import Tuit from '@/components/index/Tuit';
 
 interface CommentsListProps {
     comments: RouterOutputs['tuit']['getComments'] | undefined;

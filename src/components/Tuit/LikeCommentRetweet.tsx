@@ -3,10 +3,9 @@ import React, { FC, useMemo } from 'react';
 
 import { RouterOutputs, api } from '@/utils/api';
 import { TuitButton } from '@/components/index/Tuit';
-
-import { GroupTuitButton } from '../index/Tuit';
-import Icon from '../ui/Icon';
-import { modalsStore } from '../layout/Layout';
+import { GroupTuitButton } from '@/components/index/Tuit';
+import Icon from '@/components/ui/Icon';
+import { modalsStore } from '@/components/layout/Layout';
 
 import LikeButton from './LikeButton';
 

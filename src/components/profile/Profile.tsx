@@ -5,10 +5,9 @@ import { useRouter } from 'next/router';
 
 import { RouterOutputs } from '@/utils/api';
 import { useUser } from '@/utils/globalState';
-
-import Icon from '../ui/Icon';
-import Avatar from '../ui/Avatar';
-import { modalsStore } from '../layout/Layout';
+import Icon from '@/components/ui/Icon';
+import Avatar from '@/components/ui/Avatar';
+import { modalsStore } from '@/components/layout/Layout';
 
 interface ProfileProps {
     profile: NonNullable<RouterOutputs['user']['getByUsername']>;

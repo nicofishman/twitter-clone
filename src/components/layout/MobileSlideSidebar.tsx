@@ -2,9 +2,8 @@ import React, { forwardRef } from 'react';
 
 import { slideNavbarOpenStore } from '@/utils/states/slideNavbarOpen';
 import { useUser } from '@/utils/globalState';
-
-import Icon from '../ui/Icon';
-import Avatar from '../ui/Avatar';
+import Icon from '@/components/ui/Icon';
+import Avatar from '@/components/ui/Avatar';
 
 interface MobileSlideSidebarProps {}
 

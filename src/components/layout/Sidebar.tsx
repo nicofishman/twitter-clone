@@ -8,8 +8,7 @@ import Icon from '@/components/ui/Icon';
 import { api } from '@/utils/api';
 import { cn } from '@/utils/cn';
 import { globalUser, useUser } from '@/utils/globalState';
-
-import DropdownProfileButton from '../sidebar/DropdownProfileButton';
+import DropdownProfileButton from '@/components/sidebar/DropdownProfileButton';
 
 import { modalsStore } from './Layout';
 
