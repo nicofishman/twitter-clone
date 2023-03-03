@@ -7,6 +7,7 @@ module.exports = {
         extend: {
             colors: {
                 lightGray: '#E7EAE9',
+                darkGray: '#202327',
                 textGray: 'rgb(113, 118, 123)',
                 borderGray: 'rgb(47, 51, 54)',
                 twitterBlue: 'rgb(29, 155, 240)',

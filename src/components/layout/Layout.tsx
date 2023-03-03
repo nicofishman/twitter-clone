@@ -5,14 +5,14 @@ import { TwitterUser } from '@prisma/client';
 import { slideNavbarOpenStore } from '@/utils/states/slideNavbarOpen';
 import { createGlobalStore } from '@/utils/createGlobalStore';
 import { RouterOutputs } from '@/utils/api';
-
-import SlideNavbar from '../ui/SlideNavbar';
+import SlideNavbar from '@/components/ui/SlideNavbar';
 
 import Sidebar from './Sidebar';
 import MobileSlideSidebar from './MobileSlideSidebar';
 import TuitModal from './TuitModal';
 import ReplyModal from './ReplyModal';
 import EditProfileModal from './EditProfileModal';
+import SearchSidebar from './SearchSidebar';
 
 export const modalsStore = createGlobalStore({
     writeTuit: false,
@@ -52,8 +52,8 @@ const Layout: FC<LayoutProps> = ({ children }) => {
             >
                 {children}
             </div>
-            <div className='sticky left-0 top-0 h-full min-w-0 flex-1 overflow-hidden'>
-                SIDEBAR
+            <div className='sticky left-0 top-0 ml-8 h-full min-w-0 flex-1 overflow-hidden'>
+                <SearchSidebar />
             </div>
 
             <TuitModal />
